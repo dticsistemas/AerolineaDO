@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{43F68727-B540-4E2D-9A4F-D1143CAFEAD1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlDocumentoFactura.Aplicacion", "ControlDocumentoFactura.Aplicacion\ControlDocumentoFactura.Aplicacion.csproj", "{5F22D415-D08C-484A-8737-9A4419BFAFAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlDocumentoFactura.Dominio", "ControlDocumentoFactura.Dominio\ControlDocumentoFactura.Dominio.csproj", "{F0A84636-3546-4959-985E-5830B6738826}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlDocumentoFactura.Infraestructura", "ControlDocumentoFactura.Infraestructura\ControlDocumentoFactura.Infraestructura.csproj", "{1B1ED7CF-3486-48A3-9CDE-4BAEECF0653E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlDocumentoFactura.WebApi", "ControlDocumentoFactura.WebApi\ControlDocumentoFactura.WebApi.csproj", "{F05EAAB3-1066-432E-8C45-BF0F824DF681}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlDocumentoFactura.Test", "ControlDocumentoFactura.Test\ControlDocumentoFactura.Test.csproj", "{EAE00CAA-9F87-46BC-A2A0-CE15566517E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{B0D206DD-7FA0-4EE6-859B-D477657EC858}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db", "Db", "{6706A611-0D2E-4D7E-919F-5DAB37ABBCCB}"
+	ProjectSection(SolutionItems) = preProject
+		Db\create-database.sql = Db\create-database.sql
+		Db\Dockerfile = Db\Dockerfile
+		Db\entrypoint.sh = Db\entrypoint.sh
+		Db\run-initialization.sh = Db\run-initialization.sh
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F22D415-D08C-484A-8737-9A4419BFAFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F22D415-D08C-484A-8737-9A4419BFAFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F22D415-D08C-484A-8737-9A4419BFAFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F22D415-D08C-484A-8737-9A4419BFAFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A84636-3546-4959-985E-5830B6738826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A84636-3546-4959-985E-5830B6738826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A84636-3546-4959-985E-5830B6738826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A84636-3546-4959-985E-5830B6738826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B1ED7CF-3486-48A3-9CDE-4BAEECF0653E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1ED7CF-3486-48A3-9CDE-4BAEECF0653E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1ED7CF-3486-48A3-9CDE-4BAEECF0653E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1ED7CF-3486-48A3-9CDE-4BAEECF0653E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05EAAB3-1066-432E-8C45-BF0F824DF681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05EAAB3-1066-432E-8C45-BF0F824DF681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05EAAB3-1066-432E-8C45-BF0F824DF681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05EAAB3-1066-432E-8C45-BF0F824DF681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE00CAA-9F87-46BC-A2A0-CE15566517E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE00CAA-9F87-46BC-A2A0-CE15566517E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE00CAA-9F87-46BC-A2A0-CE15566517E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE00CAA-9F87-46BC-A2A0-CE15566517E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13DDFCF3-01EC-4D5C-A8B0-0ADF6656FAC6}
+	EndGlobalSection
+EndGlobal

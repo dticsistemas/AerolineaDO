@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2022-06-02_22-28-43" tag="">
+  <assembly name="ControlDocumentoFactura.Aplicacion">
+    <class name="ControlDocumentoFactura.Aplicacion.Dtos.Clientes.ClienteDto" coveredlines="2" coverablelines="2" totallines="14" coveredbranches="0" totalbranches="0" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Aplicacion.Dtos.Pagos.FacturaDto" coveredlines="15" coverablelines="15" totallines="30" coveredbranches="0" totalbranches="0" coveredcodeelements="15" totalcodeelements="15" />
+    <class name="ControlDocumentoFactura.Aplicacion.Dtos.Pagos.PagoDto" coveredlines="5" coverablelines="5" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="ControlDocumentoFactura.Aplicacion.Dtos.Reservas.ReservaDto" coveredlines="9" coverablelines="9" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="9" totalcodeelements="9" />
+    <class name="ControlDocumentoFactura.Aplicacion.Dtos.Vuelos.VueloDto" coveredlines="4" coverablelines="4" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="4" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Aplicacion.Extensions" coveredlines="0" coverablelines="6" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Aplicacion.Services.Reservas.FacturaService" coveredlines="7" coverablelines="7" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura.CrearFacturaCommand" coveredlines="20" coverablelines="20" totallines="38" coveredbranches="0" totalbranches="0" coveredcodeelements="10" totalcodeelements="10" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura.CrearFacturaHandler" coveredlines="0" coverablelines="23" totallines="55" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.EntregarFactura.EntregarFacturaHandler" coveredlines="0" coverablelines="7" totallines="34" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId.BuscarFacturaPorIdHandler" coveredlines="0" coverablelines="34" totallines="61" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId.BuscarFacturaPorIdQuery" coveredlines="0" coverablelines="6" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturasReserva.BuscarFacturasReservaQuery" coveredlines="0" coverablelines="1" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+  </assembly>
+  <assembly name="ControlDocumentoFactura.Dominio">
+    <class name="ControlDocumentoFactura.Dominio.Events.Facturas.FacturaCreadoEvent" coveredlines="0" coverablelines="11" totallines="32" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="ControlDocumentoFactura.Dominio.Factories.Facturas.FacturaFactory" coveredlines="0" coverablelines="3" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Clientes.Cliente" coveredlines="0" coverablelines="7" totallines="23" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Clientes.ValueObjects.PersonNameValue" coveredlines="0" coverablelines="15" totallines="35" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.Factura" coveredlines="0" coverablelines="46" totallines="81" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="20" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.Pago" coveredlines="0" coverablelines="16" totallines="37" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="7" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.ValueObjetcs.NitFacturaValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.ValueObjetcs.NumeroAutorizacionValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.ValueObjetcs.NumeroFacturaValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Facturas.ValueObjetcs.RazonSocialValue" coveredlines="0" coverablelines="15" totallines="35" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Reservas.Reserva" coveredlines="0" coverablelines="10" totallines="38" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Reservas.ValueObjects.CodigoReservaValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Reservas.ValueObjects.EstadoReservaValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Reservas.ValueObjects.TipoReservaValue" coveredlines="0" coverablelines="12" totallines="36" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.ValueObjects.DescripcionLugarValue" coveredlines="0" coverablelines="15" totallines="35" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.ValueObjects.MontoValue" coveredlines="0" coverablelines="14" totallines="34" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Dominio.Models.Vuelos.Vuelo" coveredlines="0" coverablelines="20" totallines="38" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="7" />
+  </assembly>
+  <assembly name="ControlDocumentoFactura.Infraestructura">
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadConfig.ClienteReadConfig" coveredlines="0" coverablelines="7" totallines="24" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadConfig.FacturaReadConfig" coveredlines="0" coverablelines="39" totallines="75" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadConfig.ReservaReadConfig" coveredlines="0" coverablelines="24" totallines="56" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadConfig.VueloReadConfig" coveredlines="0" coverablelines="13" totallines="34" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig.ClienteWriteConfig" coveredlines="0" coverablelines="12" totallines="33" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig.FacturaWriteConfig" coveredlines="0" coverablelines="75" totallines="115" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig.ReservaWriteConfig" coveredlines="0" coverablelines="43" totallines="76" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig.VueloWriteConfig" coveredlines="0" coverablelines="17" totallines="42" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Contexts.ReadDbContext" coveredlines="0" coverablelines="19" totallines="47" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Contexts.WriteDbContext" coveredlines="0" coverablelines="19" totallines="49" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.ClienteReadModel" coveredlines="0" coverablelines="2" totallines="14" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.FacturaReadModel" coveredlines="0" coverablelines="15" totallines="29" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="15" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.ReservaReadModel" coveredlines="0" coverablelines="9" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.VueloReadModel" coveredlines="0" coverablelines="4" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Repository.FacturaRepository" coveredlines="0" coverablelines="14" totallines="39" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Repository.ReservaRepository" coveredlines="0" coverablelines="14" totallines="39" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.Repository.VueloRepository" coveredlines="0" coverablelines="14" totallines="41" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.UnitOfWork" coveredlines="0" coverablelines="16" totallines="40" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Infraestructura.EntityFramework.UseCases.Queries.Pagos.BuscarFacturasReservaHandler" coveredlines="0" coverablelines="23" totallines="53" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.Infraestructura.Extensions" coveredlines="0" coverablelines="15" totallines="55" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+  </assembly>
+  <assembly name="ControlDocumentoFactura.WebApi">
+    <class name="ControlDocumentoFactura.WebApi.Controllers.FacturaController" coveredlines="0" coverablelines="22" totallines="60" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="ControlDocumentoFactura.WebApi.Program" coveredlines="0" coverablelines="8" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ControlDocumentoFactura.WebApi.Startup" coveredlines="0" coverablelines="28" totallines="64" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+  </assembly>
+  <assembly name="Reservas.Aplicacion">
+    <class name="Reservas.Aplicacion.Dtos.Clientes.ClienteDto" coveredlines="0" coverablelines="2" totallines="14" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.Dtos.Pagos.FacturaDto" coveredlines="0" coverablelines="5" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="Reservas.Aplicacion.Dtos.Pagos.PagoDto" coveredlines="0" coverablelines="5" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="Reservas.Aplicacion.Dtos.Reservas.ReservaDto" coveredlines="0" coverablelines="9" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="Reservas.Aplicacion.Dtos.Vuelos.VueloDto" coveredlines="0" coverablelines="4" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Reservas.Aplicacion.Extensions" coveredlines="0" coverablelines="10" totallines="33" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Reservas.Aplicacion.Services.Reservas.FacturaService" coveredlines="0" coverablelines="11" totallines="29" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Reservas.Aplicacion.Services.Reservas.PagoService" coveredlines="0" coverablelines="8" totallines="24" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.Services.Reservas.ReservaService" coveredlines="0" coverablelines="15" totallines="40" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Pagos.CrearFactura.CrearFacturaCommand" coveredlines="0" coverablelines="7" totallines="27" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Pagos.CrearFactura.CrearFacturaHandler" coveredlines="0" coverablelines="23" totallines="59" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Pagos.CrearPago.CrearPagoCommand" coveredlines="0" coverablelines="7" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Pagos.CrearPago.CrearPagoHandler" coveredlines="0" coverablelines="35" totallines="74" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Reservas.ActualizarSaldoReserva.ActualizarSaldoReservaHandler" coveredlines="0" coverablelines="15" totallines="39" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Reservas.CancelarReserva.CancelarReservaCommand" coveredlines="0" coverablelines="5" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Reservas.CancelarReserva.CancelarReservaHandler" coveredlines="0" coverablelines="23" totallines="56" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Reservas.CrearReserva.CrearReservaCommand" coveredlines="0" coverablelines="9" totallines="23" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Reservas.CrearReserva.CrearReservaHandler" coveredlines="0" coverablelines="31" totallines="78" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Vuelos.UpdateCantReservaVuelos.UpdateCantCancelarReservaVuelosHandler" coveredlines="0" coverablelines="9" totallines="32" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Commands.Vuelos.UpdateCantReservaVuelos.UpdateCantReservaVuelosHandler" coveredlines="0" coverablelines="9" totallines="31" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId.BuscarFacturaPorIdQuery" coveredlines="0" coverablelines="1" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Reservas.Aplicacion.UsesCases.Queries.Pagos.BuscarPagosReserva.BuscarPagosReservaQuery" coveredlines="0" coverablelines="1" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Reservas.Aplicacion.UsesCases.Queries.Reservas.BuscarReservas.BuscarReservasQuery" coveredlines="0" coverablelines="1" totallines="15" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Reservas.Aplicacion.UsesCases.Queries.Reservas.ObtenerReservaId.ObtenerReservaIdHandler" coveredlines="0" coverablelines="27" totallines="53" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Reservas.Aplicacion.UsesCases.Queries.Reservas.ObtenerReservaId.ObtenerReservaIdQuery" coveredlines="0" coverablelines="6" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+  </assembly>
+  <assembly name="ShareKernel">
+    <class name="ShareKernel.Cores.BussinessRuleValidationException" coveredlines="0" coverablelines="18" totallines="42" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="ShareKernel.Cores.DomainEvent" coveredlines="0" coverablelines="7" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="ShareKernel.Cores.Entity`1" coveredlines="0" coverablelines="20" totallines="44" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="ShareKernel.Cores.ValueObject" coveredlines="0" coverablelines="8" totallines="24" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="ShareKernel.Rules.NotNullRule" coveredlines="0" coverablelines="8" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="ShareKernel.Rules.StringNotNullOrEmptyRule" coveredlines="0" coverablelines="8" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+  </assembly>
+</coverage>

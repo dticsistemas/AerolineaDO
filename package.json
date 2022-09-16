@@ -1,0 +1,20 @@
+{
+  "name": "aerolineaddd",
+  "version": "1.0.0",
+  "description": "Microservicios Control Documento Factura  DDD",
+  "main": "index.js",
+ 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dticsistemas/AerolineaDDD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dticsistemas/AerolineaDDD/issues"
+  },
+  "homepage": "https://github.com/dticsistemas/AerolineaDDD#readme"
+ 
+
+}
