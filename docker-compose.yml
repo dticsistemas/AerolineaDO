@@ -1,6 +1,6 @@
 services:
   db_mssql:
-    build: ./Db   
+    build: ./DB   
     ports:
       - 1433:1433              
   ms_ctrlfactura:    
