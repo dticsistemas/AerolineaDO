@@ -15,8 +15,8 @@ namespace ControlDocumentoFactura.Dominio.Models.Vuelos {
 			Id = Guid.NewGuid();
 			PrecioPasaje = new decimal(0.0);
 		}
-		public Vuelo(int cantidad,String detalle,decimal precioPasaje) {
-			Id = Guid.NewGuid();
+		public Vuelo(Guid id, int cantidad,String detalle,decimal precioPasaje) {
+			Id = id;
 			Detalle = detalle;
 			Cantidad = cantidad;
 			PrecioPasaje = precioPasaje;

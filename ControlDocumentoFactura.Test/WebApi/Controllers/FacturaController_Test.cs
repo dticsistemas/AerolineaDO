@@ -33,7 +33,7 @@ namespace ControlDocumentoFactura.Test.WebApi.Controllers
 
 			FacturaController facturaControllerTest = new FacturaController((IMediator)mock);
 
-			IActionResult result = await facturaControllerTest.CreatePago(commandFactura);			
+			IActionResult result = await facturaControllerTest.CreateFactura(commandFactura);			
 			Assert.NotNull(result);
 
 		}

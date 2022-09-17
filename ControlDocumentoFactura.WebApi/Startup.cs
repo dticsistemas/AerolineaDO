@@ -27,6 +27,8 @@ namespace ControlDocumentoFactura.WebApi {
 		public void ConfigureServices(IServiceCollection services) {
 			services.AddInfrastructure(Configuration);
 
+			services.AddHostedService<SqsBackgroundService>();			
+
 			services.AddControllers();
 
 			services.AddSwaggerGen(c => {

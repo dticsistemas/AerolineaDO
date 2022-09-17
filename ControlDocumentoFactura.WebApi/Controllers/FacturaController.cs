@@ -1,8 +1,10 @@
 ﻿using ControlDocumentoFactura.Aplicacion.Dtos.Pagos;
 using ControlDocumentoFactura.Aplicacion.Dtos.Reservas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,13 +18,23 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 		public FacturaController(IMediator mediator) {
 			_mediator = mediator;
-		}
-		[Route("Factura")]
+		}		
 		[HttpPost]
-		public async Task<IActionResult> CreatePago([FromBody] CrearFacturaCommand command) {
+		public async Task<IActionResult> CreateFactura([FromBody] CrearFacturaCommand command) {
 			Guid id = await _mediator.Send(command);
 
 			if( id == Guid.Empty )
+				return BadRequest();
+
+			return Ok(id);
+		}
+		[Route("vuelo")]
+		[HttpPost]
+		public async Task<IActionResult> CreateVuelo([FromBody] CrearVueloCommand command)
+		{
+			Guid id = await _mediator.Send(command);
+
+			if (id == Guid.Empty)
 				return BadRequest();
 
 			return Ok(id);
@@ -33,6 +45,17 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 			FacturaDto result = await _mediator.Send(command);
 
 			if( result == null )
+				return NotFound();
+
+			return Ok(result);
+		}
+		[Route("vuelo")]
+		[HttpGet]
+		public async Task<IActionResult> ListarVuelos([FromRoute] ListarVuelosQuery command)
+		{
+			var result = await _mediator.Send(command);
+
+			if (result == null)
 				return NotFound();
 
 			return Ok(result);

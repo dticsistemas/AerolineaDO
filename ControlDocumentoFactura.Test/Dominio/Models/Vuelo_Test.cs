@@ -15,7 +15,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			string detalleVuelo = "SCZ-LPZ";
 			decimal precioPasajeVuelo = new(40.0);
 
-			var objVuelo = new Vuelo(cantidadVuelo,detalleVuelo,precioPasajeVuelo);
+			var objVuelo = new Vuelo(idVueloTest,cantidadVuelo,detalleVuelo,precioPasajeVuelo);
 			Assert.NotEqual(Guid.Empty,objVuelo.Id);
 			Assert.Equal(cantidadVuelo,objVuelo.Cantidad);
 			Assert.Equal(detalleVuelo,objVuelo.Detalle);

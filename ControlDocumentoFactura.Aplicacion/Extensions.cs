@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ControlDocumentoFactura.Dominio.Factories.Vuelos;
 
 namespace ControlDocumentoFactura.Aplicacion {
 	public static class Extensions {
@@ -15,6 +16,7 @@ namespace ControlDocumentoFactura.Aplicacion {
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 			services.AddTransient<IFacturaService,FacturaService>();
 			services.AddTransient<IFacturaFactory,FacturaFactory>();
+			services.AddTransient<IVueloFactory, VueloFactory>();
 
 			return services;
 		}
