@@ -81,7 +81,7 @@ namespace ControlDocumentoFactura.WebApi
 						try
 						{
 
-							using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+							using (SqlConnection connection = new SqlConnection("\"ReservaDbConnectionString\": \"Server=localhost;Database=FacturasDb;User=sa;Password=password123!;\""))
 							{
 								connection.Open();								
 								using (SqlCommand cmd = new SqlCommand(query, connection))
