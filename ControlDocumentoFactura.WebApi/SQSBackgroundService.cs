@@ -155,12 +155,12 @@ namespace ControlDocumentoFactura.WebApi
 
 						if (nameEvent == "PaymentCreated")
 						{
-							//var id = jDatos.id;
+							var id = jDatos.id;
 							var transactionNumber = jDatos.transactionNumber;
 							var amount = jDatos.amount;
 							var booking = jDatos.booking;
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(amount) + " - " + Convert.ToString(booking) + "','245')"; ;
 							try
 							{
 								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
