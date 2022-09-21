@@ -73,14 +73,20 @@ namespace ControlDocumentoFactura.WebApi
 							var uuid = jDatos.uuid;
 							var origen = jDatos.source_airport_code;
 							var destino = jDatos.destiny_airport_code;
+							var departure = jDatos.departure_week_days;
+							var flight_program_id=jDatos.flight_program_id;
+							var data = jDatos.data;
 							var detalle = "TMP - TMP";
 							var cantidad = 120;
 							var precioPasaje = new decimal(120.0);
 							CrearVueloCommand command = new CrearVueloCommand(uuid, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje,source_airport_code,destiny_airport_code,departure_week_days,flight_program_id,data) VALUES ('" +
+								uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino)+"','250.0','"+
+									Convert.ToString(origen)+"','" + Convert.ToString(destino)+"','"+ Convert.ToString(departure)+
+									"','"+ Convert.ToString(flight_program_id)+"','"+ Convert.ToString(data) + "')"; 
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
 								{
 									connection.Open();
 									using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -105,10 +111,12 @@ namespace ControlDocumentoFactura.WebApi
 							var needsAssistance = jDatos.needsAssistance;
 
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(name) + " - " + Convert.ToString(lastName) + "','245')"; ;
+							String query = "INSERT INTO dbo.Cliente(Id,nombreCompleto,name,lastName,passport,needAssistance) VALUES ('" + 
+								id.ToString() + "','"+Convert.ToString(name)+" " + Convert.ToString(lastName)+"','" + Convert.ToString(name) + " - " + Convert.ToString(lastName)+"','" + Convert.ToString(passport) 
+								+"','" + Convert.ToString(needsAssistance) + "')"; 
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
 								{
 									connection.Open();
 									using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -134,10 +142,12 @@ namespace ControlDocumentoFactura.WebApi
 							var value = jDatos.value;
 							var flight = jDatos.flight;
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(passanger) + " - " + Convert.ToString(flight) + "','245')"; ;
+							String query = "INSERT INTO dbo.Vuelo(Id,codReserva,estadoReserva,monto,deuda,fecha,tipoReserva,ClienteId,VueloId,reservationStatus) VALUES ('" +
+							id.ToString()+"','"+ Convert.ToString(reservationNumber) + "'R','750','750','"+ Convert.ToString(date) + 
+							"','R','" + Convert.ToString(passanger) + "','" + Convert.ToString(flight) + "','"+ Convert.ToString(reservationStatus) + "')"; 
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
 								{
 									connection.Open();
 									using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -159,11 +169,13 @@ namespace ControlDocumentoFactura.WebApi
 							var transactionNumber = jDatos.transactionNumber;
 							var amount = jDatos.amount;
 							var booking = jDatos.booking;
+							var fecha = jDatos.created_at;
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(amount) + " - " + Convert.ToString(booking) + "','245')"; ;
+							String query = "INSERT INTO dbo.Pago(Id,monto,fecha,codComprobante,ReservaId) VALUES ('" + id.ToString() + 
+								"','" + Convert.ToString(amount) + "','" + Convert.ToString(booking) + "','"+ Convert.ToString(fecha) + "')";
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
 								{
 									connection.Open();
 									using (SqlCommand cmd = new SqlCommand(query, connection))
