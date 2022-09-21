@@ -65,40 +65,121 @@ namespace ControlDocumentoFactura.WebApi
 						Console.WriteLine($"\nMessage body of {message.MessageId}:");
 						Console.WriteLine($"{message.Body}");
 						dynamic jsonData = JObject.Parse(message.Body);
-						var jDatos = jsonData.data;
-						var uuid = jDatos.uuid;
-						var origen = jDatos.source_airport_code;
-						var destino = jDatos.destiny_airport_code;
-						var detalle = "TMP - TMP";
-						var cantidad = 120;
-						var precioPasaje = new decimal(120.0);
-						Guid id = Guid.NewGuid();
-							
-
-						CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-						//Guid id2 = await _mediator.Send(command);
-						String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('"+id.ToString()+"',120,'"+ Convert.ToString(origen)+" - "+ Convert.ToString(destino) + "','245')"; ;
-						try
+						var nameEvent= jsonData.nameEvent;
+						var jDatos = jsonData.data;						
+						
+						if(nameEvent== "FlightCreated")
 						{
-
-							using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+							var uuid = jDatos.uuid;
+							var origen = jDatos.source_airport_code;
+							var destino = jDatos.destiny_airport_code;
+							var detalle = "TMP - TMP";
+							var cantidad = 120;
+							var precioPasaje = new decimal(120.0);
+							CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							try
 							{
-								connection.Open();								
-								using (SqlCommand cmd = new SqlCommand(query, connection))
+								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
 								{
-									//cmd.Parameters.Add("@param1", SqlDbType.Int).Value = klantId;
-									//cmd.Parameters.Add("@param2", SqlDbType.VarChar, 50).Value = klantNaam;
-									//cmd.Parameters.Add("@param3", SqlDbType.VarChar, 50).Value = klantVoornaam;
-									cmd.CommandType = CommandType.Text;
-									cmd.ExecuteNonQuery();
+									connection.Open();
+									using (SqlCommand cmd = new SqlCommand(query, connection))
+									{
+										cmd.CommandType = CommandType.Text;
+										cmd.ExecuteNonQuery();
+									}
 								}
 							}
-
+							catch (Exception e)
+							{
+								Console.WriteLine("{0} Exception caught.", e);
+							}
 						}
-						catch
+
+						if (nameEvent == "PassangerCreated")
 						{
+							var id = jDatos.id;
+							var name = jDatos.name;
+							var lastName = jDatos.lastName;
+							var passport = jDatos.passport;							
+							var needsAssistance = jDatos.needsAssistance;
 
+							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							try
+							{
+								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								{
+									connection.Open();
+									using (SqlCommand cmd = new SqlCommand(query, connection))
+									{
+										cmd.CommandType = CommandType.Text;
+										cmd.ExecuteNonQuery();
+									}
+								}
+							}
+							catch (Exception e)
+							{
+								Console.WriteLine("{0} Exception caught.", e);
+							}
 						}
+
+						if (nameEvent == "BookingCreated")
+						{
+							var id = jDatos.id;
+							var reservationNumber = jDatos.reservationNumber;
+							var passanger = jDatos.passanger;
+							var reservationStatus = jDatos.reservationStatus;
+							var date = jDatos.date;
+							var value = jDatos.value;
+							var flight = jDatos.flight;
+							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							try
+							{
+								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								{
+									connection.Open();
+									using (SqlCommand cmd = new SqlCommand(query, connection))
+									{
+										cmd.CommandType = CommandType.Text;
+										cmd.ExecuteNonQuery();
+									}
+								}
+							}
+							catch (Exception e)
+							{
+								Console.WriteLine("{0} Exception caught.", e);
+							}
+						}
+
+						if (nameEvent == "PaymentCreated")
+						{
+							//var id = jDatos.id;
+							var transactionNumber = jDatos.transactionNumber;
+							var amount = jDatos.amount;
+							var booking = jDatos.booking;
+							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							try
+							{
+								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+								{
+									connection.Open();
+									using (SqlCommand cmd = new SqlCommand(query, connection))
+									{
+										cmd.CommandType = CommandType.Text;
+										cmd.ExecuteNonQuery();
+									}
+								}
+							}
+							catch (Exception e)
+							{
+								Console.WriteLine("{0} Exception caught.", e);
+							}
+						}
+
+
 
 
 
