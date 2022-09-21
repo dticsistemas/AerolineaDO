@@ -66,7 +66,7 @@ namespace ControlDocumentoFactura.WebApi
 						Console.WriteLine($"{message.Body}");
 						dynamic jsonData = JObject.Parse(message.Body);
 						var nameEvent= jsonData.nameEvent;
-						var jDatos = jsonData.data;						
+						var jDatos = jsonData.data;
 						
 						if(nameEvent== "FlightCreated")
 						{
@@ -76,7 +76,7 @@ namespace ControlDocumentoFactura.WebApi
 							var detalle = "TMP - TMP";
 							var cantidad = 120;
 							var precioPasaje = new decimal(120.0);
-							CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
+							CrearVueloCommand command = new CrearVueloCommand(uuid, cantidad, detalle, precioPasaje);
 							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
 							try
 							{
@@ -105,7 +105,7 @@ namespace ControlDocumentoFactura.WebApi
 							var needsAssistance = jDatos.needsAssistance;
 
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(name) + " - " + Convert.ToString(lastName) + "','245')"; ;
 							try
 							{
 								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
@@ -134,7 +134,7 @@ namespace ControlDocumentoFactura.WebApi
 							var value = jDatos.value;
 							var flight = jDatos.flight;
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + uuid.ToString() + "',120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','245')"; ;
+							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje) VALUES ('" + id.ToString() + "',120,'" + Convert.ToString(passanger) + " - " + Convert.ToString(flight) + "','245')"; ;
 							try
 							{
 								using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
