@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControlDocumentoFactura.Dominio.Models.Ventas;
 
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Contexts {
 		public class WriteDbContext:DbContext {
@@ -19,9 +20,10 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Contexts {
 				public virtual DbSet<Reserva> Reserva { get; set; }
 
 				public virtual DbSet<Factura> Factura { get; set; }
+				public virtual DbSet<Venta> Venta { get; set; }
 
 
-				public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options) {
+		public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options) {
 				}
 
 				protected override void OnModelCreating(ModelBuilder modelBuilder) {
@@ -38,8 +40,11 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Contexts {
 
 						var facturaConfig = new FacturaWriteConfig();
 						modelBuilder.ApplyConfiguration<Factura>(facturaConfig);
+						
+						var ventaConfig = new VentaWriteConfig();
+						modelBuilder.ApplyConfiguration<Venta>(ventaConfig);
 
-						modelBuilder.Ignore<DomainEvent>();
+			modelBuilder.Ignore<DomainEvent>();
 				}
 		}
 }

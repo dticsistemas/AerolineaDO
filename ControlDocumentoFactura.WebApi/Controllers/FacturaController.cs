@@ -1,7 +1,9 @@
 ﻿using ControlDocumentoFactura.Aplicacion.Dtos.Pagos;
 using ControlDocumentoFactura.Aplicacion.Dtos.Reservas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Ventas.CrearVenta;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPasajeros;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
@@ -39,6 +41,19 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 			return Ok(id);
 		}
+		/*
+		[Route("venta")]
+		[HttpPost]
+		public async Task<IActionResult> CreateVenta([FromBody] CrearVentaCommand command)
+		{
+			Guid id = await _mediator.Send(command);
+
+			if (id == Guid.Empty)
+				return BadRequest();
+
+			return Ok(id);
+		}
+		*/
 		[Route("{id:guid}")]
 		[HttpGet]
 		public async Task<IActionResult> ObtenerFacturaPorId([FromRoute] BuscarFacturaPorIdQuery command) {
@@ -49,9 +64,20 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 			return Ok(result);
 		}
-		[Route("vuelo")]
+		[Route("vuelos")]
 		[HttpGet]
 		public async Task<IActionResult> ListarVuelos([FromRoute] ListarVuelosQuery command)
+		{
+			var result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
+		[Route("pasajeros")]
+		[HttpGet]
+		public async Task<IActionResult> ListarPasajeros([FromRoute] ListarPasajerosQuery command)
 		{
 			var result = await _mediator.Send(command);
 

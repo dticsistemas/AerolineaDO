@@ -17,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using ControlDocumentoFactura.Infraestructura.EntityFramework.Repository;
 using ControlDocumentoFactura.Dominio.Repositories.Facturas;
 using ControlDocumentoFactura.Dominio.Repositories.Vuelos;
+using ControlDocumentoFactura.Dominio.Repositories.Ventas;
+using ControlDocumentoFactura.Dominio.Repositories.Clientes;
 
 namespace ControlDocumentoFactura.Infraestructura {
 		public static class Extensions {
@@ -37,11 +39,14 @@ namespace ControlDocumentoFactura.Infraestructura {
 
 						services.AddScoped<IVueloRepository,VueloRepository>();
 
+						services.AddScoped<IClienteRepository, ClienteRepository>();
 
 						services.AddScoped<IFacturaRepository,FacturaRepository>();
 
+						services.AddScoped<IVentaRepository, VentaRepository>();
 
-						services.AddScoped<IUnitOfWork,UnitOfWork>();
+
+			services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 
 						return services;

@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ControlDocumentoFactura.Dominio.Factories.Vuelos;
+using ControlDocumentoFactura.Aplicacion.Services.Ventas;
+using ControlDocumentoFactura.Dominio.Factories.Ventas;
 
 namespace ControlDocumentoFactura.Aplicacion {
 	public static class Extensions {
@@ -17,6 +19,9 @@ namespace ControlDocumentoFactura.Aplicacion {
 			services.AddTransient<IFacturaService,FacturaService>();
 			services.AddTransient<IFacturaFactory,FacturaFactory>();
 			services.AddTransient<IVueloFactory, VueloFactory>();
+			//services.AddTransient<IClienteFactory, ClienteFactory>();
+			services.AddTransient<IVentaService, VentaService>();
+			services.AddTransient<IVentaFactory, VentaFactory>();
 
 			return services;
 		}

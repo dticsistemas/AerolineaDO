@@ -230,14 +230,7 @@ namespace ControlDocumentoFactura.WebApi
 		{
 			/*Console.WriteLine($"\nMessage body of {message.MessageId}:");
 			Console.WriteLine($"{message.Body}");
-			dynamic jsonData = JObject.Parse(message.Body);
-			var jDatos = jsonData.data;
-			var uuid = jDatos.uuid;	
-			var origen = jDatos.source_airport_code;
-			var destino = jDatos.destiny_airport_code;
-			var detalle = origen + "" + destino;
-			var cantidad = 120;
-			var precioPasaje = new decimal(0.0);
+			dynamic jsonData = JObject.Parse(message.Body);			
 
 			CrearVueloCommand objVueloProducto = new CrearVueloCommand(uuid,cantidad,detalle,precioPasaje);
 			_mediator.Send(command);*/
