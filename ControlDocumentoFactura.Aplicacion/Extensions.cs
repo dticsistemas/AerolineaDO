@@ -19,9 +19,11 @@ namespace ControlDocumentoFactura.Aplicacion {
 			services.AddTransient<IFacturaService,FacturaService>();
 			services.AddTransient<IFacturaFactory,FacturaFactory>();
 			services.AddTransient<IVueloFactory, VueloFactory>();
-			//services.AddTransient<IClienteFactory, ClienteFactory>();
+			services.AddTransient<IConfiguracionFacturaFactory, ConfiguracionFacturaFactory>();
 			services.AddTransient<IVentaService, VentaService>();
 			services.AddTransient<IVentaFactory, VentaFactory>();
+			//services.AddTransient<IClienteFactory, ClienteFactory>();
+
 
 			return services;
 		}

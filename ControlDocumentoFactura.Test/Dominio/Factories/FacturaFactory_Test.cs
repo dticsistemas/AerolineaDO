@@ -25,11 +25,8 @@ namespace ControlDocumentoFactura.Test.Dominio.Factories {
 			Assert.Equal(DateTime.MinValue,objFactura.Fecha);
 			Assert.Equal(nroFacturaTest,objFactura.NroFactura);
 			Assert.Null(objFactura.Lugar);
-			Assert.Null(objFactura.NroAutorizacion);
 			Assert.Null(objFactura.RazonSocialBeneficiario);
-			Assert.Null(objFactura.RazonSocialProveedor);
 			Assert.Null(objFactura.NitBeneficiario);
-			Assert.Null(objFactura.NitProveedor);
 			Assert.Null(objFactura.Estado);
 		}
 	}

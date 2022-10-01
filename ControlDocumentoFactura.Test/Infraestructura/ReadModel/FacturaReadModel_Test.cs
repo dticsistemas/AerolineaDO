@@ -43,9 +43,7 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			Assert.Null(objFactura.Lugar);
 			Assert.Null(objFactura.NroAutorizacion);
 			Assert.Null(objFactura.RazonSocialBeneficiario);
-			Assert.Null(objFactura.RazonSocialProveedor);
 			Assert.Null(objFactura.NitBeneficiario);
-			Assert.Null(objFactura.NitProveedor);
 			Assert.Null(objFactura.Estado);
 
 
@@ -56,9 +54,7 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			objFactura.Fecha = fechaTest;
 			objFactura.NroFactura = nroFacturaTest;
 			objFactura.Lugar = lugarTest;
-			objFactura.NitProveedor = nitProveedorTest;
 			objFactura.NitBeneficiario = nitBeneficiarioTest;
-			objFactura.RazonSocialProveedor = razonSocialProveedorTest;
 			objFactura.RazonSocialBeneficiario = razonSocialBeneficiarioTest;
 			objFactura.NroAutorizacion = nroAutorizacionTest;
 			objFactura.Estado = estadoTest;
@@ -74,9 +70,7 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			Assert.Equal(fechaTest,objFactura.Fecha);
 			Assert.Equal(nroFacturaTest,objFactura.NroFactura);
 			Assert.Equal(lugarTest,objFactura.Lugar);
-			Assert.Equal(nitProveedorTest,objFactura.NitProveedor);
 			Assert.Equal(nitBeneficiarioTest,objFactura.NitBeneficiario);
-			Assert.Equal(razonSocialProveedorTest,objFactura.RazonSocialProveedor);
 			Assert.Equal(razonSocialBeneficiarioTest,objFactura.RazonSocialBeneficiario);
 			Assert.Equal(nroAutorizacionTest,objFactura.NroAutorizacion);
 			Assert.Equal(estadoTest,objFactura.Estado);

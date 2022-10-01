@@ -13,7 +13,8 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 		public void Cliente_CheckPropertiesValid() {
 			var idCliente = Guid.NewGuid();
 			var nombreCliente = "Juan Prueba Test";
-			var objCliente = new Cliente(nombreCliente);
+			var lastName = "Perez";
+			var objCliente = new Cliente(nombreCliente,lastName,"passport","0");
 			Assert.NotEqual(Guid.Empty,objCliente.Id);
 			Assert.Equal(nombreCliente,objCliente.NombreCompleto);
 
@@ -25,7 +26,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 
 			Action testCodigoNombreExcedente500Caracteres = () => {
-				objCliente = new Cliente(nombreCliente);
+				objCliente = new Cliente(nombreCliente, lastName, "passport", "0");
 			};
 			var exception = Record.Exception(testCodigoNombreExcedente500Caracteres);
 			Assert.NotNull(exception);

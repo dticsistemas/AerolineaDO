@@ -25,7 +25,8 @@ namespace ControlDocumentoFactura.Test.WebApi.Controllers
 			Guid vueloId = new();
 			Guid reservaId = new();
 			var mock = new Moq.Mock<IMediator>();
-			CrearFacturaCommand commandFactura = new CrearFacturaCommand(new(40.0), new(40.0), "lugar", "nit", "rz", clienteId, vueloId, reservaId);
+			Guid configFacturaId = new();
+			CrearFacturaCommand commandFactura = new CrearFacturaCommand(new(40.0), "ci", "lugar", "nit", "rz", clienteId, vueloId, reservaId, configFacturaId);
 
 
 			//mock.Setup(mock => mock.Foo(It.IsAny<string>())).Returns(false);

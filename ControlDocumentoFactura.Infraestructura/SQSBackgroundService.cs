@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,12 +37,15 @@ namespace ControlDocumentoFactura.WebApi
 		protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 		{
 
-			var accessKey = _configuration.GetValue<string>("AccessKey");
-			var secretKey = _configuration.GetValue<string>("SecretKey");
-			var myQueueUrl = _configuration.GetValue<string>("myQueueUrl");
+			var accessKey = "AKIASZCTJFEF5SCG2NER";// _configuration.GetValue<string>("AccessKey");
+			var secretKey = "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";// _configuration.GetValue<string>("SecretKey");
+			var myQueueUrl = "https://sqs.us-east-1.amazonaws.com/191300708619/invoices_queue";// _configuration.GetValue<string>("myQueueUrl");
+	
+
+
 
 			var credentials = new BasicAWSCredentials(accessKey, secretKey);
-			
+
 			Console.WriteLine("\nThe command-line argument isn't a queue URL:");
 			Console.WriteLine($"{myQueueUrl}");
 
@@ -61,11 +65,13 @@ namespace ControlDocumentoFactura.WebApi
 				{
 					if (ProcessMessage(msg.Messages[0]))
 					{
-						var message=msg.Messages[0];
+						var message = msg.Messages[0];
 						Console.WriteLine($"\nMessage body of {message.MessageId}:");
 						Console.WriteLine($"{message.Body}");
-						dynamic jsonData = JObject.Parse(message.Body);
-						var nameEvent= jsonData.nameEvent;
+						dynamic jsonDataParent = JObject.Parse(message.Body);
+						var cadena = Convert.ToString(jsonDataParent.Message);
+						dynamic jsonData = JObject.Parse(cadena);
+						var nameEvent = jsonData.nameEvent;
 						var jDatos = jsonData.data;
 						try
 						{
@@ -87,7 +93,7 @@ namespace ControlDocumentoFactura.WebApi
 										"','" + Convert.ToString(flight_program_id) + "','" + Convert.ToString(datos) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
+									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -117,7 +123,7 @@ namespace ControlDocumentoFactura.WebApi
 									+ "','" + Convert.ToString(needsAssistance) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
+									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -148,7 +154,7 @@ namespace ControlDocumentoFactura.WebApi
 								"','R',CONVERT(uniqueidentifier,'" + Convert.ToString(passanger) + "'),CONVERT(uniqueidentifier,'" + Convert.ToString(flight) + "'),'" + Convert.ToString(reservationStatus) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
+									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -176,7 +182,7 @@ namespace ControlDocumentoFactura.WebApi
 									",'" + Convert.ToString(amount) + "','" + Convert.ToString(fecha) + "','ABCDE',CONVERT(uniqueidentifier,'" + Convert.ToString(booking) + "') )";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Server=68.183.28.27;Database=FacturasDb;User=sa;Password=password123!"))
+									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -202,7 +208,7 @@ namespace ControlDocumentoFactura.WebApi
 
 
 
-						
+
 					}
 				}
 			} while (!Console.KeyAvailable || !stoppingToken.IsCancellationRequested);

@@ -19,8 +19,10 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 			var reservaIdTest = new Guid();
 			var clienteIdTest = new Guid();
 			var vueloIdTest = new Guid();
+			var configuracionFacturaIdTest = new Guid();
+			var tipoNitTest = "Ci";
 
-			var command = new CrearFacturaCommand(montoTest,importeTest,lugarTest,nitBeneficiarioTest,razonSocialBeneficiarioTest,clienteIdTest,vueloIdTest,reservaIdTest);
+			var command = new CrearFacturaCommand(montoTest,lugarTest,tipoNitTest,nitBeneficiarioTest,razonSocialBeneficiarioTest,clienteIdTest,vueloIdTest,reservaIdTest, configuracionFacturaIdTest);
 
 			Assert.Equal(montoTest,command.Monto);
 			Assert.Equal(importeTest,command.Importe);

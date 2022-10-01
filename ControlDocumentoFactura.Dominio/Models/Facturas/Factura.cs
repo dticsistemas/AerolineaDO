@@ -15,18 +15,15 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 		public MontoValue Importe { get; private set; }
 		public DateTime Fecha { get; private set; }
 		public NumeroFacturaValue NroFactura { get; private set; }
-		public DescripcionLugarValue Lugar { get; private set; }
-
-		public NitFacturaValue NitProveedor { get; private set; }
-		public RazonSocialValue RazonSocialProveedor { get; private set; }
+		public DescripcionLugarValue Lugar { get; private set; }	
 		public NitFacturaValue NitBeneficiario { get; private set; }
 		public RazonSocialValue RazonSocialBeneficiario { get; private set; }
-		public NumeroAutorizacionValue NroAutorizacion { get; private set; }
+		public TipoNitValue TipoNit { get; private set; }
 
 		public Guid ReservaId { get; private set; }
 		public Guid ClienteId { get; private set; }
-
 		public Guid VueloId { get; private set; }
+		public Guid ConfiguracionFacturaId { get; private set; }
 
 		public string Estado { get; private set; }
 
@@ -41,19 +38,18 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 			NroFactura = nroFactura;
 
 		}
-		public void CrearFactura(decimal monto,decimal importe,string lugar,string nitBeneficiario,string razonSocialBeneficiario,Guid clienteId,Guid vueloId,Guid reservaId) {
+		public void CrearFactura(decimal monto,string lugar,string tipoNit,string nitBeneficiario,string razonSocialBeneficiario,Guid clienteId,Guid vueloId,Guid reservaId, Guid configuracionFacturaId) {
 			Monto = monto;
-			Importe = importe;
+			Importe = monto;
 			Fecha = DateTime.Now;
 			ReservaId = reservaId;
 			ClienteId = clienteId;
 			VueloId = vueloId;
 			Lugar = lugar;
-			NitProveedor = "1241545";
-			RazonSocialProveedor = "AEROPRO";
+			TipoNit = tipoNit;		
 			NitBeneficiario = nitBeneficiario;
 			RazonSocialBeneficiario = razonSocialBeneficiario;
-			NroAutorizacion = "1";
+			ConfiguracionFacturaId = configuracionFacturaId;
 			Estado = "P";
 
 		}

@@ -11,17 +11,17 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel {
 				public decimal Importe { get; set; }
 				public DateTime Fecha { get; set; }
 				public String NroFactura { get; set; }
-				public String Lugar { get; set; }
-				public String NitProveedor { get; set; }
-				public String RazonSocialProveedor { get; set; }
+				public String Lugar { get; set; }				
 				public String NitBeneficiario { get; set; }
 				public String RazonSocialBeneficiario { get; set; }
 				public String NroAutorizacion { get; set; }
 				public String Estado { get; set; }
+				public String TipoNit { get; set; }
 				public ReservaReadModel Reserva { get; set; }
 				public ClienteReadModel Cliente { get; set; }
 				public VueloReadModel Vuelo { get; set; }
+				public ConfiguracionFacturaReadModel ConfiguracionFactura { get; set; }
 
 
-		}
+	}
 }

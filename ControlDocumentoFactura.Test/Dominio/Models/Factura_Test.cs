@@ -17,9 +17,11 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			string lugar = "SCZ";
 			string nitBeneficiario = "654321";
 			string razonSocialBeneficiario = "Juan Perez";
+			string tipoNit = "ci";
 			Guid clienteId = new();
 			Guid vueloId = new();
 			Guid reservaId = new();
+			Guid configFacturaId = new();
 			string nroFacturaTest = "1234567890123";
 
 
@@ -34,13 +36,10 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			Assert.Null(objFactura.Lugar);
 			Assert.Null(objFactura.Estado);
 			Assert.Null(objFactura.NitBeneficiario);
-			Assert.Null(objFactura.NitProveedor);
 			Assert.Null(objFactura.RazonSocialBeneficiario);
-			Assert.Null(objFactura.RazonSocialProveedor);
-			Assert.Null(objFactura.NroAutorizacion);
 			Assert.Equal(DateTime.MinValue,objFactura.Fecha);
 
-			objFactura.CrearFactura(montoTest,importe,lugar,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId);
+			objFactura.CrearFactura(montoTest,lugar,tipoNit,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId, configFacturaId);
 
 			Assert.NotEqual(Guid.Empty,objFactura.Id);
 			Assert.Equal(clienteId,objFactura.ClienteId);
@@ -52,10 +51,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			Assert.Equal(lugar,objFactura.Lugar);
 			Assert.Equal("P",objFactura.Estado);
 			Assert.Equal(nitBeneficiario,objFactura.NitBeneficiario);
-			Assert.Equal("1241545",objFactura.NitProveedor);
 			Assert.Equal(razonSocialBeneficiario,objFactura.RazonSocialBeneficiario);
-			Assert.Equal("AEROPRO",objFactura.RazonSocialProveedor);
-			Assert.Equal("1",objFactura.NroAutorizacion);
 			Assert.NotEqual(DateTime.MinValue,objFactura.Fecha);
 
 			objFactura.EntregaFactura();
@@ -79,9 +75,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			Assert.Null(factura.Lugar);
 			Assert.Null(factura.Estado);
 			Assert.Null(factura.NitBeneficiario);
-			Assert.Null(factura.NitProveedor);
 			Assert.Null(factura.RazonSocialBeneficiario);
-			Assert.Null(factura.RazonSocialProveedor);
 			Assert.Equal(DateTime.MinValue,factura.Fecha);
 		}
 		[Fact]
@@ -90,10 +84,12 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			decimal importe = new(30.0);
 			string lugar = "SCZ";
 			string nitBeneficiario = "654321";
+			string tipoNit="ci";
 			string razonSocialBeneficiario = "Juan Perez";
 			Guid clienteId = new();
 			Guid vueloId = new();
 			Guid reservaId = new();
+			Guid configFacturaId = new();
 			string nroFacturaTest = "1234567890123";
 
 			Action testCodigoNroFacturaValido = () => { new Factura("1234567890123"); };
@@ -119,7 +115,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			var objFactura = new Factura(nroFacturaTest);
 
 			Action testCodigoLugarNull = () => {
-				objFactura.CrearFactura(montoTest,importe,null,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId);
+				objFactura.CrearFactura(montoTest,null,tipoNit,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId, configFacturaId);
 
 			};
 			exception = Record.Exception(testCodigoLugarNull);
@@ -128,7 +124,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 			String lugarLong = "abcdefghijlmnopqrstuvwxyzabcdefghijklmnopqrdtvuwxyz012345678ABCDEFGHIJLMNOPQRSTVUWXYZ01234567890123567890123456789";
 			Action testCodigoLugarlargo = () => {
-				objFactura.CrearFactura(montoTest,importe,lugarLong,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId);
+				objFactura.CrearFactura(montoTest,lugarLong,tipoNit,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId, configFacturaId);
 
 			};
 			exception = Record.Exception(testCodigoLugarlargo);
@@ -137,7 +133,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 
 			Action testCodigoMontoNegativo = () => {
-				objFactura.CrearFactura(new decimal(-15.0),importe,null,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId);
+				objFactura.CrearFactura(new decimal(-15.0),null,tipoNit,nitBeneficiario,razonSocialBeneficiario,clienteId,vueloId,reservaId, configFacturaId);
 
 			};
 			exception = Record.Exception(testCodigoMontoNegativo);
@@ -145,7 +141,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			Assert.IsType<BussinessRuleValidationException>(exception);
 
 			Action testCodigoRazonSocialNull = () => {
-				objFactura.CrearFactura(montoTest,importe,lugar,nitBeneficiario,null,clienteId,vueloId,reservaId);
+				objFactura.CrearFactura(montoTest,lugar,tipoNit,nitBeneficiario,null,clienteId,vueloId,reservaId, configFacturaId);
 
 			};
 			exception = Record.Exception(testCodigoRazonSocialNull);
@@ -154,7 +150,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 			String razonSocialLong = "JUAN MARIANO CARLOS DE LAS FUENTE GERARDO JULIO SALVADOR MEDRANOL SUAEZ GALLARDO PEÑARRIETA SUBIRANA MEJIA CESAR PEREZ BORJA JIMENEZ CARRASCO ";
 			Action testCodigoRazonSocialLargo = () => {
-				objFactura.CrearFactura(montoTest,importe,lugar,nitBeneficiario,razonSocialLong,clienteId,vueloId,reservaId);
+				objFactura.CrearFactura(montoTest,lugar,tipoNit,nitBeneficiario,razonSocialLong,clienteId,vueloId,reservaId, configFacturaId);
 
 			};
 			exception = Record.Exception(testCodigoRazonSocialLargo);

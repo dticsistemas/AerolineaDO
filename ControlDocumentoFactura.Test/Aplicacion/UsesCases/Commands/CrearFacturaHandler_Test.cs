@@ -27,12 +27,14 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 		private Guid _idReservaTest = new();
 		private Guid _idClienteTest = new();
 		private Guid _idVueloTest = new();
+		private Guid _idConfigFacturaTest = new();
 		private decimal _montoTest = new(4.0);
 		private decimal _importeTest = new(4.0);
 		private string _nroFacturaTest = "2022-05-15";
 		private string _lugarTest = "SCZ B/ Los Olivos";
 		private string _nitBeneficiarioTest = "654321";
 		private string _razonSocialBeneficiarioTest = "Juan Perez";
+		private string _tipoNit="ci";
 
 		private Factura _facturaTest;
 
@@ -61,7 +63,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 			);
 
 
-			var objRequest = new CrearFacturaCommand(_montoTest,_importeTest,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest);
+			var objRequest = new CrearFacturaCommand(_montoTest,_tipoNit,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest, _idConfigFacturaTest);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest,tcs.Token);
 			Assert.IsType<Guid>(result.Result);
@@ -80,7 +82,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 				_facturaFactory.Object,
 				_unitOfWork.Object
 			 );
-			var objRequest = new CrearFacturaCommand(_montoTest,_importeTest,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest);
+			var objRequest = new CrearFacturaCommand(_montoTest,_tipoNit,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest, _idConfigFacturaTest);
 
 
 			var tcs = new CancellationTokenSource(1000);

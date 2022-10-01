@@ -9,10 +9,23 @@ using System.Threading.Tasks;
 namespace ControlDocumentoFactura.Dominio.Models.Clientes {
 	public class Cliente:AggregateRoot<Guid> {
 		public PersonNameValue NombreCompleto { get; set; }
+		public PersonNameValue Name { get; set; }
+		public PersonNameValue LastName { get; set; }
+		public PersonDataValue Passport { get; set; }
+		public PersonDataValue NeedAssistance { get; set; }
+		public PersonDataValue Nit { get; set; }
+		public PersonDataValue Email { get; set; }
+		public PersonDataValue Phone { get; set; }
+
 		public Cliente() { }
-		public Cliente(string nombreCompleto) {
+		public Cliente(string name, string lastName, string passport,string needAssistance) {
 			Id = Guid.NewGuid();
-			NombreCompleto = nombreCompleto;
+			NombreCompleto = name+" "+lastName;
+			Name = name;
+			LastName = lastName;
+			Passport = passport;
+			NeedAssistance = needAssistance;
+
 		}
 
 

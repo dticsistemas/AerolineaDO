@@ -47,8 +47,6 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.UseCases.Queri
 				facturaDto.Fecha = objFactura.Fecha;
 				facturaDto.NroFactura = objFactura.NroFactura;
 				facturaDto.Lugar = objFactura.Lugar;
-				facturaDto.NitProveedor = objFactura.NitProveedor;
-				facturaDto.RazonSocialProveedor = objFactura.RazonSocialProveedor;
 				facturaDto.NitBeneficiario = objFactura.NitBeneficiario;
 				facturaDto.RazonSocialBeneficiario = objFactura.RazonSocialBeneficiario;
 				facturaDto.NroAutorizacion = objFactura.NroAutorizacion;

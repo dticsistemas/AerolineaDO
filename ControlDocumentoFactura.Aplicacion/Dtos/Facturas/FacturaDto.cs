@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlDocumentoFactura.Dominio.Models.Facturas.ValueObjetcs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +19,11 @@ namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos {
 		public String RazonSocialBeneficiario { get; set; }
 		public String NroAutorizacion { get; set; }
 		public String Estado { get; set; }
+		public String TipoNit { get; set; }
 		public Guid ReservaId { get; set; }
 		public Guid ClienteId { get; set; }
 		public Guid VueloId { get; set; }
+		public Guid ConfiguracionFactura{ get; set; }
 
 
 

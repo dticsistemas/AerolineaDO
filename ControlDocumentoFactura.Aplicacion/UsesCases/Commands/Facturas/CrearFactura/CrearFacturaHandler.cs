@@ -33,7 +33,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFa
 				string nroFactura = await _facturaService.GenerarNroFacturaAsync();
 				Factura objFactura = _facturaFactory.Create(nroFactura);
 
-				objFactura.CrearFactura(request.Monto,request.Importe,request.Lugar,request.NitBeneficiario,request.RazonSocialBeneficiario,request.ClienteId,request.VueloId,request.ReservaId);
+				objFactura.CrearFactura(request.Monto,request.Lugar,request.TipoNit,request.NitBeneficiario,request.RazonSocialBeneficiario,request.ClienteId,request.VueloId,request.ReservaId,request.ConfiguracionFacturaId);
 				objFactura.EntregaFactura();
 				await _facturaRepository.CreateAsync(objFactura);
 				await _unitOfWork.Commit();

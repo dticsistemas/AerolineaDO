@@ -35,13 +35,9 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadCon
 							 .HasColumnName("lugar")
 							 .HasMaxLength(25);
 
-						builder.Property(x => x.NitProveedor)
-							 .HasColumnName("nitProveedor")
-							 .HasMaxLength(25);
-
-						builder.Property(x => x.RazonSocialProveedor)
-							 .HasColumnName("razonSocialProveedor")
-							 .HasMaxLength(25);
+						builder.Property(x => x.TipoNit)
+											.HasColumnName("tipoNit")
+											.HasMaxLength(25);
 
 						builder.Property(x => x.NitBeneficiario)
 							 .HasColumnName("nitBeneficiario")

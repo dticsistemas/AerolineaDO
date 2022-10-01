@@ -19,12 +19,15 @@ using ControlDocumentoFactura.Dominio.Repositories.Facturas;
 using ControlDocumentoFactura.Dominio.Repositories.Vuelos;
 using ControlDocumentoFactura.Dominio.Repositories.Ventas;
 using ControlDocumentoFactura.Dominio.Repositories.Clientes;
+using ControlDocumentoFactura.WebApi;
 
 namespace ControlDocumentoFactura.Infraestructura {
 		public static class Extensions {
 				public static IServiceCollection AddInfrastructure(this IServiceCollection services,
 					IConfiguration configuration) {
 						services.AddApplication();
+						services.AddHostedService<SqsBackgroundService>();
+
 						services.AddMediatR(Assembly.GetExecutingAssembly());
 
 						var connectionString =
@@ -42,6 +45,8 @@ namespace ControlDocumentoFactura.Infraestructura {
 						services.AddScoped<IClienteRepository, ClienteRepository>();
 
 						services.AddScoped<IFacturaRepository,FacturaRepository>();
+
+						services.AddScoped<IConfiguracionFacturaRepository, ConfiguracionFacturaRepository>();
 
 						services.AddScoped<IVentaRepository, VentaRepository>();
 

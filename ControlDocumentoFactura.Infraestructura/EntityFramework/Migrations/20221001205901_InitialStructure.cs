@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
+namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
 {
     public partial class InitialStructure : Migration
     {
@@ -12,11 +12,34 @@ namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    nombreCompleto = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
+                    nombreCompleto = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    lastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    passport = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    needAssistance = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    nit = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    phone = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cliente", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConfiguracionFacturaReadModel",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NitProveedor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RazonSocialProveedor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NroAutorizacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfiguracionFacturaReadModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,15 +97,15 @@ namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
                     fecha = table.Column<DateTime>(type: "datetime", nullable: false),
                     nroFactura = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     lugar = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
-                    nitProveedor = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
-                    razonSocialProveedor = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     nitBeneficiario = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     razonSocialBeneficiario = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     nroAutorizacion = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     estado = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    tipoNit = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     ReservaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    VueloId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    VueloId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ConfiguracionFacturaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,6 +114,12 @@ namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
                         name: "FK_Factura_Cliente_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_ConfiguracionFacturaReadModel_ConfiguracionFacturaId",
+                        column: x => x.ConfiguracionFacturaId,
+                        principalTable: "ConfiguracionFacturaReadModel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -111,6 +140,11 @@ namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
                 name: "IX_Factura_ClienteId",
                 table: "Factura",
                 column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factura_ConfiguracionFacturaId",
+                table: "Factura",
+                column: "ConfiguracionFacturaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Factura_ReservaId",
@@ -137,6 +171,9 @@ namespace ControlDocumentoFactura.Infraestructura.EF.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Factura");
+
+            migrationBuilder.DropTable(
+                name: "ConfiguracionFacturaReadModel");
 
             migrationBuilder.DropTable(
                 name: "Reserva");

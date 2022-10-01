@@ -55,16 +55,22 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 						builder.Property(x => x.Lugar)
 							.HasColumnName("lugar")
 							.HasConversion(lugarConverter)
+										.HasMaxLength(25);
+						//-----------------------------------
+						var tipoNitConverter = new ValueConverter<TipoNitValue, string>(
+							tipoNitValue => tipoNitValue.Value,
+							tipo => new TipoNitValue(tipo)
+						);
+						builder.Property(x => x.TipoNit)
+							.HasColumnName("tipoNit")
+							.HasConversion(tipoNitConverter)
 							.HasMaxLength(25);
 						//-------------------------------
 						var nitFacturaConverter = new ValueConverter<NitFacturaValue,string>(
 							nitFacturaValue => nitFacturaValue.Value,
 							nitFactura => new NitFacturaValue(nitFactura)
 						);
-						builder.Property(x => x.NitProveedor)
-							.HasColumnName("nitProveedor")
-							.HasConversion(nitFacturaConverter)
-							.HasMaxLength(25);
+						
 						builder.Property(x => x.NitBeneficiario)
 							.HasColumnName("nitBeneficiario")
 							.HasConversion(nitFacturaConverter)
@@ -74,24 +80,13 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 							 razonSocialValue => razonSocialValue.Value,
 							 razonSocial => new RazonSocialValue(razonSocial)
 						 );
-						builder.Property(x => x.RazonSocialProveedor)
-							.HasColumnName("razonSocialProveedor")
-							.HasConversion(razonSocialConverter)
-							.HasMaxLength(25);
+					
 
 						builder.Property(x => x.RazonSocialBeneficiario)
 							.HasColumnName("razonSocialBeneficiario")
 							.HasConversion(razonSocialConverter)
 							.HasMaxLength(25);
-						//-------------------------------
-						var numeroAutorizacionConverter = new ValueConverter<NumeroAutorizacionValue,string>(
-							nroAutorizacionValue => nroAutorizacionValue.Value,
-							nroAutorizacion => new NumeroAutorizacionValue(nroAutorizacion)
-						);
-						builder.Property(x => x.NroAutorizacion)
-							.HasColumnName("nroAutorizacion")
-							.HasConversion(numeroAutorizacionConverter)
-							.HasMaxLength(25);
+						
 						//-------------------------------
 						builder.Property(x => x.Estado)
 							.HasColumnName("estado");
@@ -105,7 +100,11 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 						//-------------------------------
 						builder.Property(x => x.ReservaId)
 							.HasColumnName("reservaId");
+						//-------------------------------
+						builder.Property(x => x.ConfiguracionFacturaId)
+							.HasColumnName("configuracionFacturaId");
 
-				}
+
 		}
+	}
 }
