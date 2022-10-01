@@ -18,6 +18,7 @@ namespace ControlDocumentoFactura.Dominio.Models.Ventas
 		public int Tipo;
 		public Guid ClienteId;
 		public Guid VueloId;
+		public Guid AsientoId;
 
 		public Venta()
 		{

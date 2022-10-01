@@ -54,6 +54,9 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 			builder.Property(x => x.VueloId)
 				.HasColumnName("vueloId");
 
+			builder.Property(x => x.AsientoId)
+				.HasColumnName("asientoId");
+
 
 			builder.Ignore("_domainEvents");
 			builder.Ignore(x => x.DomainEvents);

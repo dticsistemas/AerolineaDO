@@ -12,7 +12,8 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel
 		public String Estado{ get; set; }
 		public decimal Monto { get; set; }
 		public DateTime Fecha { get; set; }
-		public int Tipo{ get; set; }
+		public int Tipo{ get; set; }		
+		public Guid AsientoId { get; set; }
 		public ClienteReadModel Cliente { get; set; }
 		public VueloReadModel Vuelo { get; set; }
 	}
