@@ -37,9 +37,9 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuel
 				var vueloDto = new VueloDto()
 				{
 					Id = objVuelo.Id,
-					Cantidad=objVuelo.Cantidad,
+					/*Cantidad=objVuelo.Cantidad,
 					Detalle=objVuelo.Detalle,
-					PrecioPasaje=objVuelo.PrecioPasaje
+					PrecioPasaje=objVuelo.PrecioPasaje*/
 				};
 
 				result.Add(vueloDto);

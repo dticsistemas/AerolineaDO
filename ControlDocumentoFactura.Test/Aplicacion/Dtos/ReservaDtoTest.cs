@@ -30,8 +30,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			Assert.Equal(new decimal(0.0),objReserva.Monto);
 			Assert.Equal(new decimal(0.0),objReserva.Deuda);
 			Assert.Equal(DateTime.MinValue,objReserva.Fecha);
-			Assert.Null(objReserva.CodReserva);
-			Assert.Null(objReserva.EstadoReserva);
+			Assert.Null(objReserva.ReservationNumber);
+			Assert.Null(objReserva.ReservationStatus );
 			Assert.Null(objReserva.TipoReserva);
 
 			objReserva.Id = idReservaTest;
@@ -40,8 +40,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			objReserva.Monto = montoTest;
 			objReserva.Deuda = deudaTest;
 			objReserva.Fecha = fechaTest;
-			objReserva.CodReserva = codReservaTest;
-			objReserva.EstadoReserva = estadoReservaTest;
+			objReserva.ReservationNumber = codReservaTest;
+			objReserva.ReservationStatus = estadoReservaTest;
 			objReserva.TipoReserva = tipoReservaTest;
 
 			Assert.Equal(idReservaTest,objReserva.Id);
@@ -50,8 +50,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			Assert.Equal(montoTest,objReserva.Monto);
 			Assert.Equal(deudaTest,objReserva.Deuda);
 			Assert.Equal(fechaTest,objReserva.Fecha);
-			Assert.Equal(codReservaTest,objReserva.CodReserva);
-			Assert.Equal(estadoReservaTest,objReserva.EstadoReserva);
+			Assert.Equal(codReservaTest,objReserva.ReservationNumber);
+			Assert.Equal(estadoReservaTest,objReserva.ReservationStatus);
 			Assert.Equal(tipoReservaTest,objReserva.TipoReserva);
 
 		}

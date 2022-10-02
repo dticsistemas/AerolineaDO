@@ -28,13 +28,13 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas
 
 
 		}
-		public void CrearConfiguracionFactura(string nitProveedor, string razonSocialProveedor)
+		public void CrearConfiguracionFactura(string nitProveedor, string razonSocialProveedor, string nroAutorizacion)
 		{
 			Fecha = DateTime.Now;
 			NitProveedor = nitProveedor;
 			RazonSocialProveedor = razonSocialProveedor;
 			Estado = "A";
-			NroAutorizacion = "1";	
+			NroAutorizacion = nroAutorizacion;	
 
 
 		}

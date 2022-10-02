@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
 {
     [DbContext(typeof(ReadDbContext))]
-    [Migration("20221001205901_InitialStructure")]
+    [Migration("20221002033651_InitialStructure")]
     partial class InitialStructure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,23 +79,32 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("estado");
 
                     b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fecha");
 
                     b.Property<string>("NitProveedor")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)")
+                        .HasColumnName("nitProveedor");
 
                     b.Property<string>("NroAutorizacion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)")
+                        .HasColumnName("nroAutorizacion");
 
                     b.Property<string>("RazonSocialProveedor")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)")
+                        .HasColumnName("razonSocialProveedor");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConfiguracionFacturaReadModel");
+                    b.ToTable("ConfiguracionFactura");
                 });
 
             modelBuilder.Entity("ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.FacturaReadModel", b =>
@@ -184,23 +193,13 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClienteId")
+                    b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CodReserva")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)")
-                        .HasColumnName("codReserva");
 
                     b.Property<decimal>("Deuda")
                         .HasPrecision(12, 2)
                         .HasColumnType("decimal(12,2)")
                         .HasColumnName("deuda");
-
-                    b.Property<string>("EstadoReserva")
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)")
-                        .HasColumnName("estadoReserva");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime")
@@ -211,19 +210,25 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
                         .HasColumnType("decimal(12,2)")
                         .HasColumnName("monto");
 
+                    b.Property<string>("ReservationNumber")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)")
+                        .HasColumnName("reservationNumber");
+
+                    b.Property<string>("ReservationStatus")
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)")
+                        .HasColumnName("reservationStatus");
+
                     b.Property<string>("TipoReserva")
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)")
                         .HasColumnName("tipoReserva");
 
-                    b.Property<Guid?>("VueloId")
+                    b.Property<Guid>("VueloId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("VueloId");
 
                     b.ToTable("Reserva");
                 });
@@ -234,19 +239,29 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Cantidad")
+                    b.Property<string>("Destiny_airport_code")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("destiny_airport_code");
+
+                    b.Property<int>("Flight_program_id")
                         .HasColumnType("int")
-                        .HasColumnName("cantidad");
+                        .HasColumnName("flight_program_id");
 
-                    b.Property<string>("Detalle")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)")
-                        .HasColumnName("detalle");
+                    b.Property<string>("Information")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)")
+                        .HasColumnName("information");
 
-                    b.Property<decimal>("PrecioPasaje")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("decimal(12,2)")
-                        .HasColumnName("precioPasaje");
+                    b.Property<string>("Source_airport_code")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("source_airport_code");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("status");
 
                     b.HasKey("Id");
 
@@ -276,21 +291,6 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Migrations
                     b.Navigation("ConfiguracionFactura");
 
                     b.Navigation("Reserva");
-
-                    b.Navigation("Vuelo");
-                });
-
-            modelBuilder.Entity("ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.ReservaReadModel", b =>
-                {
-                    b.HasOne("ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.ClienteReadModel", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel.VueloReadModel", "Vuelo")
-                        .WithMany()
-                        .HasForeignKey("VueloId");
-
-                    b.Navigation("Cliente");
 
                     b.Navigation("Vuelo");
                 });

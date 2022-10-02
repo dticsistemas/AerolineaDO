@@ -18,13 +18,16 @@ namespace ControlDocumentoFactura.Dominio.Models.Clientes {
 		public PersonDataValue Phone { get; set; }
 
 		public Cliente() { }
-		public Cliente(string name, string lastName, string passport,string needAssistance) {
-			Id = Guid.NewGuid();
+		public Cliente(Guid id,string name, string lastName, string passport,string needAssistance,string nit,string email,string phone) {
+			Id = id;
 			NombreCompleto = name+" "+lastName;
 			Name = name;
 			LastName = lastName;
 			Passport = passport;
 			NeedAssistance = needAssistance;
+			Nit = nit;
+			Email = email;
+			Phone = phone;
 
 		}
 

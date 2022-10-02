@@ -16,24 +16,24 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 						builder.ToTable("Vuelo");
 						builder.HasKey(x => x.Id);
 
-						builder.Property(x => x.Cantidad)
-							 .HasColumnName("cantidad");
 
-						builder.Property(x => x.Detalle)
-							.HasColumnName("detalle")
-							.HasMaxLength(25);
-						//--------------------------------
-						var montoConverter = new ValueConverter<MontoValue,decimal>(
-							 precioValue => precioValue.Value,
-							 precio => new MontoValue(precio)
-						 );
-						builder.Property(x => x.PrecioPasaje)
-							.HasColumnName("precioPasaje")
-							.HasConversion(montoConverter)
-							.HasPrecision(12,2);
-						//-----------------------------------
+						builder.Property(x => x.Flight_program_id)
+								.HasColumnName("flight_program_id");
+
+						builder.Property(x => x.Source_airport_code)
+							.HasColumnName("source_airport_code")
+							.HasMaxLength(100);
+						builder.Property(x => x.Destiny_airport_code)
+							.HasColumnName("destiny_airport_code")
+							.HasMaxLength(100);
+						builder.Property(x => x.Status)
+										.HasColumnName("status")
+										.HasMaxLength(100);
+						builder.Property(x => x.Information)
+										.HasColumnName("information")
+										.HasMaxLength(300);
 
 
-				}
+		}
 		}
 }

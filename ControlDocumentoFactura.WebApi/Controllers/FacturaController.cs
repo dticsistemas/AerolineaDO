@@ -2,9 +2,9 @@
 using ControlDocumentoFactura.Aplicacion.Dtos.Reservas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
-using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Ventas.CrearVenta;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPasajeros;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ObtenerConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
@@ -21,7 +21,8 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 		public FacturaController(IMediator mediator) {
 			_mediator = mediator;
-		}		
+		}
+		[Route("create")]
 		[HttpPost]
 		public async Task<IActionResult> CreateFactura([FromBody] CrearFacturaCommand command) {
 			Guid id = await _mediator.Send(command);
@@ -30,18 +31,7 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 				return BadRequest();
 
 			return Ok(id);
-		}
-		[Route("vuelo")]
-		[HttpPost]
-		public async Task<IActionResult> CreateVuelo([FromBody] CrearVueloCommand command)
-		{
-			Guid id = await _mediator.Send(command);
-
-			if (id == Guid.Empty)
-				return BadRequest();
-
-			return Ok(id);
-		}
+		}		
 		
 		[Route("configuracion")]
 		[HttpPost]
@@ -54,7 +44,18 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 			return Ok(id);
 		}
-		
+		[Route("configuracion")]
+		[HttpGet]
+		public async Task<IActionResult> ObtenerConfiguracionFactura([FromRoute] ObtenerConfiguracionFacturaQuery query)
+		{
+			var configFacturas = await _mediator.Send(query);
+
+			if (configFacturas == null)
+				return BadRequest();
+
+			return Ok(configFacturas);
+		}
+
 		[Route("{id:guid}")]
 		[HttpGet]
 		public async Task<IActionResult> ObtenerFacturaPorId([FromRoute] BuscarFacturaPorIdQuery command) {

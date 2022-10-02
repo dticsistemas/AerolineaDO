@@ -13,12 +13,12 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadCon
 						builder.ToTable("Reserva");
 						builder.HasKey(x => x.Id);
 
-						builder.Property(x => x.CodReserva)
-							.HasColumnName("codReserva")
+						builder.Property(x => x.ReservationNumber)
+							.HasColumnName("reservationNumber")
 							.HasMaxLength(25);
 
-						builder.Property(x => x.EstadoReserva)
-							.HasColumnName("estadoReserva")
+						builder.Property(x => x.ReservationStatus)
+							.HasColumnName("reservationStatus")
 							.HasMaxLength(6);
 
 						builder.Property(x => x.Monto)

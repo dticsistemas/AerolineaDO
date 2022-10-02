@@ -20,14 +20,14 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 							nroReservaValue => nroReservaValue.Value,
 							nroReserva => new CodigoReservaValue(nroReserva)
 						);
-						builder.Property(x => x.CodReserva)
-							.HasColumnName("codReserva")
+						builder.Property(x => x.ReservationNumber)
+							.HasColumnName("reservationNumber")
 							.HasConversion(nroReservaConverter)
 							.HasMaxLength(25);
 						//-------------------------------
 
-						builder.Property(x => x.EstadoReserva)
-							.HasColumnName("estadoReserva")
+						builder.Property(x => x.ReservationStatus)
+							.HasColumnName("ReservationStatus")
 							.HasMaxLength(6);
 						//--------------------------------
 						var montoConverter = new ValueConverter<MontoValue,decimal>(

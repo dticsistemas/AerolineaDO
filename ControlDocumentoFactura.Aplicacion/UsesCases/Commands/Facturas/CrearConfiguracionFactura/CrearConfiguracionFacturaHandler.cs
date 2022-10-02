@@ -36,7 +36,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearCo
 			{
 				ConfiguracionFactura objConfigFactura = _configuracionFacturaFactory.Create();
 
-				objConfigFactura.CrearConfiguracionFactura(request.NitProveedor, request.RazonSocialProveedor);
+				objConfigFactura.CrearConfiguracionFactura(request.NitProveedor, request.RazonSocialProveedor, request.NroAutorizacion);
 				//--Update Esatdo de los anteriore Inactivo
 
 				await _configuracionFacturaRepository.CreateAsync(objConfigFactura);

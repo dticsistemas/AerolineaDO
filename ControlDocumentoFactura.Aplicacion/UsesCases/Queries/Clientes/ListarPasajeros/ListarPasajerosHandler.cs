@@ -12,11 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ControlDocumentoFactura.Dominio.Repositories.Ventas;
-using ControlDocumentoFactura.Aplicacion.Services.Ventas;
-using ControlDocumentoFactura.Dominio.Factories.Ventas;
-using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Ventas.CrearVenta;
-using ControlDocumentoFactura.Dominio.Models.Ventas;
+
 using ControlDocumentoFactura.Aplicacion.Dtos.Vuelos;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
 using ControlDocumentoFactura.Dominio.Repositories.Vuelos;

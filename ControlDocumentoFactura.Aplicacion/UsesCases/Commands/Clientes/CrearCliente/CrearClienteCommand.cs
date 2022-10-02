@@ -10,18 +10,29 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCl
 	public class CrearClienteCommand : IRequest<Guid>
 	{
 		public Guid Id { get; set; }
-		public int Cantidad { get; set; }
-		public String Detalle { get; set; }
-		public decimal PrecioPasaje { get; set; }
+		public String NombreCompleto { get; set; }
+		public String Name { get; set; }
+		public String LastName { get; set; }
+		public String Passport { get; set; }
+		public String NeedAssistance { get; set; }
+		public String Nit { get; set; }
+		public String Email { get; set; }
+		public String Phone { get; set; }
 
 		private CrearClienteCommand() { }
 
-		public CrearClienteCommand(Guid id, int cantidad, string detalle, decimal precioPasaje)
+		public CrearClienteCommand(Guid id, string name, string lastName, string passport, string needAssistance, string nit, string email, string phone)
 		{
 			Id = id;
-			Cantidad = cantidad;
-			Detalle = detalle;
-			PrecioPasaje = precioPasaje;
+			NombreCompleto = name + " " + lastName;
+			Name = name;
+			LastName = lastName;
+			Passport = passport;
+			NeedAssistance = needAssistance;
+			Nit = nit;
+			Email = email;
+			Phone = phone;
+
 		}
 	}
 }

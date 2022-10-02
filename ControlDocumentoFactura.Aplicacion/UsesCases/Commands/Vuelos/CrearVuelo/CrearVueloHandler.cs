@@ -4,6 +4,7 @@ using ControlDocumentoFactura.Dominio.Repositories;
 using ControlDocumentoFactura.Dominio.Repositories.Vuelos;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuel
 		{
 			try
 			{
-				Vuelo objVuelo = _vueloFactory.Create(request.Id,request.Cantidad,request.Detalle,request.PrecioPasaje);
+				Vuelo objVuelo = _vueloFactory.Create(request.Id, request.Flight_program_id, request.Source_airport_code, request.Destiny_airport_code, request.Status, request.Information);
 
 				await _vueloRepository.CreateAsync(objVuelo);
 				await _unitOfWork.Commit();

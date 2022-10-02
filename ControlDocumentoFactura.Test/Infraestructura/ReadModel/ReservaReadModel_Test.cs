@@ -26,33 +26,33 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			var objReserva = new ReservaReadModel();
 
 			Assert.Equal(Guid.Empty,objReserva.Id);
-			Assert.Null(objReserva.Cliente);
-			Assert.Null(objReserva.Vuelo);
+			//Assert.Null(objReserva.Cliente);
+			//Assert.Null(objReserva.Vuelo);
 			Assert.Equal(new decimal(0.0),objReserva.Monto);
 			Assert.Equal(new decimal(0.0),objReserva.Deuda);
 			Assert.Equal(DateTime.MinValue,objReserva.Fecha);
-			Assert.Null(objReserva.CodReserva);
-			Assert.Null(objReserva.EstadoReserva);
+			//Assert.Null(objReserva.CodReserva);
+			//Assert.Null(objReserva.EstadoReserva);
 			Assert.Null(objReserva.TipoReserva);
 
 			objReserva.Id = idReservaTest;
-			objReserva.Cliente = _clienteReadModel;
-			objReserva.Vuelo = _vueloReadModel;
+			//objReserva.Cliente = _clienteReadModel;
+			//objReserva.Vuelo = _vueloReadModel;
 			objReserva.Monto = montoTest;
 			objReserva.Deuda = deudaTest;
 			objReserva.Fecha = fechaTest;
-			objReserva.CodReserva = codReservaTest;
-			objReserva.EstadoReserva = estadoReservaTest;
+			//objReserva.CodReserva = codReservaTest;
+			//objReserva.EstadoReserva = estadoReservaTest;
 			objReserva.TipoReserva = tipoReservaTest;
 
 			Assert.Equal(idReservaTest,objReserva.Id);
-			Assert.Equal(_clienteReadModel,objReserva.Cliente);
-			Assert.Equal(_vueloReadModel,objReserva.Vuelo);
+			//Assert.Equal(_clienteReadModel,objReserva.Cliente);
+			//Assert.Equal(_vueloReadModel,objReserva.Vuelo);
 			Assert.Equal(montoTest,objReserva.Monto);
 			Assert.Equal(deudaTest,objReserva.Deuda);
 			Assert.Equal(fechaTest,objReserva.Fecha);
-			Assert.Equal(codReservaTest,objReserva.CodReserva);
-			Assert.Equal(estadoReservaTest,objReserva.EstadoReserva);
+			//Assert.Equal(codReservaTest,objReserva.CodReserva);
+			//Assert.Equal(estadoReservaTest,objReserva.EstadoReserva);
 			Assert.Equal(tipoReservaTest,objReserva.TipoReserva);
 
 		}

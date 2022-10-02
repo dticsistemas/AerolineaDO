@@ -10,10 +10,9 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearCo
 {
 	public class CrearConfiguracionFacturaCommand : IRequest<Guid>
 	{
-		public NitFacturaValue NitProveedor { get; set; }
-		public RazonSocialValue RazonSocialProveedor { get; set; }
-		public NumeroAutorizacionValue NroAutorizacion { get; set; }
-		public string Estado { get; set; }
+		public String NitProveedor { get; set; }
+		public String RazonSocialProveedor { get; set; }
+		public String NroAutorizacion { get; set; }
 
 
 
