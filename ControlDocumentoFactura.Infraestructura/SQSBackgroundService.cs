@@ -93,7 +93,7 @@ namespace ControlDocumentoFactura.WebApi
 										"','" + Convert.ToString(flight_program_id) + "','" + Convert.ToString(datos) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+									using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -123,7 +123,7 @@ namespace ControlDocumentoFactura.WebApi
 									+ "','" + Convert.ToString(needsAssistance) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+									using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -154,7 +154,7 @@ namespace ControlDocumentoFactura.WebApi
 								"','R',CONVERT(uniqueidentifier,'" + Convert.ToString(passanger) + "'),CONVERT(uniqueidentifier,'" + Convert.ToString(flight) + "'),'" + Convert.ToString(reservationStatus) + "')";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+									using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -182,7 +182,7 @@ namespace ControlDocumentoFactura.WebApi
 									",'" + Convert.ToString(amount) + "','" + Convert.ToString(fecha) + "','ABCDE',CONVERT(uniqueidentifier,'" + Convert.ToString(booking) + "') )";
 								try
 								{
-									using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-7VVO4V5\\SQLEXPRESS;Initial catalog=FacturaDb;Integrated Security=True"))
+									using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
 									{
 										connection.Open();
 										using (SqlCommand cmd = new SqlCommand(query, connection))
