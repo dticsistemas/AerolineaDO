@@ -61,7 +61,7 @@ namespace ControlDocumentoFactura.WebApi
 			Console.WriteLine("Press any key to stop. (Response might be slightly delayed.)");
 			do
 			{
-				var msg = await GetMessage(sqsClient, myQueueUrl, 1);
+				var msg = await GetMessage(sqsClient, myQueueUrl, 3);
 				if (msg.Messages.Count != 0)
 				{
 					if (ProcessMessage(msg.Messages[0]))
@@ -253,7 +253,7 @@ namespace ControlDocumentoFactura.WebApi
 		{
 			Console.WriteLine($"\nMessage body of {message.MessageId}:");
 			Console.WriteLine($"{message.Body}");
-			dynamic jsonData = JObject.Parse(message.Body);			
+			//dynamic jsonData = JObject.Parse(message.Body);			
 
 			//CrearVueloCommand objVueloProducto = new CrearVueloCommand(uuid,cantidad,detalle,precioPasaje);
 			//_mediator.Send(command);*/
