@@ -60,7 +60,7 @@ namespace ControlDocumentoFactura.WebApi
 			Console.WriteLine($"Reading messages from queue\n  {myQueueUrl}");
 			Console.WriteLine("Press any key to stop. (Response might be slightly delayed.)");
 			do
-			{
+			{ 
 				var msg = await GetMessage(sqsClient, myQueueUrl, 3);
 				if (msg.Messages.Count != 0)
 				{
