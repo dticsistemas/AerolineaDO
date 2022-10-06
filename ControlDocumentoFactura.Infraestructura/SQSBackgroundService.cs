@@ -64,8 +64,8 @@ namespace ControlDocumentoFactura.WebApi
 				var msg = await GetMessage(sqsClient, myQueueUrl, 1);
 				if (msg.Messages.Count != 0)
 				{
-					//if (ProcessMessage(msg.Messages[0]))
-					//{
+					if (ProcessMessage(msg.Messages[0]))
+					{
 						Amazon.SQS.Model.Message message = msg.Messages[0];
 					//Console.WriteLine($"\nMessage body of {message.MessageId}:");
 					//Console.WriteLine($"{message.Body}");
@@ -223,7 +223,7 @@ namespace ControlDocumentoFactura.WebApi
 
 
 
-					//	}
+						}
 
 					await DeleteMessage(sqsClient, msg.Messages[0], myQueueUrl);
 
@@ -251,12 +251,12 @@ namespace ControlDocumentoFactura.WebApi
 		// In this example, it simply prints the message
 		private static bool ProcessMessage(Message message)
 		{
-			/*Console.WriteLine($"\nMessage body of {message.MessageId}:");
+			Console.WriteLine($"\nMessage body of {message.MessageId}:");
 			Console.WriteLine($"{message.Body}");
 			dynamic jsonData = JObject.Parse(message.Body);			
 
-			CrearVueloCommand objVueloProducto = new CrearVueloCommand(uuid,cantidad,detalle,precioPasaje);
-			_mediator.Send(command);*/
+			//CrearVueloCommand objVueloProducto = new CrearVueloCommand(uuid,cantidad,detalle,precioPasaje);
+			//_mediator.Send(command);*/
 			return true;
 		}
 
