@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControlDocumentoFactura.Dominio.Models.Vuelos;
 
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository {
 		public class ReservaRepository:IReservaRepository {
@@ -29,5 +30,10 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository {
 
 						return Task.CompletedTask;
 				}
-		}
+				public async Task<List<Reserva>> GetAll()
+				{
+					return await _reservas.ToListAsync();
+
+				}
+	}
 }

@@ -7,6 +7,7 @@ using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPasaje
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ObtenerConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Reservas.ListarReservas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -80,6 +81,17 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 		[Route("pasajeros")]
 		[HttpGet]
 		public async Task<IActionResult> ListarPasajeros([FromRoute] ListarPasajerosQuery command)
+		{
+			var result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
+		[Route("reservas")]
+		[HttpGet]
+		public async Task<IActionResult> ListarReservas([FromRoute] ListarReservasQuery command)
 		{
 			var result = await _mediator.Send(command);
 

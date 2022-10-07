@@ -37,11 +37,12 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuel
 				var vueloDto = new VueloDto()
 				{
 					Id = objVuelo.Id,
-					/*Cantidad=objVuelo.Cantidad,
-					Detalle=objVuelo.Detalle,
-					PrecioPasaje=objVuelo.PrecioPasaje*/
+					Source_airport_code = objVuelo.Source_airport_code,
+					Destiny_airport_code = objVuelo.Destiny_airport_code,
+					Status = objVuelo.Status,
+					Flight_program_id = objVuelo.Flight_program_id,
+					Information = objVuelo.Information
 				};
-
 				result.Add(vueloDto);
 			}
 
