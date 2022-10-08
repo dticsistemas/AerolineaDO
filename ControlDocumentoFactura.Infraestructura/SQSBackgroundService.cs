@@ -69,7 +69,7 @@ namespace ControlDocumentoFactura.WebApi
 						Amazon.SQS.Model.Message message = msg.Messages[0];
 					//Console.WriteLine($"\nMessage body of {message.MessageId}:");
 					//Console.WriteLine($"{message.Body}");
-					//JObject jsonDataParent = JObject.Parse(message.Body);
+					JObject jsonDataParent = JObject.Parse(message.Body);
 					var mensaje = message.Body;
 					try {		
 				//	JObject obj = JObject.Parse(mensaje);
@@ -82,29 +82,25 @@ namespace ControlDocumentoFactura.WebApi
 					}
 
 
-					//var cadena = jsonDataParent["Message"].ToString();
-					/*var cadena = Convert.ToString(jsonDataParent.Message);
+					var cadena = jsonDataParent["Message"].ToString();
+					//var cadena = Convert.ToString(jsonDataParent.Message);
 					dynamic jsonData = JObject.Parse(cadena);
 					var nameEvent = jsonData.nameEvent;
 					var jDatos = jsonData.data;
-					*/
-					/*try
+					
+					try
 					{
 						if (nameEvent == "FlightCreated")
 						{
 							var uuid = jDatos.uuid;
 							var origen = jDatos.source_airport_code;
-							var destino = jDatos.destiny_airport_code;
-							var departure = jDatos.departure_week_days;
+							var destino = jDatos.destiny_airport_code;							
 							var flight_program_id = jDatos.flight_program_id;
-							var datos = jDatos.datos;
-							var detalle = "TMP - TMP";
-							var cantidad = 120;
-							var precioPasaje = new decimal(120.0);
+							var datos = jDatos.datos;						
 							//CrearVueloCommand command = new CrearVueloCommand(uuid, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,cantidad,detalle,precioPasaje,source_airport_code,destiny_airport_code,departure_week_days,flight_program_id,data) VALUES (" +
-								"CONVERT(uniqueidentifier,'" + uuid.ToString() + "'),120,'" + Convert.ToString(origen) + " - " + Convert.ToString(destino) + "','250.0','" +
-									Convert.ToString(origen) + "','" + Convert.ToString(destino) + "','" + Convert.ToString(departure) +
+							String query = "INSERT INTO dbo.Vuelo(Id,source_airport_code,destiny_airport_code,flight_program_id,information) VALUES (" +
+								"CONVERT(uniqueidentifier,'" + uuid.ToString() + "'),'" +
+									Convert.ToString(origen) + "','" + Convert.ToString(destino) +
 									"','" + Convert.ToString(flight_program_id) + "','" + Convert.ToString(datos) + "')";
 							try
 							{
@@ -124,7 +120,7 @@ namespace ControlDocumentoFactura.WebApi
 							}
 						}
 
-						if (nameEvent == "PassangerCreated")
+						else if (nameEvent == "PassangerCreated")
 						{
 							var id = jDatos.id;
 							var name = jDatos.name;
@@ -154,18 +150,19 @@ namespace ControlDocumentoFactura.WebApi
 							}
 						}
 
-						if (nameEvent == "BookingCreated")
+						else if (nameEvent == "BookingCreated")
 						{
 							var id = jDatos.id;
 							var reservationNumber = jDatos.reservationNumber;
 							var passanger = jDatos.passanger;
 							var reservationStatus = jDatos.reservationStatus;
-							var date = jDatos.date;
+								//DateTime now = DateTime.Now;
+								var date = "2022-10-01";// now.ToString();//jDatos.date;
 							var value = jDatos.value;
 							var flight = jDatos.flight;
 							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Reserva(Id,codReserva,estadoReserva,monto,deuda,fecha,tipoReserva,ClienteId,VueloId,reservationStatus) VALUES (" +
-							"CONVERT(uniqueidentifier,'" + id.ToString() + "'),'" + Convert.ToString(reservationNumber) + "','R','750','750','" + Convert.ToString(date) +
+							String query = "INSERT INTO dbo.Reserva(Id,reservationNumber,monto,deuda,fecha,tipoReserva,ClienteId,VueloId,reservationStatus) VALUES (" +
+							"CONVERT(uniqueidentifier,'" + id.ToString() + "'),'" + Convert.ToString(reservationNumber) + "','" + Convert.ToString(value) + "','0','" + Convert.ToString(date) +
 							"','R',CONVERT(uniqueidentifier,'" + Convert.ToString(passanger) + "'),CONVERT(uniqueidentifier,'" + Convert.ToString(flight) + "'),'" + Convert.ToString(reservationStatus) + "')";
 							try
 							{
@@ -185,7 +182,7 @@ namespace ControlDocumentoFactura.WebApi
 							}
 						}
 
-						if (nameEvent == "PaymentCreated")
+						else if (nameEvent == "PaymentCreated")
 						{
 							var id = Guid.NewGuid();
 							var transactionNumber = jDatos.transactionNumber;
@@ -216,14 +213,12 @@ namespace ControlDocumentoFactura.WebApi
 					catch (Exception e)
 					{
 						//await DeleteMessage(sqsClient, msg.Messages[0], myQueueUrl);
+					}					
+
+
+
+
 					}
-					*/
-
-
-
-
-
-						}
 
 					await DeleteMessage(sqsClient, msg.Messages[0], myQueueUrl);
 
