@@ -43,7 +43,14 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPa
 				var pasajeroDto = new ClienteDto()
 				{
 					Id = objPasajero.Id,
-					NombreCompleto=objPasajero.NombreCompleto
+					NombreCompleto=objPasajero.NombreCompleto,
+					Name=objPasajero.Name,
+					LastName=objPasajero.LastName,
+					Passport=objPasajero.Passport,
+					Nit=objPasajero.Nit,
+					Email=objPasajero.Email,
+					Phone=objPasajero.Phone
+
 
 				};
 

@@ -23,7 +23,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Reservas
 		private CrearReservaCommand() { }
 		public CrearReservaCommand(Guid id, String reservationNumber, Guid clienteId, Guid vueloId, DateTime fecha, decimal monto, String reservationStatus)
 		{
-			Id = Guid.NewGuid();
+			Id = id;
 			ReservationNumber = reservationNumber;
 			Monto = monto;
 			Deuda = monto;

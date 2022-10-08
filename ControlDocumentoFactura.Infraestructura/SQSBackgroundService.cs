@@ -21,23 +21,33 @@ using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Protocols;
 using System.Data;
 using Newtonsoft.Json;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ControlDocumentoFactura.WebApi
 {
 	public class SqsBackgroundService : BackgroundService
 	{
-		private readonly IConfiguration _configuration;
-		private readonly IMediator _mediator;
+		private readonly ILogger<SqsBackgroundService> _logger;
 
-		public SqsBackgroundService(IConfiguration configuration, IMediator mediator)
+		public IServiceProvider Services { get; }
+
+		public SqsBackgroundService(ILogger<SqsBackgroundService> logger, IServiceProvider service)
 		{
-			_configuration = configuration;
-			_mediator = mediator;
+			_logger = logger;
+			Services = service;
+
 		}
 
 		protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 		{
 
+
+			_logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+			
+
+			
 			var accessKey = "AKIASZCTJFEF5SCG2NER";// _configuration.GetValue<string>("AccessKey");
 			var secretKey = "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";// _configuration.GetValue<string>("SecretKey");
 			var myQueueUrl = "https://sqs.us-east-1.amazonaws.com/191300708619/invoices_queue";// _configuration.GetValue<string>("myQueueUrl");
@@ -52,6 +62,7 @@ namespace ControlDocumentoFactura.WebApi
 
 			var sqsClient = new AmazonSQSClient(credentials, RegionEndpoint.USEast1);
 			await Start(sqsClient, myQueueUrl, stoppingToken);
+			
 		}
 
 		private async Task Start(IAmazonSQS sqsClient, string myQueueUrl, CancellationToken stoppingToken)
@@ -127,24 +138,20 @@ namespace ControlDocumentoFactura.WebApi
 							var lastName = jDatos.lastName;
 							var passport = jDatos.passport;
 							var needsAssistance = jDatos.needsAssistance;
-
-							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Cliente(Id,nombreCompleto,name,lastName,passport,needAssistance) VALUES (" +
-								"CONVERT(uniqueidentifier,'" + id.ToString() + "'),'" + Convert.ToString(name) + " " + Convert.ToString(lastName) + "','" + Convert.ToString(name) + "','" + Convert.ToString(lastName) + "','" + Convert.ToString(passport)
-								+ "','" + Convert.ToString(needsAssistance) + "')";
-							try
-							{
-								using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
+								try
 								{
-									connection.Open();
-									using (SqlCommand cmd = new SqlCommand(query, connection))
+									CrearClienteCommand objClienteCommand = new CrearClienteCommand(Guid.Parse(id.ToString()),name.ToString(), lastName.ToString(), passport.ToString(), needsAssistance.ToString(), "null","test@gmail.com","null");
+									using (var scope = Services.CreateScope())
 									{
-										cmd.CommandType = CommandType.Text;
-										cmd.ExecuteNonQuery();
+										var _mediator =
+										scope.ServiceProvider
+										.GetRequiredService<IMediator>();
+										Guid idResponse = await _mediator.Send(objClienteCommand);
+										//_logger.LogInformation("Get me the Response: {resopnse}", await mediator.Send(new SampleQuery()));
 									}
+
 								}
-							}
-							catch (Exception e)
+								catch (Exception e)
 							{
 								Console.WriteLine("{0} Exception caught.", e);
 							}

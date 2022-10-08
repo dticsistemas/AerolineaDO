@@ -1,5 +1,6 @@
 ﻿using ControlDocumentoFactura.Aplicacion.Dtos.Pagos;
 using ControlDocumentoFactura.Aplicacion.Dtos.Reservas;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
@@ -32,8 +33,19 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 				return BadRequest();
 
 			return Ok(id);
-		}		
-		
+		}
+		[Route("createCliente")]
+		[HttpPost]
+		public async Task<IActionResult> CreateCliente([FromBody] CrearClienteCommand command)
+		{
+			Guid id = await _mediator.Send(command);
+
+			if (id == Guid.Empty)
+				return BadRequest();
+
+			return Ok(id);
+		}
+
 		[Route("configuracion")]
 		[HttpPost]
 		public async Task<IActionResult> CreateConfiguracionFactura([FromBody] CrearConfiguracionFacturaCommand command)

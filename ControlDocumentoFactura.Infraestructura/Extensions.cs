@@ -19,17 +19,20 @@ using ControlDocumentoFactura.Dominio.Repositories.Facturas;
 using ControlDocumentoFactura.Dominio.Repositories.Vuelos;
 using ControlDocumentoFactura.Dominio.Repositories.Clientes;
 using ControlDocumentoFactura.WebApi;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
+using MediatR;
 
 namespace ControlDocumentoFactura.Infraestructura {
 		public static class Extensions {
-				public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+		public static async Task<IServiceCollection> AddInfrastructureAsync(this IServiceCollection services,
 					IConfiguration configuration) {
 						services.AddApplication();
-						services.AddHostedService<SqsBackgroundService>();
 
-						services.AddMediatR(Assembly.GetExecutingAssembly());
+			//services.AddMediatR(Assembly.GetExecutingAssembly());
+			services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
-						var connectionString =
+
+			var connectionString =
 							configuration.GetConnectionString("ReservaDbConnectionString");
 
 						services.AddDbContext<ReadDbContext>(context =>
@@ -50,7 +53,15 @@ namespace ControlDocumentoFactura.Infraestructura {
 						services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 
-						return services;
+			services.AddHostedService<SqsBackgroundService>();
+			//services.AddHostedService<ScopedWorker>();
+
+
+
+
+
+
+			return services;
 				}
 
 
