@@ -1,4 +1,5 @@
-﻿using ControlDocumentoFactura.Dominio.Models.Facturas;
+﻿using ControlDocumentoFactura.Dominio.Models.Clientes;
+using ControlDocumentoFactura.Dominio.Models.Facturas;
 using ShareKernel.Cores;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace ControlDocumentoFactura.Dominio.Repositories.Facturas {
 	public interface IFacturaRepository:IRepository<Factura,Guid> {
 		Task UpdateAsync(Factura obj);
+		Task<List<Factura>> GetAll();
 
 	}
 }

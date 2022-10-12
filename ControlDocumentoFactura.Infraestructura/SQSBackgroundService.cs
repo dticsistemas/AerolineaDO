@@ -24,6 +24,8 @@ using Newtonsoft.Json;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using System.Xml.Linq;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Reservas;
 
 namespace ControlDocumentoFactura.WebApi
 {
@@ -107,28 +109,25 @@ namespace ControlDocumentoFactura.WebApi
 							var origen = jDatos.source_airport_code;
 							var destino = jDatos.destiny_airport_code;							
 							var flight_program_id = jDatos.flight_program_id;
-							var datos = jDatos.datos;						
-							//CrearVueloCommand command = new CrearVueloCommand(uuid, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Vuelo(Id,source_airport_code,destiny_airport_code,flight_program_id,information) VALUES (" +
-								"CONVERT(uniqueidentifier,'" + uuid.ToString() + "'),'" +
-									Convert.ToString(origen) + "','" + Convert.ToString(destino) +
-									"','" + Convert.ToString(flight_program_id) + "','" + Convert.ToString(datos) + "')";
-							try
-							{
-								using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
+							var datos = jDatos.datos;
+								var status = "null";
+
+								try
 								{
-									connection.Open();
-									using (SqlCommand cmd = new SqlCommand(query, connection))
+									CrearVueloCommand objVueloCommand = new CrearVueloCommand(Guid.Parse(uuid.ToString()), Int32.Parse(flight_program_id.ToString()), origen.ToString(), destino.ToString(), status.ToString(), datos.ToString());
+									using (var scope = Services.CreateScope())
 									{
-										cmd.CommandType = CommandType.Text;
-										cmd.ExecuteNonQuery();
+										var _mediator =
+										scope.ServiceProvider
+										.GetRequiredService<IMediator>();
+										Guid idResponse = await _mediator.Send(objVueloCommand);
+
 									}
 								}
-							}
-							catch (Exception e)
-							{
-								Console.WriteLine("{0} Exception caught.", e);
-							}
+								catch (Exception e)
+								{
+									Console.WriteLine("{0} Exception caught.", e);
+								}
 						}
 
 						else if (nameEvent == "PassangerCreated")
@@ -163,25 +162,19 @@ namespace ControlDocumentoFactura.WebApi
 							var reservationNumber = jDatos.reservationNumber;
 							var passanger = jDatos.passanger;
 							var reservationStatus = jDatos.reservationStatus;
-								//DateTime now = DateTime.Now;
-								var date = "2022-10-01";// now.ToString();//jDatos.date;
-							var value = jDatos.value;
+							var fecha = "2022-10-01";// now.ToString();//jDatos.date;
+							var monto = jDatos.value;
 							var flight = jDatos.flight;
-							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Reserva(Id,reservationNumber,monto,deuda,fecha,tipoReserva,ClienteId,VueloId,reservationStatus) VALUES (" +
-							"CONVERT(uniqueidentifier,'" + id.ToString() + "'),'" + Convert.ToString(reservationNumber) + "','" + Convert.ToString(value) + "','0','" + Convert.ToString(date) +
-							"','R',CONVERT(uniqueidentifier,'" + Convert.ToString(passanger) + "'),CONVERT(uniqueidentifier,'" + Convert.ToString(flight) + "'),'" + Convert.ToString(reservationStatus) + "')";
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
-								{
-									connection.Open();
-									using (SqlCommand cmd = new SqlCommand(query, connection))
+									CrearReservaCommand objReservaCommand = new CrearReservaCommand(Guid.Parse(id.ToString()),reservationNumber.ToString(), Guid.Parse(passanger.ToString()), Guid.Parse(flight.ToString()),fecha.ToString(), Convert.ToDecimal(monto.ToString()),reservationStatus.ToString());
+									using (var scope = Services.CreateScope())
 									{
-										cmd.CommandType = CommandType.Text;
-										cmd.ExecuteNonQuery();
+										var _mediator =
+										scope.ServiceProvider
+										.GetRequiredService<IMediator>();
+										Guid idResponse = await _mediator.Send(objReservaCommand);
 									}
-								}
 							}
 							catch (Exception e)
 							{
@@ -195,22 +188,17 @@ namespace ControlDocumentoFactura.WebApi
 							var transactionNumber = jDatos.transactionNumber;
 							var amount = jDatos.amount;
 							var booking = jDatos.booking;
-							var fecha = jDatos.created_at;
-							//CrearVueloCommand command = new CrearVueloCommand(id, cantidad, detalle, precioPasaje);
-							String query = "INSERT INTO dbo.Pago(Id,monto,fecha,codComprobante,ReservaId) VALUES ( CONVERT(uniqueidentifier,'" + id.ToString() + "')" +
-								",'" + Convert.ToString(amount) + "','" + Convert.ToString(fecha) + "','ABCDE',CONVERT(uniqueidentifier,'" + Convert.ToString(booking) + "') )";
 							try
 							{
-								using (SqlConnection connection = new SqlConnection("Server=mysqlserverinvoices.database.windows.net;Database=DBFacturas;User=usuarioinvoices;Password=password123!"))
-								{
-									connection.Open();
-									using (SqlCommand cmd = new SqlCommand(query, connection))
+									ReservaPagadoCommand objReservaPagadoCommand = new ReservaPagadoCommand(Guid.Parse(id.ToString()), Guid.Parse(booking.ToString()),transactionNumber.ToString(), Convert.ToDecimal(amount.ToString()));
+									using (var scope = Services.CreateScope())
 									{
-										cmd.CommandType = CommandType.Text;
-										cmd.ExecuteNonQuery();
+										var _mediator =
+										scope.ServiceProvider
+										.GetRequiredService<IMediator>();
+										Guid idResponse = await _mediator.Send(objReservaPagadoCommand);
 									}
 								}
-							}
 							catch (Exception e)
 							{
 								Console.WriteLine("{0} Exception caught.", e);

@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			string codReservaTest = "123456";
 			String estadoReservaTest = "C";
 			Guid reservaId = Guid.NewGuid();
-			var objReserva = new Reserva(reservaId,codReservaTest,new Guid(),new Guid(),new DateTime(), new decimal(0.0),codReservaTest);
+			var objReserva = new Reserva(reservaId,codReservaTest,new Guid(),new Guid(),new DateTime().ToString(), new decimal(0.0),codReservaTest);
 
 			Assert.NotEqual(Guid.Empty,objReserva.Id);
 			Assert.Equal(Guid.Empty,objReserva.ClienteId);

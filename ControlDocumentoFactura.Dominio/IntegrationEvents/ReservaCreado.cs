@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Dominio.IntegrationEvents
 			public String ReservationStatus { get; set; }
 			public decimal Monto { get; set; }
 			public decimal Deuda { get; set; }
-			public DateTime Fecha { get; set; }
+			public string Fecha { get; set; }
 			public String TipoReserva { get; set; }
 			public Guid ClienteId { get; set; }
 			public Guid VueloId { get; set; }

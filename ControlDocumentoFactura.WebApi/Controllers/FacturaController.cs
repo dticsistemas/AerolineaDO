@@ -5,6 +5,7 @@ using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearConfig
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPasajeros;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ListarFacturas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ObtenerConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
@@ -33,19 +34,7 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 				return BadRequest();
 
 			return Ok(id);
-		}
-		[Route("createCliente")]
-		[HttpPost]
-		public async Task<IActionResult> CreateCliente([FromBody] CrearClienteCommand command)
-		{
-			Guid id = await _mediator.Send(command);
-
-			if (id == Guid.Empty)
-				return BadRequest();
-
-			return Ok(id);
-		}
-
+		}		
 		[Route("configuracion")]
 		[HttpPost]
 		public async Task<IActionResult> CreateConfiguracionFactura([FromBody] CrearConfiguracionFacturaCommand command)
@@ -104,6 +93,17 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 		[Route("reservas")]
 		[HttpGet]
 		public async Task<IActionResult> ListarReservas([FromRoute] ListarReservasQuery command)
+		{
+			var result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
+		[Route("facturas")]
+		[HttpGet]
+		public async Task<IActionResult> ListarFacturas([FromRoute] ListarFacturasQuery command)
 		{
 			var result = await _mediator.Send(command);
 

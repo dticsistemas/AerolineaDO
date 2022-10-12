@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControlDocumentoFactura.Dominio.Models.Clientes;
 
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository {
 		public class FacturaRepository:IFacturaRepository {
@@ -29,5 +30,10 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository {
 
 						return Task.CompletedTask;
 				}
-		}
+				public async Task<List<Factura>> GetAll()
+				{
+					return await _facturas.ToListAsync();
+
+				}
+	}
 }

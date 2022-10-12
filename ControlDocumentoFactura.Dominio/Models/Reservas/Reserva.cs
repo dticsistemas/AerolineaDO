@@ -21,16 +21,25 @@ namespace ControlDocumentoFactura.Dominio.Models.Reservas {
 		public Guid VueloId { get; private set; }
 
 		private Reserva() { }
-		public Reserva(Guid id, String reservationNumber,Guid clienteId, Guid vueloId,DateTime fecha, decimal monto,String reservationStatus) {
+		public Reserva(Guid id, String reservationNumber,Guid clienteId, Guid vueloId,string fecha, decimal monto,String reservationStatus) {
 			Id = Guid.NewGuid();
 			ReservationNumber= reservationNumber;
 			Monto = monto;
 			Deuda = monto;
-			Fecha = fecha;
+			Fecha = DateTime.Parse(fecha);
 			TipoReserva = "R";
 			ReservationStatus= reservationStatus;
 			ClienteId = clienteId;
 			VueloId = vueloId;
+		}
+		public void ActualizarReservaPagada()
+		{
+			if(ReservationStatus != "pagado")
+			{
+				ReservationStatus = "pagado";
+
+			}
+			
 		}
 
 
