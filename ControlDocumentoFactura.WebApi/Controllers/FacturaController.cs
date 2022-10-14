@@ -1,15 +1,20 @@
-﻿using ControlDocumentoFactura.Aplicacion.Dtos.Pagos;
+﻿using ControlDocumentoFactura.Aplicacion.Dtos.Clientes;
+using ControlDocumentoFactura.Aplicacion.Dtos.Pagos;
 using ControlDocumentoFactura.Aplicacion.Dtos.Reservas;
+using ControlDocumentoFactura.Aplicacion.Dtos.Vuelos;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.BuscarClientePorId;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.ListarPasajeros;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ListarFacturas;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ObtenerConfiguracionFactura;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFacturasClienteQuery;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Reservas.BuscarReservaPorId;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Reservas.ListarReservas;
+using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.BuscarVueloPorId;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuelos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -79,6 +84,17 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 			return Ok(result);
 		}
+		[Route("vuelo/{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> ObtenerVueloPorId([FromRoute] BuscarVueloPorIdQuery command)
+		{
+			VueloDto result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
 		[Route("pasajeros")]
 		[HttpGet]
 		public async Task<IActionResult> ListarPasajeros([FromRoute] ListarPasajerosQuery command)
@@ -90,11 +106,33 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 			return Ok(result);
 		}
+		[Route("cliente/{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> ObtenerClientePorId([FromRoute] BuscarClientePorIdQuery command)
+		{
+			ClienteDto result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
 		[Route("reservas")]
 		[HttpGet]
 		public async Task<IActionResult> ListarReservas([FromRoute] ListarReservasQuery command)
 		{
 			var result = await _mediator.Send(command);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
+		[Route("reserva/{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> ObtenerReservaPorId([FromRoute] BuscarReservaPorIdQuery command)
+		{
+			ReservaDto result = await _mediator.Send(command);
 
 			if (result == null)
 				return NotFound();
