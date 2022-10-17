@@ -14,16 +14,19 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			string codReservaTest = "123456";
 			String estadoReservaTest = "C";
 			Guid reservaId = Guid.NewGuid();
-			var objReserva = new Reserva(reservaId,codReservaTest,new Guid(),new Guid(),new DateTime().ToString(), new decimal(0.0),codReservaTest);
-
+			var objReserva = new Reserva(reservaId,codReservaTest,new Guid(),new Guid(),new DateTime().ToString(), new decimal(0.0),estadoReservaTest);
+			
 			Assert.NotEqual(Guid.Empty,objReserva.Id);
 			Assert.Equal(Guid.Empty,objReserva.ClienteId);
 			Assert.Equal(Guid.Empty,objReserva.VueloId);
 			Assert.Equal(codReservaTest,objReserva.ReservationNumber);
-			Assert.NotEqual(DateTime.MinValue,objReserva.Fecha);
+			Assert.NotNull(objReserva.Fecha);
 			Assert.Equal(new decimal(0.0),( decimal )objReserva.Deuda);
 			Assert.Equal(new decimal(0.0),( decimal )objReserva.Monto);
 			Assert.Equal(estadoReservaTest,objReserva.ReservationStatus);
+			objReserva.ActualizarReservaPagada();
+			Assert.Equal("pagado", objReserva.ReservationStatus);
+
 
 		}
 		[Fact]

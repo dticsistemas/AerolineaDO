@@ -11,27 +11,31 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 		[Fact]
 		public void VueloDto_CheckPropertiesValid() {
 			var idVueloTest = new Guid();
-			var cantidadTest = 200;
-			decimal precioPasajeTest = new(720.0);
-			var detalleTest = "SCZ-LPZ";
+			String Source_airport_code = "MIA";
+			String Destiny_airport_code = "LPZ";
+			String Status = "open";
+			int Flight_program_id = 10;
+			string Information = "info";
 
-			var objVuelo = new VueloDto();
+		var objVuelo = new VueloDto();
 
 			Assert.Equal(Guid.Empty,objVuelo.Id);
-		//	Assert.Equal(0,objVuelo.Cantidad);
-			//Assert.Null(objVuelo.Detalle);
-		//	Assert.Equal(new decimal(0.0),objVuelo.PrecioPasaje);
 
 			objVuelo.Id = idVueloTest;
-		//	objVuelo.Cantidad = cantidadTest;
-		//	objVuelo.PrecioPasaje = precioPasajeTest;
-		//	objVuelo.Detalle = detalleTest;
-
+			objVuelo.Source_airport_code = Source_airport_code;
+			objVuelo.Destiny_airport_code = Destiny_airport_code;
+			objVuelo.Status = Status;
+			objVuelo.Flight_program_id = Flight_program_id;
+			objVuelo.Information = Information;
 
 			Assert.Equal(idVueloTest,objVuelo.Id);
-		//	Assert.Equal(cantidadTest,objVuelo.Cantidad);
-		//	Assert.Equal(detalleTest,objVuelo.Detalle);
-		//	Assert.Equal(precioPasajeTest,objVuelo.PrecioPasaje);
+			Assert.Equal(Source_airport_code,objVuelo.Source_airport_code);
+			Assert.Equal(Destiny_airport_code, objVuelo.Destiny_airport_code);
+			Assert.Equal(Status, objVuelo.Status);
+			Assert.Equal(Flight_program_id, objVuelo.Flight_program_id);
+			Assert.Equal(Information,objVuelo.Information);
+
+
 
 		}
 	}

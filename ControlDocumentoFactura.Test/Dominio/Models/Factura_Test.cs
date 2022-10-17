@@ -13,7 +13,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 		[Fact]
 		public void Factura_CheckPropertiesValid() {
 			decimal montoTest = new(40.0);
-			decimal importe = new(30.0);
+			decimal importe = new(40.0);
 			string lugar = "SCZ";
 			string nitBeneficiario = "654321";
 			string razonSocialBeneficiario = "Juan Perez";
@@ -63,6 +63,23 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 			Assert.Equal(nroFacturaTest,objFactura.GetNroFactura());
 
+
+		}
+		[Fact]
+		public void EstadoFactura_CheckPropertiesValid()
+		{
+			string nroFacturaTest = "1234567890123";
+			var objFactura = new Factura(nroFacturaTest);
+			objFactura.UpddateEstadoFacturaEntregado();
+			Assert.Equal(objFactura.Estado,"E");
+
+		}
+		[Fact]
+		public void NroFactura_CheckPropertiesValid()
+		{
+			string nroFacturaTest = "1234567890123";
+			var objFactura = new Factura(nroFacturaTest);
+			Assert.Equal(objFactura.GetNroFactura(), nroFacturaTest);
 
 		}
 		[Fact]

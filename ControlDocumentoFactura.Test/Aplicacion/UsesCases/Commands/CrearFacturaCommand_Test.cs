@@ -12,7 +12,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 		public void CrearFacturaCommand_DataValid() {
 
 			var montoTest = new decimal(50.0);
-			var importeTest = new decimal(50.0);
+			var importeTest = new decimal(0);
 			var lugarTest = "NN";
 			var nitBeneficiarioTest = "654321";
 			var razonSocialBeneficiarioTest = "Juan Perez";

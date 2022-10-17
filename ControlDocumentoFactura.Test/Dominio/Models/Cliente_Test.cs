@@ -16,7 +16,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			var lastName = "Perez";
 			var objCliente = new Cliente(idCliente,nombreCliente,lastName,"passport","0","1234","email@email.com","7654321");
 			Assert.NotEqual(Guid.Empty,objCliente.Id);
-			Assert.Equal(nombreCliente,objCliente.NombreCompleto);
+			Assert.Equal(nombreCliente,objCliente.Name);
 
 			nombreCliente = "ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489";
 			nombreCliente += "ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489";

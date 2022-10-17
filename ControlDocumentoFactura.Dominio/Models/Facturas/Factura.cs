@@ -60,7 +60,7 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 		}
 
 		public void UpddateEstadoFacturaEntregado() {
-			Estado = "E"; ;
+			Estado = "E"; 
 		}
 		public string GetNroFactura() {
 			return NroFactura;

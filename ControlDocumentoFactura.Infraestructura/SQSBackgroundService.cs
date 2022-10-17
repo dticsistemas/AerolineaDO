@@ -26,6 +26,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using System.Xml.Linq;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Reservas;
+using Nancy.Json;
+using Nancy;
 
 namespace ControlDocumentoFactura.WebApi
 {
@@ -83,33 +85,33 @@ namespace ControlDocumentoFactura.WebApi
 					//Console.WriteLine($"\nMessage body of {message.MessageId}:");
 					//Console.WriteLine($"{message.Body}");
 					JObject jsonDataParent = JObject.Parse(message.Body);
-					var mensaje = message.Body;
-					try {		
-				//	JObject obj = JObject.Parse(mensaje);
-				//	JObject jo = (JObject)JsonConvert.DeserializeObject(mensaje);
-				//	string zone = jo["Message"].ToString();
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine("{0} Exception caught.", e);
-					}
-
+				
+					var mensaje = message.Body;					
 
 					var cadena = jsonDataParent["Message"].ToString();
-					//var cadena = Convert.ToString(jsonDataParent.Message);
+					var eventoTopic= jsonDataParent["TopicArn"].ToString();
+						//var cadena = Convert.ToString(jsonDataParent.Message);
 					dynamic jsonData = JObject.Parse(cadena);
-					var nameEvent = jsonData.nameEvent;
+					JObject obj = JObject.Parse(cadena);
+					string method1_timestamp = (string)obj["event"];
+
+						JavaScriptSerializer serializer = new JavaScriptSerializer();
+						dynamic item = serializer.Deserialize<object>(cadena);
+						//string namee = item["event"];
+						//var nameEvent = "";// jsonData.get;
 					var jDatos = jsonData.data;
 					
 					try
 					{
-						if (nameEvent == "FlightCreated")
+						if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:VueloCreado")
 						{
-							var uuid = jDatos.uuid;
+							var uuid = jDatos.flight.uuid;
+							//var flight = jDatos.flight;
+							//var uuid_flight = glifht.uuid;
 							var origen = jDatos.source_airport_code;
 							var destino = jDatos.destiny_airport_code;							
-							var flight_program_id = jDatos.flight_program_id;
-							var datos = jDatos.datos;
+							var flight_program_id = jDatos.flight.flight_program_id;
+							var datos = jDatos.flight;
 								var status = "null";
 
 								try
@@ -130,8 +132,9 @@ namespace ControlDocumentoFactura.WebApi
 								}
 						}
 
-						else if (nameEvent == "PassangerCreated")
-						{
+						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:PasajeroCreado")
+							{
+								jDatos = jsonData;
 							var id = jDatos.id;
 							var name = jDatos.name;
 							var lastName = jDatos.lastName;
@@ -156,9 +159,10 @@ namespace ControlDocumentoFactura.WebApi
 							}
 						}
 
-						else if (nameEvent == "BookingCreated")
-						{
-							var id = jDatos.id;
+						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaCreada")
+							{
+								jDatos = jsonData.body.booking;
+								var id = jDatos.id;
 							var reservationNumber = jDatos.reservationNumber;
 							var passanger = jDatos.passanger;
 							var reservationStatus = jDatos.reservationStatus;
@@ -182,8 +186,8 @@ namespace ControlDocumentoFactura.WebApi
 							}
 						}
 
-						else if (nameEvent == "PaymentCreated")
-						{
+						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaPagada")
+							{
 							var id = Guid.NewGuid();
 							var transactionNumber = jDatos.transactionNumber;
 							var amount = jDatos.amount;
