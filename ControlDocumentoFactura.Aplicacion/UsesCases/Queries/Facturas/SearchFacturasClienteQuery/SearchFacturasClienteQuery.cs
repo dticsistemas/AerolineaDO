@@ -10,6 +10,12 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFa
 {
 	public class SearchFacturasClienteQuery : IRequest<ICollection<FacturaDto>>
 	{
-		public string IdCliente { get; set; }
+		public Guid idClienteTest { get; set; }
+
+		public SearchFacturasClienteQuery(Guid idClienteTest)
+		{
+			this.idClienteTest = idClienteTest;
+		}
+
 }
 }
