@@ -36,28 +36,28 @@
 <div class="card">
 <div class="card-header">Line coverage</div>
 <div class="card-body">
-<div class="large cardpercentagebar cardpercentagebar100">0%</div>
+<div class="large cardpercentagebar cardpercentagebar0">100%</div>
 <div class="table">
 <table>
 <tr>
 <th>Covered lines:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="5">5</td>
 </tr>
 <tr>
 <th>Uncovered lines:</th>
-<td class="limit-width right" title="1">1</td>
+<td class="limit-width right" title="0">0</td>
 </tr>
 <tr>
 <th>Coverable lines:</th>
-<td class="limit-width right" title="1">1</td>
+<td class="limit-width right" title="5">5</td>
 </tr>
 <tr>
 <th>Total lines:</th>
-<td class="limit-width right" title="15">15</td>
+<td class="limit-width right" title="21">21</td>
 </tr>
 <tr>
 <th>Line coverage:</th>
-<td class="limit-width right" title="0 of 1">0%</td>
+<td class="limit-width right" title="5 of 5">100%</td>
 </tr>
 </table>
 </div>
@@ -96,14 +96,14 @@
 </div>
 </div>
 <h1>Coverage History</h1>
-<div class="historychart ct-chart" data-data="historyChartData71eae11651924b338b5550e294fdcc4f"></div>
+<div class="historychart ct-chart" data-data="historyChartDatab440d4802b784b5f9ecff854c9246ff5"></div>
 <script type="text/javascript">/* <![CDATA[ */ 
-var historyChartData71eae11651924b338b5550e294fdcc4f = {
-    "series" : [[{ 'meta': 0, 'value': 0 }],
+var historyChartDatab440d4802b784b5f9ecff854c9246ff5 = {
+    "series" : [[{ 'meta': 0, 'value': 0 }, { 'meta': 1, 'value': 100 }],
 [],
 []
 ],
-    "tooltips" : ['<h3>16/10/2022 - 01:34:29 p. m.</h3><br /><span class="linecoverage"></span> Line coverage: 0% (0/1)<br /><span class="codeelementcoverage"></span> Method coverage: 0% (0/1)<br />Total lines: 15']
+    "tooltips" : ['<h3>16/10/2022 - 01:34:29 p. m.</h3><br /><span class="linecoverage"></span> Line coverage: 0% (0/1)<br /><span class="codeelementcoverage"></span> Method coverage: 0% (0/1)<br />Total lines: 15','<h3>19/10/2022 - 12:46:18 a. m.</h3><br /><span class="linecoverage"></span> Line coverage: 100% (5/5)<br /><span class="codeelementcoverage"></span> Method coverage: 100% (2/2)<br />Total lines: 21']
 };
  /* ]]> */ </script>
 <h1>Metrics</h1>
@@ -111,7 +111,8 @@ var historyChartData71eae11651924b338b5550e294fdcc4f = {
 <table class="overview table-fixed">
 <thead><tr><th>Method</th><th>Branch coverage <a href="https://en.wikipedia.org/wiki/Code_coverage"><i class="icon-info-circled"></i></a></th><th>Cyclomatic complexity <a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon-info-circled"></i></a></th><th>Line coverage <a href="https://en.wikipedia.org/wiki/Code_coverage"><i class="icon-info-circled"></i></a></th></tr></thead>
 <tbody>
-<tr><td title="get_IdCliente()"><a href="#file0_line13" class="navigatetohash">get_IdCliente()</a></td><td>100%</td><td>1</td><td>0%</td></tr>
+<tr><td title="get_idClienteTest()"><a href="#file0_line13" class="navigatetohash">get_idClienteTest()</a></td><td>100%</td><td>1</td><td>100%</td></tr>
+<tr><td title=".ctor(System.Guid)"><a href="#file0_line15" class="navigatetohash">.ctor(...)</a></td><td>100%</td><td>1</td><td>100%</td></tr>
 </tbody>
 </table>
 </div>
@@ -133,17 +134,24 @@ var historyChartData71eae11651924b338b5550e294fdcc4f = {
 <tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line10"></a><code>10</code></td><td></td><td class="lightgray"><code>{</code></td></tr>
 <tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line11"></a><code>11</code></td><td></td><td class="lightgray"><code>&nbsp;&nbsp;public&nbsp;class&nbsp;SearchFacturasClienteQuery&nbsp;:&nbsp;IRequest&lt;ICollection&lt;FacturaDto&gt;&gt;</code></td></tr>
 <tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line12"></a><code>12</code></td><td></td><td class="lightgray"><code>&nbsp;&nbsp;{</code></td></tr>
-<tr class="coverableline" title="Not covered (0 visits)" data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><a id="file0_line13"></a><code>13</code></td><td></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;string&nbsp;IdCliente&nbsp;{&nbsp;get;&nbsp;set;&nbsp;}</code></td></tr>
-<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line14"></a><code>14</code></td><td></td><td class="lightgray"><code>}</code></td></tr>
-<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line15"></a><code>15</code></td><td></td><td class="lightgray"><code>}</code></td></tr>
+<tr class="coverableline" title="Covered (2 visits)" data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><a id="file0_line13"></a><code>13</code></td><td></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Guid&nbsp;idClienteTest&nbsp;{&nbsp;get;&nbsp;set;&nbsp;}</code></td></tr>
+<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line14"></a><code>14</code></td><td></td><td class="lightgray"><code></code></td></tr>
+<tr class="coverableline" title="Covered (1 visits)" data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><a id="file0_line15"></a><code>15</code></td><td></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;SearchFacturasClienteQuery(Guid&nbsp;idClienteTest)</code></td></tr>
+<tr class="coverableline" title="Covered (1 visits)" data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><a id="file0_line16"></a><code>16</code></td><td></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr class="coverableline" title="Covered (1 visits)" data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><a id="file0_line17"></a><code>17</code></td><td></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.idClienteTest&nbsp;=&nbsp;idClienteTest;</code></td></tr>
+<tr class="coverableline" title="Covered (1 visits)" data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><a id="file0_line18"></a><code>18</code></td><td></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line19"></a><code>19</code></td><td></td><td class="lightgray"><code></code></td></tr>
+<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line20"></a><code>20</code></td><td></td><td class="lightgray"><code>}</code></td></tr>
+<tr class="" title="Not coverable" data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><a id="file0_line21"></a><code>21</code></td><td></td><td class="lightgray"><code>}</code></td></tr>
 </tbody>
 </table>
 </div>
-<div class="footer">Generated by: ReportGenerator 5.1.9.0<br />16/10/2022 - 10:00:20 p. m.<br /><a href="https://github.com/danielpalme/ReportGenerator">GitHub</a> | <a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<div class="footer">Generated by: ReportGenerator 5.1.9.0<br />19/10/2022 - 12:46:21 a. m.<br /><a href="https://github.com/danielpalme/ReportGenerator">GitHub</a> | <a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
 <div class="containerright">
 <div class="containerrightfixed">
 <h1>Methods/Properties</h1>
-<a href="#file0_line13" class="navigatetohash percentagebar percentagebar0" title="Line coverage: 0% - get_IdCliente()"><i class="icon-cube"></i>get_IdCliente()</a><br />
+<a href="#file0_line13" class="navigatetohash percentagebar percentagebar100" title="Line coverage: 100% - get_idClienteTest()"><i class="icon-cube"></i>get_idClienteTest()</a><br />
+<a href="#file0_line15" class="navigatetohash percentagebar percentagebar100" title="Line coverage: 100% - .ctor(System.Guid)"><i class="icon-cube"></i>.ctor(System.Guid)</a><br />
 <br/></div>
 </div></div>
 <script type="text/javascript">

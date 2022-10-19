@@ -40,7 +40,6 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFactu
 					ConfiguracionFacturaId = objFactura.ConfiguracionFacturaId
 
 				};
-
 			}
 			catch( Exception ex ) {
 				_logger.LogError(ex,"Error al obtener Factura Id");

@@ -13,7 +13,7 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.ReadModel {
 			public decimal Deuda { get; set; }
 			public DateTime Fecha { get; set; }
 			public String TipoReserva { get; set; }
-			public Guid ClienteId { get; set; }
-			public Guid VueloId { get; set; }
+			public ClienteReadModel Cliente { get; set; }
+			public VueloReadModel Vuelo { get; set; }
 	}
 }

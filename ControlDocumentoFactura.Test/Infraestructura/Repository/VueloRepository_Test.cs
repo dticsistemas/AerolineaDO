@@ -24,15 +24,15 @@ namespace ControlDocumentoFactura.Test.Infraestructura.Repository
 
 
 		}
-		[Fact]
+		/*[Fact]
 		public Task CreateAsync_Test()
 		{
-			context.Setup(x => x.Vuelo).Returns(_vuelos.Object);
-
+			//context.Setup(x => x.Vuelo).Returns(_vuelos.Object);
+			/*
 			Vuelo obj = new Vuelo();
 			VueloRepository vRepositoryTest = new VueloRepository(context.Object);
 			Assert.NotNull(obj);
 			return Task.CompletedTask;
-		}
+		}*/
 	}
 }

@@ -19,15 +19,14 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			DateTime fechaTest = DateTime.Now;
 			var nroFacturaTest = "2022-05-15";
 			var lugarTest = "SCZ B/ Los Olivos";
-			var nitProveedorTest = "123456";
 			var nitBeneficiarioTest = "654321";
-			var razonSocialProveedorTest = "AEROPRO";
 			var razonSocialBeneficiarioTest = "Juan Perez";
 			var nroAutorizacionTest = "1";
 			var estadoTest = "P";
 			var _reservaReadModel = new ReservaReadModel();
 			var _clienteReadModel = new ClienteReadModel();
 			var _vueloReadModel = new VueloReadModel();
+			var _configReadModel = new ConfiguracionFacturaReadModel();
 
 
 			var objFactura = new FacturaReadModel();
@@ -63,6 +62,7 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			objFactura.Reserva = _reservaReadModel;
 			objFactura.Cliente = _clienteReadModel;
 			objFactura.Vuelo = _vueloReadModel;
+			objFactura.ConfiguracionFactura = _configReadModel;
 
 			Assert.Equal(idFacturaTest,objFactura.Id);
 			Assert.Equal(montoTest,objFactura.Monto);
@@ -78,6 +78,7 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			Assert.Equal(_clienteReadModel,objFactura.Cliente);
 			Assert.Equal(_vueloReadModel,objFactura.Vuelo);
 			Assert.Equal(_reservaReadModel,objFactura.Reserva);
+			Assert.Equal(_configReadModel, objFactura.ConfiguracionFactura);
 
 		}
 	}
