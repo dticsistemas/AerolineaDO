@@ -64,7 +64,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			objFactura.VueloId = idVueloTest;
 			objFactura.Estado = estadoTest;
 			objFactura.TipoNit = tipoNitTest;
-			objFactura.ConfiguracionFactura = idConfigTest;
+			objFactura.ConfiguracionFacturaId = idConfigTest;
 
 			Assert.Equal(idFacturaTest,objFactura.Id);
 			Assert.Equal(idReservaTest,objFactura.ReservaId);
@@ -82,7 +82,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			Assert.Equal(idVueloTest,objFactura.VueloId);
 			Assert.Equal(estadoTest,objFactura.Estado);
 			Assert.Equal(tipoNitTest,objFactura.TipoNit);
-			Assert.Equal(idConfigTest,objFactura.ConfiguracionFactura);
+			Assert.Equal(idConfigTest,objFactura.ConfiguracionFacturaId);
 
 		}
 	}

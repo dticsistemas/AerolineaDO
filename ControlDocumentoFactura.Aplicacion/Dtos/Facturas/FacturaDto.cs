@@ -23,7 +23,7 @@ namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos {
 		public Guid ReservaId { get; set; }
 		public Guid ClienteId { get; set; }
 		public Guid VueloId { get; set; }
-		public Guid ConfiguracionFactura{ get; set; }
+		public Guid ConfiguracionFacturaId{ get; set; }
 
 
 

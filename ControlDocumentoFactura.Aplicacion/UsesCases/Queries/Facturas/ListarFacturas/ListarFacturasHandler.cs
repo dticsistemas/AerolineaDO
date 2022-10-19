@@ -48,7 +48,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ListarFa
 					ReservaId = objFactura.ReservaId,
 					ClienteId = objFactura.ClienteId,
 					VueloId = objFactura.VueloId,
-					ConfiguracionFactura = objFactura.ConfiguracionFacturaId
+					ConfiguracionFacturaId = objFactura.ConfiguracionFacturaId
 
 	};
 

@@ -32,7 +32,7 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.UseCases.Queri
 							.Include(x => x.Reserva)
 							.Include(x => x.Vuelo)
 							//.ThenInclude(x => x.Reserva)
-							.Where(x => x.Cliente.Id.ToString().Contains(request.IdCliente))
+							.Where(x => x.Cliente.Id.ToString().Contains(request.idClienteTest.ToString()))
 							.ToListAsync();
 
 			var result = new List<FacturaDto>();

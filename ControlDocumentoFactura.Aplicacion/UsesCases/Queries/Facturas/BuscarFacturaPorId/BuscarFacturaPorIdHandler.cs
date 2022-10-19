@@ -36,8 +36,8 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFactu
 					ReservaId = objFactura.ReservaId,
 					ClienteId = objFactura.ClienteId,
 					VueloId = objFactura.VueloId,
-					Estado = objFactura.Estado
-
+					Estado = objFactura.Estado,
+					ConfiguracionFacturaId = objFactura.ConfiguracionFacturaId
 
 				};
 
