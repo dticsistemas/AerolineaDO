@@ -105,14 +105,14 @@ namespace ControlDocumentoFactura.WebApi
 					{
 						if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:VueloCreado")
 						{
-							var uuid = jDatos.flight.uuid;
+							var uuid = jDatos.flight_program.uuid;
 							//var flight = jDatos.flight;
 							//var uuid_flight = glifht.uuid;
-							var origen = jDatos.source_airport_code;
-							var destino = jDatos.destiny_airport_code;							
-							var flight_program_id = jDatos.flight.flight_program_id;
-							var datos = jDatos.flight;
-								var status = "null";
+							var origen = jDatos.flight_program.sourceAirport;
+							var destino = jDatos.flight_program.destinyAirport;							
+							var flight_program_id = jDatos.flight.id;
+							var datos = jDatos.flight.created_at;
+							var status = "null";
 
 								try
 								{
@@ -134,7 +134,7 @@ namespace ControlDocumentoFactura.WebApi
 
 						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:PasajeroCreado")
 							{
-								jDatos = jsonData;
+							jDatos = jsonData.body.passanger;
 							var id = jDatos.id;
 							var name = jDatos.name;
 							var lastName = jDatos.lastName;
@@ -161,13 +161,13 @@ namespace ControlDocumentoFactura.WebApi
 
 						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaCreada")
 							{
-								jDatos = jsonData.body.booking;
+								jDatos = jsonData;//.body.booking;
 								var id = jDatos.id;
-							var reservationNumber = jDatos.reservationNumber;
+							var reservationNumber = jDatos.reservationNumber.data;
 							var passanger = jDatos.passanger;
-							var reservationStatus = jDatos.reservationStatus;
+							var reservationStatus = jDatos.reservationStatus.data;
 							var fecha = "2022-10-01";// now.ToString();//jDatos.date;
-							var monto = jDatos.value;
+							var monto = jDatos.accountReceivable.originalValue.data;
 							var flight = jDatos.flight;
 							try
 							{

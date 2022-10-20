@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Microservicios Control Documento Factura  DDD",
   "main": "index.js",
- 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dticsistemas/AerolineaDDD.git"
@@ -12,9 +15,15 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dticsistemas/AerolineaDDD/issues"
+    "url": "https://github.com/dticsistemas/AerolineaDO/issues"
   },
-  "homepage": "https://github.com/dticsistemas/AerolineaDDD#readme"
- 
+  "homepage": "https://github.com/dticsistemas/AerolineaDO#readme",
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
+  },
+  "lint-staged":{
+    "*.cs":"dotnet-format --include"
+  }
 
 }
