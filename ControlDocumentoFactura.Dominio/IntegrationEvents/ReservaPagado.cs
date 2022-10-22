@@ -13,6 +13,6 @@ namespace ControlDocumentoFactura.Dominio.IntegrationEvents
 		public Guid ReservaId { get; set; }
 		public String TransactionNumber { get; set; }
 		public decimal Amount { get; set; }
-		
+
 	}
 }

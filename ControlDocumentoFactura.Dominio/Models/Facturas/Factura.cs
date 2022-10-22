@@ -8,14 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Models.Facturas {
-	public class Factura:AggregateRoot<Guid> {
+namespace ControlDocumentoFactura.Dominio.Models.Facturas
+{
+	public class Factura : AggregateRoot<Guid>
+	{
 
 		public MontoValue Monto { get; private set; }
 		public MontoValue Importe { get; private set; }
 		public DateTime Fecha { get; private set; }
 		public NumeroFacturaValue NroFactura { get; private set; }
-		public DescripcionLugarValue Lugar { get; private set; }	
+		public DescripcionLugarValue Lugar { get; private set; }
 		public NitFacturaValue NitBeneficiario { get; private set; }
 		public RazonSocialValue RazonSocialBeneficiario { get; private set; }
 		public TipoNitValue TipoNit { get; private set; }
@@ -31,14 +33,16 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 
 
 		private Factura() { }
-		public Factura(String nroFactura) {
+		public Factura(String nroFactura)
+		{
 			Id = Guid.NewGuid();
 			Monto = new MontoValue(0m);
 			Importe = new MontoValue(0m);
 			NroFactura = nroFactura;
 
 		}
-		public void CrearFactura(decimal monto,string lugar,string tipoNit,string nitBeneficiario,string razonSocialBeneficiario,Guid clienteId,Guid vueloId,Guid reservaId, Guid configuracionFacturaId) {
+		public void CrearFactura(decimal monto, string lugar, string tipoNit, string nitBeneficiario, string razonSocialBeneficiario, Guid clienteId, Guid vueloId, Guid reservaId, Guid configuracionFacturaId)
+		{
 			Monto = monto;
 			Importe = monto;
 			Fecha = DateTime.Now;
@@ -46,7 +50,7 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 			ClienteId = clienteId;
 			VueloId = vueloId;
 			Lugar = lugar;
-			TipoNit = tipoNit;		
+			TipoNit = tipoNit;
 			NitBeneficiario = nitBeneficiario;
 			RazonSocialBeneficiario = razonSocialBeneficiario;
 			ConfiguracionFacturaId = configuracionFacturaId;
@@ -54,15 +58,18 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas {
 
 		}
 
-		public void EntregaFactura() {
-			var evento = new FacturaCreadoEvent(Monto,Id,ClienteId,ReservaId);
+		public void EntregaFactura()
+		{
+			var evento = new FacturaCreadoEvent(Monto, Id, ClienteId, ReservaId);
 			AddDomainEvent(evento);
 		}
 
-		public void UpddateEstadoFacturaEntregado() {
-			Estado = "E"; 
+		public void UpddateEstadoFacturaEntregado()
+		{
+			Estado = "E";
 		}
-		public string GetNroFactura() {
+		public string GetNroFactura()
+		{
 			return NroFactura;
 		}
 

@@ -35,8 +35,8 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Clientes.BuscarCl
 
 				result = new ClienteDto()
 				{
-					Id =objCliente.Id,
-					NombreCompleto =objCliente.NombreCompleto,
+					Id = objCliente.Id,
+					NombreCompleto = objCliente.NombreCompleto,
 					Name = objCliente.Name,
 					LastName = objCliente.LastName,
 					Passport = objCliente.Passport,

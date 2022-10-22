@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos {
-	public class FacturaDto {
+namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos
+{
+	public class FacturaDto
+	{
 		public Guid Id { get; set; }
 		public decimal Monto { get; set; }
 		public decimal Importe { get; set; }
@@ -23,7 +25,7 @@ namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos {
 		public Guid ReservaId { get; set; }
 		public Guid ClienteId { get; set; }
 		public Guid VueloId { get; set; }
-		public Guid ConfiguracionFacturaId{ get; set; }
+		public Guid ConfiguracionFacturaId { get; set; }
 
 
 

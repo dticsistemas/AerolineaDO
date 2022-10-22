@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 		[Fact]
 		public void CrearClienteCommand_DataValid()
 		{
-			
+
 			var IdTest = new Guid();
 			var name = "Juan";
 			var lastName = "Prueba";
@@ -22,15 +22,15 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			var needAssistance = "true";
 			var nit = "456";
 			var email = "demo@demo.com";
-			var phone = "789";			
-			var command = new CrearClienteCommand(IdTest,name,lastName,passport,needAssistance,nit,email,phone);
+			var phone = "789";
+			var command = new CrearClienteCommand(IdTest, name, lastName, passport, needAssistance, nit, email, phone);
 			Assert.Equal(IdTest, command.Id);
-			Assert.Equal(name,command.Name);
-			Assert.Equal(lastName,command.LastName);
-			Assert.Equal(passport,command.Passport);
-			Assert.Equal(needAssistance,command.NeedAssistance);
-			Assert.Equal(nit,command.Nit);
-			Assert.Equal(email,command.Email);
+			Assert.Equal(name, command.Name);
+			Assert.Equal(lastName, command.LastName);
+			Assert.Equal(passport, command.Passport);
+			Assert.Equal(needAssistance, command.NeedAssistance);
+			Assert.Equal(nit, command.Nit);
+			Assert.Equal(email, command.Email);
 			Assert.Equal(phone, command.Phone);
 
 		}

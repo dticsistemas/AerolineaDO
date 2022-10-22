@@ -25,12 +25,12 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			var fecha = DateTime.Now.ToString();
 			var monto = new Decimal(10);
 			var reservationStatus = "456";
-			var command = new CrearReservaCommand(id,reservationNumber,clienteId,vueloId,fecha,monto,reservationStatus);
-			Assert.Equal(monto,command.Deuda);
-			Assert.Equal(monto,command.Monto);
+			var command = new CrearReservaCommand(id, reservationNumber, clienteId, vueloId, fecha, monto, reservationStatus);
+			Assert.Equal(monto, command.Deuda);
+			Assert.Equal(monto, command.Monto);
 			Assert.Equal(reservationNumber, command.ReservationNumber);
 			Assert.Equal(reservationStatus, command.ReservationStatus);
-			Assert.Equal("R",command.TipoReserva);
+			Assert.Equal("R", command.TipoReserva);
 			Assert.NotNull(command.Fecha);
 			Assert.Equal(id, command.Id);
 			Assert.Equal(clienteId, command.ClienteId);
@@ -43,8 +43,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 		public void TestConstructor_IsPrivate()
 		{
 			var command = (CrearReservaCommand)Activator.CreateInstance(typeof(CrearReservaCommand), true);
-			Assert.Equal(0,command.Deuda);
-			Assert.Equal(0,command.Monto);
+			Assert.Equal(0, command.Deuda);
+			Assert.Equal(0, command.Monto);
 			Assert.Null(command.TipoReserva);
 			Assert.Null(command.ReservationNumber);
 			Assert.Null(command.ReservationStatus);

@@ -1,10 +1,13 @@
 using System;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test {
-	public class UnitTest1 {
+namespace ControlDocumentoFactura.Test
+{
+	public class UnitTest1
+	{
 		[Fact]
-		public void Test1() {
+		public void Test1()
+		{
 
 		}
 	}

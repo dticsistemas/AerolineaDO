@@ -55,7 +55,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			);
 
 
-			var objRequest = new CrearVueloCommand(_idTest,flight_program_id,source_airport_code,destiny_airport_code,status,information);
+			var objRequest = new CrearVueloCommand(_idTest, flight_program_id, source_airport_code, destiny_airport_code, status, information);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);

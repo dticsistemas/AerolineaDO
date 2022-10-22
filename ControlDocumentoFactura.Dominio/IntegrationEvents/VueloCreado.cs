@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ControlDocumentoFactura.Dominio.IntegrationEvents
 {
-	public record VueloCreado:IntegrationEvent
+	public record VueloCreado : IntegrationEvent
 	{
 		public Guid Id { get; set; }
 		public String Source_airport_code { get; set; }

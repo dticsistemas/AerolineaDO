@@ -14,16 +14,20 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 
-namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.EntregarFactura {
-	public class EntregarFacturaHandler:INotificationHandler<FacturaCreadoEvent> {
+namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.EntregarFactura
+{
+	public class EntregarFacturaHandler : INotificationHandler<FacturaCreadoEvent>
+	{
 		private readonly IFacturaRepository _facturaRepository;
 
-		public EntregarFacturaHandler(IFacturaRepository facturaRepository) {
+		public EntregarFacturaHandler(IFacturaRepository facturaRepository)
+		{
 			_facturaRepository = facturaRepository;
 		}
 
 
-		public async Task Handle(FacturaCreadoEvent notification,CancellationToken cancellationToken) {
+		public async Task Handle(FacturaCreadoEvent notification, CancellationToken cancellationToken)
+		{
 			Factura objProducto = await _facturaRepository.FindByIdAsync(notification.FacturaId);
 			Console.WriteLine("Enviando Email Factura....." + notification.FacturaId);
 		}

@@ -7,12 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
-	public class FacturaReadModel_Test {
+namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel
+{
+	public class FacturaReadModel_Test
+	{
 
 
 		[Fact]
-		public void FacturaDto_CheckPropertiesValid() {
+		public void FacturaDto_CheckPropertiesValid()
+		{
 			var idFacturaTest = new Guid();
 			decimal montoTest = new(4.0);
 			decimal importeTest = new(4.0);
@@ -31,13 +34,13 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 
 			var objFactura = new FacturaReadModel();
 
-			Assert.Equal(Guid.Empty,objFactura.Id);
+			Assert.Equal(Guid.Empty, objFactura.Id);
 			Assert.Null(objFactura.Reserva);
 			Assert.Null(objFactura.Cliente);
 			Assert.Null(objFactura.Vuelo);
-			Assert.Equal(new decimal(0.0),objFactura.Monto);
-			Assert.Equal(new decimal(0.0),objFactura.Importe);
-			Assert.Equal(DateTime.MinValue,objFactura.Fecha);
+			Assert.Equal(new decimal(0.0), objFactura.Monto);
+			Assert.Equal(new decimal(0.0), objFactura.Importe);
+			Assert.Equal(DateTime.MinValue, objFactura.Fecha);
 			Assert.Null(objFactura.NroFactura);
 			Assert.Null(objFactura.Lugar);
 			Assert.Null(objFactura.NroAutorizacion);
@@ -64,20 +67,20 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			objFactura.Vuelo = _vueloReadModel;
 			objFactura.ConfiguracionFactura = _configReadModel;
 
-			Assert.Equal(idFacturaTest,objFactura.Id);
-			Assert.Equal(montoTest,objFactura.Monto);
-			Assert.Equal(importeTest,objFactura.Importe);
-			Assert.Equal(fechaTest,objFactura.Fecha);
-			Assert.Equal(nroFacturaTest,objFactura.NroFactura);
-			Assert.Equal(lugarTest,objFactura.Lugar);
-			Assert.Equal(nitBeneficiarioTest,objFactura.NitBeneficiario);
-			Assert.Equal(razonSocialBeneficiarioTest,objFactura.RazonSocialBeneficiario);
-			Assert.Equal(nroAutorizacionTest,objFactura.NroAutorizacion);
-			Assert.Equal(estadoTest,objFactura.Estado);
+			Assert.Equal(idFacturaTest, objFactura.Id);
+			Assert.Equal(montoTest, objFactura.Monto);
+			Assert.Equal(importeTest, objFactura.Importe);
+			Assert.Equal(fechaTest, objFactura.Fecha);
+			Assert.Equal(nroFacturaTest, objFactura.NroFactura);
+			Assert.Equal(lugarTest, objFactura.Lugar);
+			Assert.Equal(nitBeneficiarioTest, objFactura.NitBeneficiario);
+			Assert.Equal(razonSocialBeneficiarioTest, objFactura.RazonSocialBeneficiario);
+			Assert.Equal(nroAutorizacionTest, objFactura.NroAutorizacion);
+			Assert.Equal(estadoTest, objFactura.Estado);
 
-			Assert.Equal(_clienteReadModel,objFactura.Cliente);
-			Assert.Equal(_vueloReadModel,objFactura.Vuelo);
-			Assert.Equal(_reservaReadModel,objFactura.Reserva);
+			Assert.Equal(_clienteReadModel, objFactura.Cliente);
+			Assert.Equal(_vueloReadModel, objFactura.Vuelo);
+			Assert.Equal(_reservaReadModel, objFactura.Reserva);
 			Assert.Equal(_configReadModel, objFactura.ConfiguracionFactura);
 
 		}

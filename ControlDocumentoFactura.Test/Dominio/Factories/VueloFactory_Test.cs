@@ -23,7 +23,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Factories
 			String destiny_airport_code = "LPZ";
 			String status = "open";
 			String information = "Vuelo SCz-LPZ";
-			Vuelo objVuelo = _vueloFactory.Create(idVuelo, flight_program_id,source_airport_code,destiny_airport_code, status,information);
+			Vuelo objVuelo = _vueloFactory.Create(idVuelo, flight_program_id, source_airport_code, destiny_airport_code, status, information);
 
 			Assert.Equal(idVuelo, objVuelo.Id);
 			Assert.Equal(flight_program_id, objVuelo.Flight_program_id);

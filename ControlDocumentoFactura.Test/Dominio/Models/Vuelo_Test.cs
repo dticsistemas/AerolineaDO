@@ -6,26 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Dominio.Models {
-	public class Vuelo_Test {
+namespace ControlDocumentoFactura.Test.Dominio.Models
+{
+	public class Vuelo_Test
+	{
 		[Fact]
-		public void Vuelo_CheckPropertiesValid() {
+		public void Vuelo_CheckPropertiesValid()
+		{
 			var idVueloTest = Guid.NewGuid();
 			int cantidadVuelo = 85;
 			string detalleVuelo = "SCZ-LPZ";
 			decimal precioPasajeVuelo = new(40.0);
 
-			var objVuelo = new Vuelo(idVueloTest,1,"MIAM","BOL","A","");
-			Assert.NotEqual(Guid.Empty,objVuelo.Id);
+			var objVuelo = new Vuelo(idVueloTest, 1, "MIAM", "BOL", "A", "");
+			Assert.NotEqual(Guid.Empty, objVuelo.Id);
 			//Assert.Equal(cantidadVuelo,objVuelo.Cantidad);
 			//Assert.Equal(detalleVuelo,objVuelo.Detalle);
-		//	Assert.Equal(precioPasajeVuelo,( decimal )objVuelo.PrecioPasaje);
+			//	Assert.Equal(precioPasajeVuelo,( decimal )objVuelo.PrecioPasaje);
 
 		}
 		[Fact]
-		public void TestConstructor_IsPrivate() {
+		public void TestConstructor_IsPrivate()
+		{
 			var vuelo = new Vuelo();
-			Assert.NotEqual(Guid.Empty,vuelo.Id);
+			Assert.NotEqual(Guid.Empty, vuelo.Id);
 			//Assert.Equal(0,vuelo.Cantidad);
 			//Assert.Null(vuelo.Detalle);
 			//Assert.Equal(new decimal(0.0),( decimal )vuelo.PrecioPasaje);

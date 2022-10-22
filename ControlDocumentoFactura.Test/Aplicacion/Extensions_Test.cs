@@ -9,17 +9,17 @@ using Xunit;
 
 namespace ControlDocumentoFactura.Test.Aplicacion
 {
-		public class Extensions_Test
+	public class Extensions_Test
+	{
+		public Extensions_Test() { }
+
+		[Fact]
+		public void Extension_CheckServicecCollectionValid()
 		{
-				public Extensions_Test() { }
-
-				[Fact]
-				public void Extension_CheckServicecCollectionValid()
-				{						
-						//var serviceResult = Extensions.AddApplication(Med);
-						//Assert.NotNull(serviceResult);
-
-				}				
+			//var serviceResult = Extensions.AddApplication(Med);
+			//Assert.NotNull(serviceResult);
 
 		}
+
+	}
 }

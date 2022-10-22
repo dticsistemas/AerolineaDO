@@ -54,7 +54,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			);
 
 
-			var objRequest = new CrearClienteCommand(_idClienteTest,_name,_lastName,_passport,_needAssistance,_nit,_email,_phone);
+			var objRequest = new CrearClienteCommand(_idClienteTest, _name, _lastName, _passport, _needAssistance, _nit, _email, _phone);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);

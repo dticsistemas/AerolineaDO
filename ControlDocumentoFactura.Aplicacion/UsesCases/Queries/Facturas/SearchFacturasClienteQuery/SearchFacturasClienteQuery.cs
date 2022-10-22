@@ -17,5 +17,5 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.SearchFa
 			this.idClienteTest = idClienteTest;
 		}
 
-}
+	}
 }

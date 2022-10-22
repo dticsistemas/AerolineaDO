@@ -21,8 +21,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			var destiny_airport_code = "LPZ";
 			var status = "open";
 			var information = "info";
-			var command = new CrearVueloCommand(id,flight_program_id,source_airport_code,destiny_airport_code,status,information);
-			Assert.Equal(flight_program_id,command.Flight_program_id);
+			var command = new CrearVueloCommand(id, flight_program_id, source_airport_code, destiny_airport_code, status, information);
+			Assert.Equal(flight_program_id, command.Flight_program_id);
 			Assert.Equal(information, command.Information);
 			Assert.Equal(destiny_airport_code, command.Destiny_airport_code);
 			Assert.Equal(source_airport_code, command.Source_airport_code);
@@ -40,7 +40,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			Assert.Null(command.Destiny_airport_code);
 			Assert.Null(command.Source_airport_code);
 			Assert.Null(command.Status);
-			Assert.Equal(0,command.Flight_program_id);
+			Assert.Equal(0, command.Flight_program_id);
 			Assert.Equal(Guid.Empty, command.Id);
 		}
 	}

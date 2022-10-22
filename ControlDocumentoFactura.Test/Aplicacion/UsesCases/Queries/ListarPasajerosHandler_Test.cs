@@ -32,9 +32,9 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 		[Fact]
 		public void ListarPasajerosHandler_HandleCorrectly()
 		{
-			var cliente = new Cliente(new Guid(),"nombre","lasstname","123","true","456","emailo@aaa.com","789");
+			var cliente = new Cliente(new Guid(), "nombre", "lasstname", "123", "true", "456", "emailo@aaa.com", "789");
 			List<Cliente> parts = new List<Cliente>();
-			parts.Add(cliente);			
+			parts.Add(cliente);
 			_objRepository.Setup(objRepository => objRepository.GetAll()).ReturnsAsync(parts);
 
 			var objHandler = new ListarPasajerosHandler(
@@ -47,6 +47,6 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.NotNull(result);
 		}
-		
+
 	}
 }

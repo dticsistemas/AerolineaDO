@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Vuelos.CrearVuelo
 {
-	
-		public class CrearVueloCommand : IRequest<Guid>
+
+	public class CrearVueloCommand : IRequest<Guid>
 	{
 		public Guid Id { get; set; }
 		public String Source_airport_code { get; set; }

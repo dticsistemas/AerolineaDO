@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
-	public class ClienteReadModel_Test {
+namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel
+{
+	public class ClienteReadModel_Test
+	{
 		[Fact]
-		public void ClienteReadModel_CheckPropertiesValid() {
+		public void ClienteReadModel_CheckPropertiesValid()
+		{
 			var idCliente = Guid.NewGuid();
 			var nombreCliente = "Juan Prueba Test";
 			String Name = "Juan";
@@ -20,8 +23,8 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			String Email = "demo@demo.com";
 			String Phone = "789";
 
-		var objCliente = new ClienteReadModel();
-			Assert.Equal(Guid.Empty,objCliente.Id);
+			var objCliente = new ClienteReadModel();
+			Assert.Equal(Guid.Empty, objCliente.Id);
 			Assert.Null(objCliente.NombreCompleto);
 
 			objCliente.Id = idCliente;
@@ -33,8 +36,8 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			objCliente.Nit = Nit;
 			objCliente.Email = Email;
 			objCliente.Phone = Phone;
-			Assert.Equal(idCliente,objCliente.Id);
-			Assert.Equal(nombreCliente,objCliente.NombreCompleto);
+			Assert.Equal(idCliente, objCliente.Id);
+			Assert.Equal(nombreCliente, objCliente.NombreCompleto);
 			Assert.Equal(Name, objCliente.Name);
 			Assert.Equal(LastName, objCliente.LastName);
 			Assert.Equal(Passport, objCliente.Passport);

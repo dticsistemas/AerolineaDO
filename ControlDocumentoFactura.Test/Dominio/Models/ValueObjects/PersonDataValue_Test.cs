@@ -14,21 +14,22 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 	{
 		[Fact]
 		public void PersonData_CheckPropertiesValid()
-		{			
+		{
 
 			var objTest = "Santa Cruz de la Sierra";
 			var objValue = new PersonDataValue(objTest);
 
-			Assert.Equal(objValue.Value, objTest); 
-			Assert.Equal(objTest,objValue.Value);
+			Assert.Equal(objValue.Value, objTest);
+			Assert.Equal(objTest, objValue.Value);
 			Assert.NotNull(objValue.ToString());
 			Assert.Equal(objTest, objValue);
 
-			Action testCodigoNombreExcedente500Caracteres = () => {
+			Action testCodigoNombreExcedente500Caracteres = () =>
+			{
 				var cadena = "123456789101234567890123456789+01234567890123456789descripcion de lugar mayora que la cantidad dfe caracteres permitidos generandoi una esxcepcion para comporobar mediante test unitatrios7654321";
 				cadena = cadena + cadena + cadena + cadena + cadena + cadena + cadena + cadena;
-				
-				objValue = new PersonDataValue(cadena+"123456789101234567890123456789+01234567890123456789descripcion de lugar mayora que la cantidad dfe caracteres permitidos generandoi una esxcepcion para comporobar mediante test unitatrios7654321");
+
+				objValue = new PersonDataValue(cadena + "123456789101234567890123456789+01234567890123456789descripcion de lugar mayora que la cantidad dfe caracteres permitidos generandoi una esxcepcion para comporobar mediante test unitatrios7654321");
 			};
 			var exception = Record.Exception(testCodigoNombreExcedente500Caracteres);
 			Assert.NotNull(exception);

@@ -16,10 +16,10 @@ namespace ControlDocumentoFactura.Test.Infraestructura.Config
 		[Fact]
 		public void ClienteReadConfig_CheckPropertiesValid()
 		{
-			
 
-		    ClienteReadConfig cfg = new ClienteReadConfig();
-		
+
+			ClienteReadConfig cfg = new ClienteReadConfig();
+
 			//cfg.Configure()
 
 		}

@@ -21,7 +21,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearCo
 		{
 			NitProveedor = nitProveedor;
 			RazonSocialProveedor = razonSocialProveedor;
-			NroAutorizacion = nroAutorizacion;			
+			NroAutorizacion = nroAutorizacion;
 		}
 	}
 }

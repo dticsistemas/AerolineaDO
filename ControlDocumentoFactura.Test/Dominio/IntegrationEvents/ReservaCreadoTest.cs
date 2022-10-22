@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Test.Dominio.IntegrationEvents
 		[Fact]
 		public void ReservaCreado_CheckPropertiesValid()
 		{
-			
+
 			ReservaCreado reserva = new ReservaCreado();
 			reserva.Id = new Guid();
 			reserva.ReservationNumber = "123";
@@ -25,7 +25,7 @@ namespace ControlDocumentoFactura.Test.Dominio.IntegrationEvents
 			reserva.TipoReserva = "R";
 			reserva.ClienteId = new Guid();
 			reserva.VueloId = new Guid();
-			Assert.Equal("123",reserva.ReservationNumber);
+			Assert.Equal("123", reserva.ReservationNumber);
 			Assert.Equal("456", reserva.ReservationStatus);
 			Assert.Equal(new decimal(10), reserva.Monto);
 			Assert.Equal(new decimal(10), reserva.Deuda);

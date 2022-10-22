@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos {
-	public class PagoDto {
+namespace ControlDocumentoFactura.Aplicacion.Dtos.Pagos
+{
+	public class PagoDto
+	{
 		public Guid Id { get; set; }
 		public Guid ReservaId { get; set; }
 		public decimal Monto { get; set; }

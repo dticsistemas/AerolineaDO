@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
-	public class ReservaReadModel_Test {
+namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel
+{
+	public class ReservaReadModel_Test
+	{
 		[Fact]
-		public void ReservaDto_CheckPropertiesValid() {
+		public void ReservaDto_CheckPropertiesValid()
+		{
 
 
 			var idReservaTest = new Guid();
@@ -22,15 +25,15 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			var codReservaTest = "ABC12";
 			var estadoReservaTest = "P";
 			var tipoReservaTest = "R";
-			
 
 
-		var objReserva = new ReservaReadModel();
 
-			Assert.Equal(Guid.Empty,objReserva.Id);
-			Assert.Equal(new decimal(0.0),objReserva.Monto);
-			Assert.Equal(new decimal(0.0),objReserva.Deuda);
-			Assert.Equal(DateTime.MinValue,objReserva.Fecha);
+			var objReserva = new ReservaReadModel();
+
+			Assert.Equal(Guid.Empty, objReserva.Id);
+			Assert.Equal(new decimal(0.0), objReserva.Monto);
+			Assert.Equal(new decimal(0.0), objReserva.Deuda);
+			Assert.Equal(DateTime.MinValue, objReserva.Fecha);
 			Assert.Null(objReserva.TipoReserva);
 
 			objReserva.Id = idReservaTest;
@@ -39,19 +42,19 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel {
 			objReserva.Monto = montoTest;
 			objReserva.Deuda = deudaTest;
 			objReserva.Fecha = fechaTest;
-			objReserva.ReservationNumber= codReservaTest;
+			objReserva.ReservationNumber = codReservaTest;
 			objReserva.ReservationStatus = estadoReservaTest;
 			objReserva.TipoReserva = tipoReservaTest;
 
-			Assert.Equal(idReservaTest,objReserva.Id);
-			Assert.Equal(_clienteReadModel,objReserva.Cliente);
-			Assert.Equal(_vueloReadModel,objReserva.Vuelo);
-			Assert.Equal(montoTest,objReserva.Monto);
-			Assert.Equal(deudaTest,objReserva.Deuda);
-			Assert.Equal(fechaTest,objReserva.Fecha);
-			Assert.Equal(codReservaTest,objReserva.ReservationNumber);
-			Assert.Equal(estadoReservaTest,objReserva.ReservationStatus);
-			Assert.Equal(tipoReservaTest,objReserva.TipoReserva);
+			Assert.Equal(idReservaTest, objReserva.Id);
+			Assert.Equal(_clienteReadModel, objReserva.Cliente);
+			Assert.Equal(_vueloReadModel, objReserva.Vuelo);
+			Assert.Equal(montoTest, objReserva.Monto);
+			Assert.Equal(deudaTest, objReserva.Deuda);
+			Assert.Equal(fechaTest, objReserva.Fecha);
+			Assert.Equal(codReservaTest, objReserva.ReservationNumber);
+			Assert.Equal(estadoReservaTest, objReserva.ReservationStatus);
+			Assert.Equal(tipoReservaTest, objReserva.TipoReserva);
 
 		}
 	}

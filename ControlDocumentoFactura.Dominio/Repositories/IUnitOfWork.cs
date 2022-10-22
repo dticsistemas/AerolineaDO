@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Repositories {
-	public interface IUnitOfWork {
+namespace ControlDocumentoFactura.Dominio.Repositories
+{
+	public interface IUnitOfWork
+	{
 		Task Commit();
 	}
 }

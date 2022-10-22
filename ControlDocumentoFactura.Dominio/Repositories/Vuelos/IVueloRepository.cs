@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Repositories.Vuelos {
-	public interface IVueloRepository:IRepository<Vuelo,Guid> {
+namespace ControlDocumentoFactura.Dominio.Repositories.Vuelos
+{
+	public interface IVueloRepository : IRepository<Vuelo, Guid>
+	{
 		Task UpdateAsync(Vuelo obj);
 		Task<List<Vuelo>> GetAll();
 

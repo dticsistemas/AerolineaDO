@@ -9,31 +9,37 @@ using System.Text;
 using System.Threading.Tasks;
 using ControlDocumentoFactura.Dominio.Models.Clientes;
 
-namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository {
-		public class FacturaRepository:IFacturaRepository {
-				public readonly DbSet<Factura> _facturas;
+namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository
+{
+	public class FacturaRepository : IFacturaRepository
+	{
+		public readonly DbSet<Factura> _facturas;
 
-				public FacturaRepository(WriteDbContext context) {
-						_facturas = context.Factura;
-				}
+		public FacturaRepository(WriteDbContext context)
+		{
+			_facturas = context.Factura;
+		}
 
-				public async Task CreateAsync(Factura obj) {
-						await _facturas.AddAsync(obj);
-				}
+		public async Task CreateAsync(Factura obj)
+		{
+			await _facturas.AddAsync(obj);
+		}
 
-				public async Task<Factura> FindByIdAsync(Guid id) {
-						return await _facturas.SingleOrDefaultAsync(x => x.Id == id);
-				}
+		public async Task<Factura> FindByIdAsync(Guid id)
+		{
+			return await _facturas.SingleOrDefaultAsync(x => x.Id == id);
+		}
 
-				public Task UpdateAsync(Factura obj) {
-						_facturas.Update(obj);
+		public Task UpdateAsync(Factura obj)
+		{
+			_facturas.Update(obj);
 
-						return Task.CompletedTask;
-				}
-				public async Task<List<Factura>> GetAll()
-				{
-					return await _facturas.ToListAsync();
+			return Task.CompletedTask;
+		}
+		public async Task<List<Factura>> GetAll()
+		{
+			return await _facturas.ToListAsync();
 
-				}
+		}
 	}
 }

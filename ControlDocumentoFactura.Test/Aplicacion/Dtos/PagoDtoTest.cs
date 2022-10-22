@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
-	public class PagoDtoTest {
+namespace ControlDocumentoFactura.Test.Aplicacion.Dtos
+{
+	public class PagoDtoTest
+	{
 		[Fact]
-		public void PagoDto_CheckPropertiesValid() {
+		public void PagoDto_CheckPropertiesValid()
+		{
 			var idPagoTest = new Guid();
 			var idReservaTest = new Guid();
 			decimal montoTest = new(4.0);
@@ -18,10 +21,10 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 
 			var objPago = new PagoDto();
 
-			Assert.Equal(Guid.Empty,objPago.Id);
-			Assert.Equal(Guid.Empty,objPago.ReservaId);
-			Assert.Equal(new decimal(0.0),objPago.Monto);
-			Assert.Equal(DateTime.MinValue,objPago.Fecha);
+			Assert.Equal(Guid.Empty, objPago.Id);
+			Assert.Equal(Guid.Empty, objPago.ReservaId);
+			Assert.Equal(new decimal(0.0), objPago.Monto);
+			Assert.Equal(DateTime.MinValue, objPago.Fecha);
 			Assert.Null(objPago.CodComprobante);
 
 			objPago.Id = idPagoTest;
@@ -30,11 +33,11 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos {
 			objPago.Fecha = fechaTest;
 			objPago.CodComprobante = codComprobanteTest;
 
-			Assert.Equal(idPagoTest,objPago.Id);
-			Assert.Equal(idReservaTest,objPago.ReservaId);
-			Assert.Equal(montoTest,objPago.Monto);
-			Assert.Equal(fechaTest,objPago.Fecha);
-			Assert.Equal(codComprobanteTest,objPago.CodComprobante);
+			Assert.Equal(idPagoTest, objPago.Id);
+			Assert.Equal(idReservaTest, objPago.ReservaId);
+			Assert.Equal(montoTest, objPago.Monto);
+			Assert.Equal(fechaTest, objPago.Fecha);
+			Assert.Equal(codComprobanteTest, objPago.CodComprobante);
 
 		}
 	}

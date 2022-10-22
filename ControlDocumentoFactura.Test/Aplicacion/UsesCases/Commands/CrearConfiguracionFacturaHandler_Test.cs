@@ -55,7 +55,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			);
 
 
-			var objRequest = new CrearConfiguracionFacturaCommand(_nitProveedor,_razonSocialProveedor,_nroAutorizacion);
+			var objRequest = new CrearConfiguracionFacturaCommand(_nitProveedor, _razonSocialProveedor, _nroAutorizacion);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);

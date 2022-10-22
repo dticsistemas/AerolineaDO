@@ -20,6 +20,6 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 			Assert.Equal(idClienteTest, query.idClienteTest);
 		}
 
-		
+
 	}
 }
