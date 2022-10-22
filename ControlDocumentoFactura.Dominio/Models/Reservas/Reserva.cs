@@ -44,6 +44,15 @@ namespace ControlDocumentoFactura.Dominio.Models.Reservas
 			}
 
 		}
+		public void ActualizarReservaFacturada()
+		{
+			if (ReservationStatus != "facturada")
+			{
+				ReservationStatus = "facturada";
+
+			}
+
+		}
 
 
 	}
