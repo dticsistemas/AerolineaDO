@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura {
-	public class CrearFacturaCommand : IRequest<Guid> {
+namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFactura
+{
+	public class CrearFacturaCommand : IRequest<Guid>
+	{
 		public decimal Monto { get; set; }
 		public decimal Importe { get; set; }
 		public String Lugar { get; set; }
@@ -22,7 +24,8 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Facturas.CrearFa
 
 
 		private CrearFacturaCommand() { }
-		public CrearFacturaCommand(decimal monto,string lugar, string tipoNit, string nitBeneficiario, string razonSocialBeneficiario, Guid clienteId, Guid vueloId, Guid reservaId, Guid configuracionFacturaId) {
+		public CrearFacturaCommand(decimal monto, string lugar, string tipoNit, string nitBeneficiario, string razonSocialBeneficiario, Guid clienteId, Guid vueloId, Guid reservaId, Guid configuracionFacturaId)
+		{
 			Monto = monto;
 			Lugar = lugar;
 			NitBeneficiario = nitBeneficiario;

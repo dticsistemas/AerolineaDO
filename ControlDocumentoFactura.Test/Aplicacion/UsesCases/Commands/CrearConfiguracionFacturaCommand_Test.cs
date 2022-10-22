@@ -18,7 +18,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			var nitProveedor = "123";
 			var razonSocialProveedor = "demo";
 			var nroAutorizacion = "1";
-			var command = new CrearConfiguracionFacturaCommand(nitProveedor,razonSocialProveedor,nroAutorizacion);
+			var command = new CrearConfiguracionFacturaCommand(nitProveedor, razonSocialProveedor, nroAutorizacion);
 			Assert.Equal(nroAutorizacion, command.NroAutorizacion);
 			Assert.Equal(razonSocialProveedor, command.RazonSocialProveedor);
 			Assert.Equal(nitProveedor, command.NitProveedor);

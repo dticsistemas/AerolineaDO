@@ -11,21 +11,27 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId {
-	public class BuscarFacturaPorIdHandler:IRequestHandler<BuscarFacturaPorIdQuery,FacturaDto> {
+namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFacturaPorId
+{
+	public class BuscarFacturaPorIdHandler : IRequestHandler<BuscarFacturaPorIdQuery, FacturaDto>
+	{
 		private readonly IFacturaRepository _facturaRepository;
 		private readonly ILogger<BuscarFacturaPorIdQuery> _logger;
-		public BuscarFacturaPorIdHandler(IFacturaRepository reservaRepository,ILogger<BuscarFacturaPorIdQuery> logger) {
+		public BuscarFacturaPorIdHandler(IFacturaRepository reservaRepository, ILogger<BuscarFacturaPorIdQuery> logger)
+		{
 			_facturaRepository = reservaRepository;
 			_logger = logger;
 		}
 
-		public async Task<FacturaDto> Handle(BuscarFacturaPorIdQuery request,CancellationToken cancellationToken) {
+		public async Task<FacturaDto> Handle(BuscarFacturaPorIdQuery request, CancellationToken cancellationToken)
+		{
 			FacturaDto result = null;
-			try {
+			try
+			{
 				Factura objFactura = await _facturaRepository.FindByIdAsync(request.Id);
 
-				result = new FacturaDto() {
+				result = new FacturaDto()
+				{
 					Id = objFactura.Id,
 					Monto = objFactura.Monto,
 					Importe = objFactura.Importe,
@@ -41,8 +47,9 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Pagos.BuscarFactu
 
 				};
 			}
-			catch( Exception ex ) {
-				_logger.LogError(ex,"Error al obtener Factura Id");
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Error al obtener Factura Id");
 			}
 
 			return result;

@@ -10,15 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using ControlDocumentoFactura.Dominio.Factories.Vuelos;
 
-namespace ControlDocumentoFactura.Aplicacion {
-	public static class Extensions {
-		public static IServiceCollection AddApplication(this IServiceCollection services) {
+namespace ControlDocumentoFactura.Aplicacion
+{
+	public static class Extensions
+	{
+		public static IServiceCollection AddApplication(this IServiceCollection services)
+		{
 			services.AddMediatR(Assembly.GetExecutingAssembly());
-			services.AddTransient<IFacturaService,FacturaService>();
-			services.AddTransient<IFacturaFactory,FacturaFactory>();
+			services.AddTransient<IFacturaService, FacturaService>();
+			services.AddTransient<IFacturaFactory, FacturaFactory>();
 			services.AddTransient<IVueloFactory, VueloFactory>();
 			services.AddTransient<IConfiguracionFacturaFactory, ConfiguracionFacturaFactory>();
-			
+
 			//services.AddTransient<IClienteFactory, ClienteFactory>();
 
 

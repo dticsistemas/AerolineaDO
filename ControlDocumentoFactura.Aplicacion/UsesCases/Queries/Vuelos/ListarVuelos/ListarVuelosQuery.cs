@@ -11,7 +11,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Vuelos.ListarVuel
 {
 	public class ListarVuelosQuery : IRequest<ICollection<VueloDto>>
 	{
-		
+
 		public ListarVuelosQuery() { }
 
 	}

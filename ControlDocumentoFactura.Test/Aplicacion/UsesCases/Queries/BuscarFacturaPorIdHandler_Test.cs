@@ -12,17 +12,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries {
-	public class BuscarFacturaPorIdHandler_Test {
+namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
+{
+	public class BuscarFacturaPorIdHandler_Test
+	{
 
 		private readonly Mock<IFacturaRepository> _facturaRepository;
 		private readonly Mock<ILogger<BuscarFacturaPorIdQuery>> _logger;
-		public BuscarFacturaPorIdHandler_Test() {
+		public BuscarFacturaPorIdHandler_Test()
+		{
 			_facturaRepository = new Mock<IFacturaRepository>();
 			_logger = new Mock<ILogger<BuscarFacturaPorIdQuery>>();
 		}
 		[Fact]
-		public void BuscarFacturaPorIdHandler_HandleCorrectly() {
+		public void BuscarFacturaPorIdHandler_HandleCorrectly()
+		{
 
 			var idFacturaTest = new Guid();
 			/* var idReservaTest = new Guid();
@@ -64,11 +68,11 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries {
 			_facturaRepository.Setup(_facturaRepository => _facturaRepository.FindByIdAsync(idFacturaTest))
 				.Returns(Task.FromResult(_facturaTest));
 
-			var handler = new BuscarFacturaPorIdHandler(_facturaRepository.Object,_logger.Object);
+			var handler = new BuscarFacturaPorIdHandler(_facturaRepository.Object, _logger.Object);
 			var objRequest = new BuscarFacturaPorIdQuery(idFacturaTest);
-			var result = handler.Handle(objRequest,tcs.Token);
+			var result = handler.Handle(objRequest, tcs.Token);
 			Assert.NotNull(result);
-			Assert.Equal(nroFacturaTest,_facturaTest.NroFactura);
+			Assert.Equal(nroFacturaTest, _facturaTest.NroFactura);
 
 			/*Assert.Equal(idFacturaTest, objFactura.Id);
             Assert.Equal(idReservaTest, objFactura.ReservaId);
@@ -89,7 +93,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries {
 
 		}
 		[Fact]
-		public void BuscarFacturaPorIdHandler_Handle_Fail() {
+		public void BuscarFacturaPorIdHandler_Handle_Fail()
+		{
 			var nroFacturaTest = "2022-05-15";
 			Factura _facturaTest = new Factura(nroFacturaTest);
 			var idFacturaTest = new Guid();
@@ -98,11 +103,11 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries {
 			_facturaRepository.Setup(_facturaRepository => _facturaRepository.FindByIdAsync(idFacturaTest))
 				.Returns(Task.FromResult(_facturaTest));
 
-			var handler = new BuscarFacturaPorIdHandler(_facturaRepository.Object,_logger.Object);
+			var handler = new BuscarFacturaPorIdHandler(_facturaRepository.Object, _logger.Object);
 			var objRequest = new BuscarFacturaPorIdQuery(idFacturaTest_Fail);
 			var tcs = new CancellationTokenSource(1000);
 
-			var result = handler.Handle(objRequest,tcs.Token);
+			var result = handler.Handle(objRequest, tcs.Token);
 			Assert.NotNull(result);
 
 			/*

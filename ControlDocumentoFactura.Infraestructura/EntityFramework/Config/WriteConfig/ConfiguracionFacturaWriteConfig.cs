@@ -18,14 +18,14 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 		{
 			builder.ToTable("ConfiguracionFactura");
 			builder.HasKey(x => x.Id);
-			
+
 			//-----------------------------------
 
 			builder.Property(x => x.Fecha)
 					.HasColumnName("fecha")
 					.HasColumnType("datetime");
 			//-----------------------------------
-			
+
 			var nitFacturaConverter = new ValueConverter<NitFacturaValue, string>(
 				nitFacturaValue => nitFacturaValue.Value,
 				nitFactura => new NitFacturaValue(nitFactura)
@@ -60,7 +60,7 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteCo
 			//-------------------------------
 			builder.Property(x => x.Estado)
 				.HasColumnName("estado");
-			
+
 
 
 		}

@@ -14,10 +14,10 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 	{
 		[Fact]
 		public void ListarFacturasQuery_DataValid()
-		{			
+		{
 			var query = new ListarFacturasQuery();
 
-			Assert.NotNull( query);
+			Assert.NotNull(query);
 		}
 
 	}

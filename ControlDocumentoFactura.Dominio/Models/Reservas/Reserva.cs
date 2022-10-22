@@ -8,8 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Models.Reservas {
-	public class Reserva:AggregateRoot<Guid> {
+namespace ControlDocumentoFactura.Dominio.Models.Reservas
+{
+	public class Reserva : AggregateRoot<Guid>
+	{
 
 		public CodigoReservaValue ReservationNumber { get; private set; }
 		public String ReservationStatus { get; private set; }
@@ -21,25 +23,26 @@ namespace ControlDocumentoFactura.Dominio.Models.Reservas {
 		public Guid VueloId { get; private set; }
 
 		private Reserva() { }
-		public Reserva(Guid id, String reservationNumber,Guid clienteId, Guid vueloId,string fecha, decimal monto,String reservationStatus) {
+		public Reserva(Guid id, String reservationNumber, Guid clienteId, Guid vueloId, string fecha, decimal monto, String reservationStatus)
+		{
 			Id = Guid.NewGuid();
-			ReservationNumber= reservationNumber;
+			ReservationNumber = reservationNumber;
 			Monto = monto;
 			Deuda = monto;
 			Fecha = DateTime.Parse(fecha);
 			TipoReserva = "R";
-			ReservationStatus= reservationStatus;
+			ReservationStatus = reservationStatus;
 			ClienteId = clienteId;
 			VueloId = vueloId;
 		}
 		public void ActualizarReservaPagada()
 		{
-			if(ReservationStatus != "pagado")
+			if (ReservationStatus != "pagado")
 			{
 				ReservationStatus = "pagado";
 
 			}
-			
+
 		}
 
 

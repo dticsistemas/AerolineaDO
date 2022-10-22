@@ -49,13 +49,13 @@ namespace ControlDocumentoFactura.WebApi
 
 
 			_logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-			
 
-			
+
+
 			var accessKey = "AKIASZCTJFEF5SCG2NER";// _configuration.GetValue<string>("AccessKey");
 			var secretKey = "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";// _configuration.GetValue<string>("SecretKey");
 			var myQueueUrl = "https://sqs.us-east-1.amazonaws.com/191300708619/invoices_queue";// _configuration.GetValue<string>("myQueueUrl");
-	
+
 
 
 
@@ -66,7 +66,7 @@ namespace ControlDocumentoFactura.WebApi
 
 			var sqsClient = new AmazonSQSClient(credentials, RegionEndpoint.USEast1);
 			await Start(sqsClient, myQueueUrl, stoppingToken);
-			
+
 		}
 
 		private async Task Start(IAmazonSQS sqsClient, string myQueueUrl, CancellationToken stoppingToken)
@@ -75,44 +75,44 @@ namespace ControlDocumentoFactura.WebApi
 			Console.WriteLine($"Reading messages from queue\n  {myQueueUrl}");
 			Console.WriteLine("Press any key to stop. (Response might be slightly delayed.)");
 			do
-			{ 
+			{
 				var msg = await GetMessage(sqsClient, myQueueUrl, 3);
 				if (msg.Messages.Count != 0)
 				{
 					if (ProcessMessage(msg.Messages[0]))
 					{
 						Amazon.SQS.Model.Message message = msg.Messages[0];
-					//Console.WriteLine($"\nMessage body of {message.MessageId}:");
-					//Console.WriteLine($"{message.Body}");
-					JObject jsonDataParent = JObject.Parse(message.Body);
-				
-					var mensaje = message.Body;					
+						//Console.WriteLine($"\nMessage body of {message.MessageId}:");
+						//Console.WriteLine($"{message.Body}");
+						JObject jsonDataParent = JObject.Parse(message.Body);
 
-					var cadena = jsonDataParent["Message"].ToString();
-					var eventoTopic= jsonDataParent["TopicArn"].ToString();
+						var mensaje = message.Body;
+
+						var cadena = jsonDataParent["Message"].ToString();
+						var eventoTopic = jsonDataParent["TopicArn"].ToString();
 						//var cadena = Convert.ToString(jsonDataParent.Message);
-					dynamic jsonData = JObject.Parse(cadena);
-					JObject obj = JObject.Parse(cadena);
-					string method1_timestamp = (string)obj["event"];
+						dynamic jsonData = JObject.Parse(cadena);
+						JObject obj = JObject.Parse(cadena);
+						string method1_timestamp = (string)obj["event"];
 
 						JavaScriptSerializer serializer = new JavaScriptSerializer();
 						dynamic item = serializer.Deserialize<object>(cadena);
 						//string namee = item["event"];
 						//var nameEvent = "";// jsonData.get;
-					var jDatos = jsonData.data;
-					
-					try
-					{
-						if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:VueloCreado")
+						var jDatos = jsonData.data;
+
+						try
 						{
-							var uuid = jDatos.flight_program.uuid;
-							//var flight = jDatos.flight;
-							//var uuid_flight = glifht.uuid;
-							var origen = jDatos.flight_program.sourceAirport;
-							var destino = jDatos.flight_program.destinyAirport;							
-							var flight_program_id = jDatos.flight.id;
-							var datos = jDatos.flight.created_at;
-							var status = "null";
+							if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:VueloCreado")
+							{
+								var uuid = jDatos.flight_program.uuid;
+								//var flight = jDatos.flight;
+								//var uuid_flight = glifht.uuid;
+								var origen = jDatos.flight_program.sourceAirport;
+								var destino = jDatos.flight_program.destinyAirport;
+								var flight_program_id = jDatos.flight.id;
+								var datos = jDatos.flight.created_at;
+								var status = "null";
 
 								try
 								{
@@ -130,19 +130,19 @@ namespace ControlDocumentoFactura.WebApi
 								{
 									Console.WriteLine("{0} Exception caught.", e);
 								}
-						}
+							}
 
-						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:PasajeroCreado")
+							else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:PasajeroCreado")
 							{
-							jDatos = jsonData.body.passanger;
-							var id = jDatos.id;
-							var name = jDatos.name;
-							var lastName = jDatos.lastName;
-							var passport = jDatos.passport;
-							var needsAssistance = jDatos.needsAssistance;
+								jDatos = jsonData.body.passanger;
+								var id = jDatos.id;
+								var name = jDatos.name;
+								var lastName = jDatos.lastName;
+								var passport = jDatos.passport;
+								var needsAssistance = jDatos.needsAssistance;
 								try
 								{
-									CrearClienteCommand objClienteCommand = new CrearClienteCommand(Guid.Parse(id.ToString()),name.ToString(), lastName.ToString(), passport.ToString(), needsAssistance.ToString(), "null","test@gmail.com","null");
+									CrearClienteCommand objClienteCommand = new CrearClienteCommand(Guid.Parse(id.ToString()), name.ToString(), lastName.ToString(), passport.ToString(), needsAssistance.ToString(), "null", "test@gmail.com", "null");
 									using (var scope = Services.CreateScope())
 									{
 										var _mediator =
@@ -154,24 +154,24 @@ namespace ControlDocumentoFactura.WebApi
 
 								}
 								catch (Exception e)
-							{
-								Console.WriteLine("{0} Exception caught.", e);
+								{
+									Console.WriteLine("{0} Exception caught.", e);
+								}
 							}
-						}
 
-						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaCreada")
+							else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaCreada")
 							{
 								jDatos = jsonData;//.body.booking;
 								var id = jDatos.id;
-							var reservationNumber = jDatos.reservationNumber.data;
-							var passanger = jDatos.passanger;
-							var reservationStatus = jDatos.reservationStatus.data;
-							var fecha = "2022-10-01";// now.ToString();//jDatos.date;
-							var monto = jDatos.accountReceivable.originalValue.data;
-							var flight = jDatos.flight;
-							try
-							{
-									CrearReservaCommand objReservaCommand = new CrearReservaCommand(Guid.Parse(id.ToString()),reservationNumber.ToString(), Guid.Parse(passanger.ToString()), Guid.Parse(flight.ToString()),fecha.ToString(), Convert.ToDecimal(monto.ToString()),reservationStatus.ToString());
+								var reservationNumber = jDatos.reservationNumber.data;
+								var passanger = jDatos.passanger;
+								var reservationStatus = jDatos.reservationStatus.data;
+								var fecha = "2022-10-01";// now.ToString();//jDatos.date;
+								var monto = jDatos.accountReceivable.originalValue.data;
+								var flight = jDatos.flight;
+								try
+								{
+									CrearReservaCommand objReservaCommand = new CrearReservaCommand(Guid.Parse(id.ToString()), reservationNumber.ToString(), Guid.Parse(passanger.ToString()), Guid.Parse(flight.ToString()), fecha.ToString(), Convert.ToDecimal(monto.ToString()), reservationStatus.ToString());
 									using (var scope = Services.CreateScope())
 									{
 										var _mediator =
@@ -179,22 +179,22 @@ namespace ControlDocumentoFactura.WebApi
 										.GetRequiredService<IMediator>();
 										Guid idResponse = await _mediator.Send(objReservaCommand);
 									}
+								}
+								catch (Exception e)
+								{
+									Console.WriteLine("{0} Exception caught.", e);
+								}
 							}
-							catch (Exception e)
-							{
-								Console.WriteLine("{0} Exception caught.", e);
-							}
-						}
 
-						else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaPagada")
+							else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaPagada")
 							{
-							var id = Guid.NewGuid();
-							var transactionNumber = jDatos.transactionNumber;
-							var amount = jDatos.amount;
-							var booking = jDatos.booking;
-							try
-							{
-									ReservaPagadoCommand objReservaPagadoCommand = new ReservaPagadoCommand(Guid.Parse(id.ToString()), Guid.Parse(booking.ToString()),transactionNumber.ToString(), Convert.ToDecimal(amount.ToString()));
+								var id = Guid.NewGuid();
+								var transactionNumber = jDatos.transactionNumber;
+								var amount = jDatos.amount;
+								var booking = jDatos.booking;
+								try
+								{
+									ReservaPagadoCommand objReservaPagadoCommand = new ReservaPagadoCommand(Guid.Parse(id.ToString()), Guid.Parse(booking.ToString()), transactionNumber.ToString(), Convert.ToDecimal(amount.ToString()));
 									using (var scope = Services.CreateScope())
 									{
 										var _mediator =
@@ -203,16 +203,16 @@ namespace ControlDocumentoFactura.WebApi
 										Guid idResponse = await _mediator.Send(objReservaPagadoCommand);
 									}
 								}
-							catch (Exception e)
-							{
-								Console.WriteLine("{0} Exception caught.", e);
+								catch (Exception e)
+								{
+									Console.WriteLine("{0} Exception caught.", e);
+								}
 							}
 						}
-					}
-					catch (Exception e)
-					{
-						//await DeleteMessage(sqsClient, msg.Messages[0], myQueueUrl);
-					}					
+						catch (Exception e)
+						{
+							//await DeleteMessage(sqsClient, msg.Messages[0], myQueueUrl);
+						}
 
 
 

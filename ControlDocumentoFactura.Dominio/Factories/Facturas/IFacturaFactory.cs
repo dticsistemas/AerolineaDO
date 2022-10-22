@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Factories.Facturas {
-	public interface IFacturaFactory {
+namespace ControlDocumentoFactura.Dominio.Factories.Facturas
+{
+	public interface IFacturaFactory
+	{
 		Factura Create(string nroComprobante);
 	}
 }

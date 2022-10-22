@@ -14,12 +14,12 @@ namespace ControlDocumentoFactura.Test.Infraestructura.ReadModel
 		public void ConfiguracionFacturaModel_CheckPropertiesValid()
 		{
 			var idFacturaTest = new Guid();
-			
+
 			var nitProveedorTest = "123456";
 			var razonSocialProveedorTest = "AEROPRO";
 			var nroAutorizacionTest = "1";
 			var estadoTest = "P";
-			var fechaTest = DateTime.Now;	
+			var fechaTest = DateTime.Now;
 
 			var objFactura = new ConfiguracionFacturaReadModel();
 

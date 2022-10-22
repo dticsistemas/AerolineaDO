@@ -7,16 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Dominio.Models {
-	public class Cliente_Test {
+namespace ControlDocumentoFactura.Test.Dominio.Models
+{
+	public class Cliente_Test
+	{
 		[Fact]
-		public void Cliente_CheckPropertiesValid() {
+		public void Cliente_CheckPropertiesValid()
+		{
 			var idCliente = Guid.NewGuid();
 			var nombreCliente = "Juan Prueba Test";
 			var lastName = "Perez";
-			var objCliente = new Cliente(idCliente,nombreCliente,lastName,"passport","0","1234","email@email.com","7654321");
-			Assert.NotEqual(Guid.Empty,objCliente.Id);
-			Assert.Equal(nombreCliente,objCliente.Name);
+			var objCliente = new Cliente(idCliente, nombreCliente, lastName, "passport", "0", "1234", "email@email.com", "7654321");
+			Assert.NotEqual(Guid.Empty, objCliente.Id);
+			Assert.Equal(nombreCliente, objCliente.Name);
 
 			nombreCliente = "ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489";
 			nombreCliente += "ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489";
@@ -25,7 +28,8 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 			nombreCliente += "ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489ABCSDEFGHIJKLMNOPQRSTVUWXYZ01234567489";
 
 
-			Action testCodigoNombreExcedente500Caracteres = () => {
+			Action testCodigoNombreExcedente500Caracteres = () =>
+			{
 				objCliente = new Cliente(idCliente, nombreCliente, lastName, "passport", "0", "1234", "email@email.com", "7654321");
 			};
 			var exception = Record.Exception(testCodigoNombreExcedente500Caracteres);
@@ -36,10 +40,11 @@ namespace ControlDocumentoFactura.Test.Dominio.Models {
 
 		}
 		[Fact]
-		public void TestConstructor_IsPrivate() {
+		public void TestConstructor_IsPrivate()
+		{
 			var cliente = new Cliente();
 			Assert.Null(cliente.NombreCompleto);
-			Assert.Equal(Guid.Empty,cliente.Id);
+			Assert.Equal(Guid.Empty, cliente.Id);
 		}
 
 	}

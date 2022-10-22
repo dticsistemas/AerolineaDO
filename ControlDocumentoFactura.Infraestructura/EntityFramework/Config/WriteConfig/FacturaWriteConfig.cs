@@ -12,97 +12,100 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig {
-		public class FacturaWriteConfig:IEntityTypeConfiguration<Factura> {
-				public void Configure(EntityTypeBuilder<Factura> builder) {
-						builder.ToTable("Factura");
-						builder.HasKey(x => x.Id);
+namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.WriteConfig
+{
+	public class FacturaWriteConfig : IEntityTypeConfiguration<Factura>
+	{
+		public void Configure(EntityTypeBuilder<Factura> builder)
+		{
+			builder.ToTable("Factura");
+			builder.HasKey(x => x.Id);
 
 
-						//-------------------------------
-						var nroFacturaConverter = new ValueConverter<NumeroFacturaValue,string>(
-							nroFacturaValue => nroFacturaValue.Value,
-							nroFactura => new NumeroFacturaValue(nroFactura)
-						);
-						builder.Property(x => x.NroFactura)
-							.HasColumnName("nroFactura")
-							.HasConversion(nroFacturaConverter)
+			//-------------------------------
+			var nroFacturaConverter = new ValueConverter<NumeroFacturaValue, string>(
+				nroFacturaValue => nroFacturaValue.Value,
+				nroFactura => new NumeroFacturaValue(nroFactura)
+			);
+			builder.Property(x => x.NroFactura)
+				.HasColumnName("nroFactura")
+				.HasConversion(nroFacturaConverter)
+				.HasMaxLength(25);
+			//-------------------------------
+
+			var montoConverter = new ValueConverter<MontoValue, decimal>(
+					precioValue => precioValue.Value,
+					precio => new MontoValue(precio)
+				);
+			builder.Property(x => x.Monto)
+				.HasColumnName("monto")
+				.HasConversion(montoConverter)
+				.HasPrecision(12, 2);
+			builder.Property(x => x.Importe)
+				.HasColumnName("importe")
+				.HasConversion(montoConverter)
+				.HasPrecision(12, 2);
+			//-----------------------------------
+
+			builder.Property(x => x.Fecha)
+					.HasColumnName("fecha")
+					.HasColumnType("datetime");
+			//-----------------------------------
+			var lugarConverter = new ValueConverter<DescripcionLugarValue, string>(
+				lugarValue => lugarValue.Value,
+				lugar => new DescripcionLugarValue(lugar)
+			);
+			builder.Property(x => x.Lugar)
+				.HasColumnName("lugar")
+				.HasConversion(lugarConverter)
 							.HasMaxLength(25);
-						//-------------------------------
+			//-----------------------------------
+			var tipoNitConverter = new ValueConverter<TipoNitValue, string>(
+				tipoNitValue => tipoNitValue.Value,
+				tipo => new TipoNitValue(tipo)
+			);
+			builder.Property(x => x.TipoNit)
+				.HasColumnName("tipoNit")
+				.HasConversion(tipoNitConverter)
+				.HasMaxLength(25);
+			//-------------------------------
+			var nitFacturaConverter = new ValueConverter<NitFacturaValue, string>(
+				nitFacturaValue => nitFacturaValue.Value,
+				nitFactura => new NitFacturaValue(nitFactura)
+			);
 
-						var montoConverter = new ValueConverter<MontoValue,decimal>(
-							 precioValue => precioValue.Value,
-							 precio => new MontoValue(precio)
-						 );
-						builder.Property(x => x.Monto)
-							.HasColumnName("monto")
-							.HasConversion(montoConverter)
-							.HasPrecision(12,2);
-						builder.Property(x => x.Importe)
-							.HasColumnName("importe")
-							.HasConversion(montoConverter)
-							.HasPrecision(12,2);
-						//-----------------------------------
+			builder.Property(x => x.NitBeneficiario)
+				.HasColumnName("nitBeneficiario")
+				.HasConversion(nitFacturaConverter)
+				.HasMaxLength(25);
+			//-------------------------------
+			var razonSocialConverter = new ValueConverter<RazonSocialValue, string>(
+					razonSocialValue => razonSocialValue.Value,
+					razonSocial => new RazonSocialValue(razonSocial)
+				);
 
-						builder.Property(x => x.Fecha)
-							 .HasColumnName("fecha")
-							 .HasColumnType("datetime");
-						//-----------------------------------
-						var lugarConverter = new ValueConverter<DescripcionLugarValue,string>(
-							lugarValue => lugarValue.Value,
-							lugar => new DescripcionLugarValue(lugar)
-						);
-						builder.Property(x => x.Lugar)
-							.HasColumnName("lugar")
-							.HasConversion(lugarConverter)
-										.HasMaxLength(25);
-						//-----------------------------------
-						var tipoNitConverter = new ValueConverter<TipoNitValue, string>(
-							tipoNitValue => tipoNitValue.Value,
-							tipo => new TipoNitValue(tipo)
-						);
-						builder.Property(x => x.TipoNit)
-							.HasColumnName("tipoNit")
-							.HasConversion(tipoNitConverter)
-							.HasMaxLength(25);
-						//-------------------------------
-						var nitFacturaConverter = new ValueConverter<NitFacturaValue,string>(
-							nitFacturaValue => nitFacturaValue.Value,
-							nitFactura => new NitFacturaValue(nitFactura)
-						);
-						
-						builder.Property(x => x.NitBeneficiario)
-							.HasColumnName("nitBeneficiario")
-							.HasConversion(nitFacturaConverter)
-							.HasMaxLength(25);
-						//-------------------------------
-						var razonSocialConverter = new ValueConverter<RazonSocialValue,string>(
-							 razonSocialValue => razonSocialValue.Value,
-							 razonSocial => new RazonSocialValue(razonSocial)
-						 );
-					
 
-						builder.Property(x => x.RazonSocialBeneficiario)
-							.HasColumnName("razonSocialBeneficiario")
-							.HasConversion(razonSocialConverter)
-							.HasMaxLength(25);
-						
-						//-------------------------------
-						builder.Property(x => x.Estado)
-							.HasColumnName("estado");
-						//-------------------------------
-						builder.Property(x => x.ClienteId)
-							.HasColumnName("clienteId");
-						//-------------------------------
+			builder.Property(x => x.RazonSocialBeneficiario)
+				.HasColumnName("razonSocialBeneficiario")
+				.HasConversion(razonSocialConverter)
+				.HasMaxLength(25);
 
-						builder.Property(x => x.VueloId)
-							.HasColumnName("vueloId");
-						//-------------------------------
-						builder.Property(x => x.ReservaId)
-							.HasColumnName("reservaId");
-						//-------------------------------
-						builder.Property(x => x.ConfiguracionFacturaId)
-							.HasColumnName("configuracionFacturaId");
+			//-------------------------------
+			builder.Property(x => x.Estado)
+				.HasColumnName("estado");
+			//-------------------------------
+			builder.Property(x => x.ClienteId)
+				.HasColumnName("clienteId");
+			//-------------------------------
+
+			builder.Property(x => x.VueloId)
+				.HasColumnName("vueloId");
+			//-------------------------------
+			builder.Property(x => x.ReservaId)
+				.HasColumnName("reservaId");
+			//-------------------------------
+			builder.Property(x => x.ConfiguracionFacturaId)
+				.HasColumnName("configuracionFacturaId");
 
 
 		}

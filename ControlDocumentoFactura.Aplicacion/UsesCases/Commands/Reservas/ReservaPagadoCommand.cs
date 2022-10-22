@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Reservas
 		public String TransactionNumber { get; set; }
 		public decimal Amount { get; set; }
 		private ReservaPagadoCommand() { }
-		public ReservaPagadoCommand(Guid id, Guid reservaId,String transactionNumber, decimal amount)
+		public ReservaPagadoCommand(Guid id, Guid reservaId, String transactionNumber, decimal amount)
 		{
 			Id = id;
 			ReservaId = reservaId;

@@ -24,11 +24,11 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 
 
 
-		private Guid _idTest= new();
+		private Guid _idTest = new();
 		private String ReservationNumber = "123";
 		private Guid ClienteId = new();
 		private Guid VueloId = new();
-		private String Fecha="2022-01-01";
+		private String Fecha = "2022-01-01";
 		private decimal Monto = new(10);
 		private String ReservationStatus = "";
 
@@ -52,7 +52,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			);
 
 
-			var objRequest = new CrearReservaCommand(_idTest,ReservationNumber,ClienteId,VueloId,Fecha,Monto,ReservationStatus);
+			var objRequest = new CrearReservaCommand(_idTest, ReservationNumber, ClienteId, VueloId, Fecha, Monto, ReservationStatus);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);
@@ -73,7 +73,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 			);
 
 
-			var objRequest = new CrearReservaCommand(_idTest,"", ClienteId, VueloId, Fecha, Monto, ReservationStatus);
+			var objRequest = new CrearReservaCommand(_idTest, "", ClienteId, VueloId, Fecha, Monto, ReservationStatus);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);

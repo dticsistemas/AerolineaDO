@@ -40,7 +40,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
 				_unitOfWork.Object
 			);
 
-			var objRequest = new ReservaPagadoCommand(_idTest,reservaId,transactionNumber,amount);
+			var objRequest = new ReservaPagadoCommand(_idTest, reservaId, transactionNumber, amount);
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);

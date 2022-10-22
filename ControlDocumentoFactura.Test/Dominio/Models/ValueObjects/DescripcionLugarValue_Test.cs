@@ -22,8 +22,9 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 			Assert.NotNull(descripcionValue.ToString());
 			Assert.Equal(descripcionValue, lugarTest);
 
-			Action testCodigoNombreExcedente100Caracteres = () => {
-			descripcionValue = new DescripcionLugarValue("123456789101234567890123456789+01234567890123456789descripcion de lugar mayora que la cantidad dfe caracteres permitidos generandoi una esxcepcion para comporobar mediante test unitatrios7654321");
+			Action testCodigoNombreExcedente100Caracteres = () =>
+			{
+				descripcionValue = new DescripcionLugarValue("123456789101234567890123456789+01234567890123456789descripcion de lugar mayora que la cantidad dfe caracteres permitidos generandoi una esxcepcion para comporobar mediante test unitatrios7654321");
 			};
 			var exception = Record.Exception(testCodigoNombreExcedente100Caracteres);
 			Assert.NotNull(exception);

@@ -22,11 +22,14 @@ using ControlDocumentoFactura.WebApi;
 using ControlDocumentoFactura.Aplicacion.UsesCases.Commands.Clientes.CrearCliente;
 using MediatR;
 
-namespace ControlDocumentoFactura.Infraestructura {
-		public static class Extensions {
+namespace ControlDocumentoFactura.Infraestructura
+{
+	public static class Extensions
+	{
 		public static async Task<IServiceCollection> AddInfrastructureAsync(this IServiceCollection services,
-					IConfiguration configuration) {
-						services.AddApplication();
+					IConfiguration configuration)
+		{
+			services.AddApplication();
 
 			//services.AddMediatR(Assembly.GetExecutingAssembly());
 			services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
@@ -35,22 +38,22 @@ namespace ControlDocumentoFactura.Infraestructura {
 			var connectionString =
 							configuration.GetConnectionString("ReservaDbConnectionString");
 
-						services.AddDbContext<ReadDbContext>(context =>
-							context.UseSqlServer(connectionString));
-						services.AddDbContext<WriteDbContext>(context =>
-							context.UseSqlServer(connectionString));
+			services.AddDbContext<ReadDbContext>(context =>
+				context.UseSqlServer(connectionString));
+			services.AddDbContext<WriteDbContext>(context =>
+				context.UseSqlServer(connectionString));
 
-						services.AddScoped<IReservaRepository,ReservaRepository>();
+			services.AddScoped<IReservaRepository, ReservaRepository>();
 
-						services.AddScoped<IVueloRepository,VueloRepository>();
+			services.AddScoped<IVueloRepository, VueloRepository>();
 
-						services.AddScoped<IClienteRepository, ClienteRepository>();
+			services.AddScoped<IClienteRepository, ClienteRepository>();
 
-						services.AddScoped<IFacturaRepository,FacturaRepository>();
+			services.AddScoped<IFacturaRepository, FacturaRepository>();
 
-						services.AddScoped<IConfiguracionFacturaRepository, ConfiguracionFacturaRepository>();
+			services.AddScoped<IConfiguracionFacturaRepository, ConfiguracionFacturaRepository>();
 
-						services.AddScoped<IUnitOfWork,UnitOfWork>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 			services.AddHostedService<SqsBackgroundService>();
@@ -62,8 +65,8 @@ namespace ControlDocumentoFactura.Infraestructura {
 
 
 			return services;
-				}
-
-
 		}
+
+
+	}
 }

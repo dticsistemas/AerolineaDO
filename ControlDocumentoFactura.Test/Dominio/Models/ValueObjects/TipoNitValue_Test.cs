@@ -17,12 +17,12 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 			var tipoNitTest = "passport";
 			var objValue = new TipoNitValue(tipoNitTest);
 
-		
+
 
 
 
 			Assert.Equal(objValue.Value, tipoNitTest);
-			Assert.Equal(tipoNitTest,objValue.Value);
+			Assert.Equal(tipoNitTest, objValue.Value);
 			Assert.NotNull(objValue.ToString());
 			Assert.Equal(tipoNitTest, objValue);
 
@@ -33,7 +33,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 			var exception = Record.Exception(testValoresNull);
 			Assert.NotNull(exception);
 
-				
+
 
 
 

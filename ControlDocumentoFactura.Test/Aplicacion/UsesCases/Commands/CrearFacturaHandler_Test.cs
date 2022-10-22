@@ -16,8 +16,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
-	public class CrearFacturaHandler_Test {
+namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
+{
+	public class CrearFacturaHandler_Test
+	{
 		private readonly Mock<IFacturaRepository> _facturaRepository;
 		private readonly Mock<ILogger<CrearFacturaHandler>> _logger;
 		private readonly Mock<IFacturaService> _facturaService;
@@ -34,11 +36,12 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 		private string _lugarTest = "SCZ B/ Los Olivos";
 		private string _nitBeneficiarioTest = "654321";
 		private string _razonSocialBeneficiarioTest = "Juan Perez";
-		private string _tipoNit="ci";
+		private string _tipoNit = "ci";
 
 		private Factura _facturaTest;
 
-		public CrearFacturaHandler_Test() {
+		public CrearFacturaHandler_Test()
+		{
 			_facturaRepository = new Mock<IFacturaRepository>();
 			_logger = new Mock<ILogger<CrearFacturaHandler>>();
 			_facturaService = new Mock<IFacturaService>();
@@ -48,7 +51,8 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 
 		}
 		[Fact]
-		public void CrearFacturaHandler_HandleCorrectly() {
+		public void CrearFacturaHandler_HandleCorrectly()
+		{
 
 			_facturaService.Setup(_facturaService => _facturaService.GenerarNroFacturaAsync()).Returns(Task.FromResult(_nroFacturaTest));
 			_facturaFactory.Setup(_factory => _factory.Create(_nroFacturaTest))
@@ -63,17 +67,18 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 			);
 
 
-			var objRequest = new CrearFacturaCommand(_montoTest,_tipoNit,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest, _idConfigFacturaTest);
+			var objRequest = new CrearFacturaCommand(_montoTest, _tipoNit, _lugarTest, _nitBeneficiarioTest, _razonSocialBeneficiarioTest, _idClienteTest, _idVueloTest, _idReservaTest, _idConfigFacturaTest);
 			var tcs = new CancellationTokenSource(1000);
-			var result = objHandler.Handle(objRequest,tcs.Token);
+			var result = objHandler.Handle(objRequest, tcs.Token);
 			Assert.IsType<Guid>(result.Result);
 
-			var domainEventList = ( List<DomainEvent> )_facturaTest.DomainEvents;
+			var domainEventList = (List<DomainEvent>)_facturaTest.DomainEvents;
 			//Assert.Single(domainEventList);
 			Assert.IsType<FacturaCreadoEvent>(domainEventList[0]);
 		}
 		[Fact]
-		public void CrearProductoHandler_Handle_Fail() {
+		public void CrearProductoHandler_Handle_Fail()
+		{
 			// Failing by returning null values
 			var objHandler = new CrearFacturaHandler(
 				_facturaRepository.Object,
@@ -81,19 +86,19 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 				_facturaService.Object,
 				_facturaFactory.Object,
 				_unitOfWork.Object
-			 );
-			var objRequest = new CrearFacturaCommand(_montoTest,_tipoNit,_lugarTest,_nitBeneficiarioTest,_razonSocialBeneficiarioTest,_idClienteTest,_idVueloTest,_idReservaTest, _idConfigFacturaTest);
+				);
+			var objRequest = new CrearFacturaCommand(_montoTest, _tipoNit, _lugarTest, _nitBeneficiarioTest, _razonSocialBeneficiarioTest, _idClienteTest, _idVueloTest, _idReservaTest, _idConfigFacturaTest);
 
 
 			var tcs = new CancellationTokenSource(1000);
-			var result = objHandler.Handle(objRequest,tcs.Token);
+			var result = objHandler.Handle(objRequest, tcs.Token);
 			_logger.Verify(mock => mock.Log(
 				It.Is<LogLevel>(logLevel => logLevel == LogLevel.Error),
 				It.Is<EventId>(eventId => eventId.Id == 0),
-				It.Is<It.IsAnyType>((@object,@type) => @object.ToString() == "Error al crear Factura"),
+				It.Is<It.IsAnyType>((@object, @type) => @object.ToString() == "Error al crear Factura"),
 				It.IsAny<Exception>(),
-				It.IsAny<Func<It.IsAnyType,Exception,string>>())
-			,Times.Once);
+				It.IsAny<Func<It.IsAnyType, Exception, string>>())
+			, Times.Once);
 		}
 	}
 }

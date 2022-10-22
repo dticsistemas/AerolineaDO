@@ -19,7 +19,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models
 			string nitProveedor = "123456";
 			string razonSocialProveedor = "aeronur";
 			string nroAutorizacion = "123";
-			cfacturaTest.CrearConfiguracionFactura(nitProveedor, razonSocialProveedor, nroAutorizacion);	
+			cfacturaTest.CrearConfiguracionFactura(nitProveedor, razonSocialProveedor, nroAutorizacion);
 			Assert.NotNull(cfacturaTest.Id);
 			Assert.Equal(nitProveedor, cfacturaTest.NitProveedor);
 			Assert.Equal(razonSocialProveedor, cfacturaTest.RazonSocialProveedor);
@@ -31,7 +31,7 @@ namespace ControlDocumentoFactura.Test.Dominio.Models
 		{
 			var configFacturaTest = new ConfiguracionFactura();
 			Assert.Equal("A", configFacturaTest.Estado);
-			Assert.NotNull(configFacturaTest.Id); 
+			Assert.NotNull(configFacturaTest.Id);
 		}
 		[Fact]
 		public void UpdateConfiugacionInactivo_IsPrivate()
@@ -41,5 +41,5 @@ namespace ControlDocumentoFactura.Test.Dominio.Models
 			Assert.Equal("I", configFacturaTest.Estado);
 		}
 
-	   }
 	}
+}

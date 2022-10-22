@@ -11,14 +11,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
-	public class EntregarFacturaHandler_Test {
+namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands
+{
+	public class EntregarFacturaHandler_Test
+	{
 		private readonly Mock<IFacturaRepository> _facturaRepository;
-		public EntregarFacturaHandler_Test() {
+		public EntregarFacturaHandler_Test()
+		{
 			_facturaRepository = new Mock<IFacturaRepository>();
 		}
 		[Fact]
-		public void EntregarFacturaHandler_HandleCorrectly() {
+		public void EntregarFacturaHandler_HandleCorrectly()
+		{
 			Guid _idReservaTest = new();
 			Guid _idClienteTest = new();
 			Guid _idFacturaTest = new();
@@ -36,9 +40,9 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Commands {
 
 			var handler = new EntregarFacturaHandler(_facturaRepository.Object);
 			var objRequest = new FacturaCreadoEvent(
-					_montoTest,_idFacturaTest,_idClienteTest,_idReservaTest
+					_montoTest, _idFacturaTest, _idClienteTest, _idReservaTest
 			);
-			var result = handler.Handle(objRequest,tcs.Token);
+			var result = handler.Handle(objRequest, tcs.Token);
 
 			Assert.NotNull(_facturaTest);
 		}

@@ -17,10 +17,11 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 		{
 			var resdecimal = new decimal(10);
 			var montoValue = new MontoValue(resdecimal);
-			
+
 			Assert.Equal(montoValue.Value, resdecimal);
 
-			Action testValoresNegativos = () => {
+			Action testValoresNegativos = () =>
+			{
 				montoValue = new MontoValue(-10);
 			};
 			var exception = Record.Exception(testValoresNegativos);
@@ -29,6 +30,6 @@ namespace ControlDocumentoFactura.Test.Dominio.Models.ValueObjects
 
 
 		}
-		
+
 	}
 }

@@ -14,11 +14,11 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadCon
 		public void Configure(EntityTypeBuilder<ConfiguracionFacturaReadModel> builder)
 		{
 			builder.ToTable("ConfiguracionFactura");
-			builder.HasKey(x => x.Id);			
+			builder.HasKey(x => x.Id);
 
 			builder.Property(x => x.Fecha)
 					.HasColumnName("fecha")
-					.HasColumnType("datetime");			
+					.HasColumnType("datetime");
 
 			builder.Property(x => x.NitProveedor)
 					.HasColumnName("nitProveedor")
@@ -26,7 +26,7 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadCon
 
 			builder.Property(x => x.RazonSocialProveedor)
 					.HasColumnName("razonSocialProveedor")
-					.HasMaxLength(25);			
+					.HasMaxLength(25);
 
 			builder.Property(x => x.NroAutorizacion)
 					.HasColumnName("nroAutorizacion")
@@ -35,7 +35,7 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Config.ReadCon
 			builder.Property(x => x.Estado)
 					.HasColumnName("estado")
 					.HasMaxLength(10);
-			
+
 		}
 	}
 }

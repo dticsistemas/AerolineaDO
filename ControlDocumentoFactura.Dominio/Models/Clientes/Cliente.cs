@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.Dominio.Models.Clientes {
-	public class Cliente:AggregateRoot<Guid> {
+namespace ControlDocumentoFactura.Dominio.Models.Clientes
+{
+	public class Cliente : AggregateRoot<Guid>
+	{
 		public PersonNameValue NombreCompleto { get; set; }
 		public PersonNameValue Name { get; set; }
 		public PersonNameValue LastName { get; set; }
@@ -18,9 +20,10 @@ namespace ControlDocumentoFactura.Dominio.Models.Clientes {
 		public PersonDataValue Phone { get; set; }
 
 		public Cliente() { }
-		public Cliente(Guid id,string name, string lastName, string passport,string needAssistance,string nit,string email,string phone) {
+		public Cliente(Guid id, string name, string lastName, string passport, string needAssistance, string nit, string email, string phone)
+		{
 			Id = id;
-			NombreCompleto = name+" "+lastName;
+			NombreCompleto = name + " " + lastName;
 			Name = name;
 			LastName = lastName;
 			Passport = passport;

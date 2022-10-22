@@ -50,7 +50,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ListarFa
 					VueloId = objFactura.VueloId,
 					ConfiguracionFacturaId = objFactura.ConfiguracionFacturaId
 
-	};
+				};
 
 				result.Add(facturaDto);
 			}

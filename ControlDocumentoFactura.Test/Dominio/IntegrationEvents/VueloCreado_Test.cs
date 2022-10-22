@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Test.Dominio.IntegrationEvents
 		public void VueloCreado_CheckPropertiesValid()
 		{
 			var idVueloTest = Guid.NewGuid();
-			
+
 			VueloCreado vuelo = new VueloCreado();
 			vuelo.Id = idVueloTest;
 			vuelo.Source_airport_code = "LPZ";
@@ -22,7 +22,7 @@ namespace ControlDocumentoFactura.Test.Dominio.IntegrationEvents
 			vuelo.Status = "A";
 			vuelo.Flight_program_id = 10;
 			vuelo.Information = "info";
-			Assert.Equal(idVueloTest,vuelo.Id);
+			Assert.Equal(idVueloTest, vuelo.Id);
 			Assert.Equal("LPZ", vuelo.Source_airport_code);
 			Assert.Equal("MIA", vuelo.Destiny_airport_code);
 			Assert.Equal("A", vuelo.Status);

@@ -17,7 +17,7 @@ namespace ControlDocumentoFactura.Test.Dominio.IntegrationEvents
 			Guid Id = new Guid();
 			String NombreCompleto = "nuevo";
 			String Name = "demo";
-			String LastName ="test";
+			String LastName = "test";
 			String Passport = "123";
 			String NeedAssistance = "true";
 			String Nit = "456";

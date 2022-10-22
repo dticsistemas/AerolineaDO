@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.Repository
 {
-	public class ConfiguracionFacturaRepository:IConfiguracionFacturaRepository
+	public class ConfiguracionFacturaRepository : IConfiguracionFacturaRepository
 	{
 		public readonly DbSet<ConfiguracionFactura> _configuracionFacturas;
 
 		public ConfiguracionFacturaRepository(WriteDbContext context)
 		{
 			_configuracionFacturas = context.ConfiguracionFactura;
-		}		
+		}
 
 		public async Task CreateAsync(ConfiguracionFactura obj)
 		{

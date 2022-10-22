@@ -54,15 +54,15 @@ namespace ControlDocumentoFactura.Infraestructura.EntityFramework.UseCases.Queri
 				facturaDto.ReservaId = objFactura.Reserva.Id;
 				facturaDto.ClienteId = objFactura.Cliente.Id;
 				facturaDto.VueloId = objFactura.Vuelo.Id;
-				
 
-				
+
+
 				result.Add(facturaDto);
 			}
 
 			return result;
 		}
 
-		
+
 	}
 }

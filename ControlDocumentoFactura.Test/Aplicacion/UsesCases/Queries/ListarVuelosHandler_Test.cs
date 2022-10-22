@@ -33,7 +33,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 		[Fact]
 		public void ListarVuelosHandler_HandleCorrectly()
 		{
-			var vuelo = new Vuelo(new Guid(),10,"MIA","LPZ","A","info");
+			var vuelo = new Vuelo(new Guid(), 10, "MIA", "LPZ", "A", "info");
 			List<Vuelo> parts = new List<Vuelo>();
 			parts.Add(vuelo);
 			_objRepository.Setup(objRepository => objRepository.GetAll()).ReturnsAsync(parts);

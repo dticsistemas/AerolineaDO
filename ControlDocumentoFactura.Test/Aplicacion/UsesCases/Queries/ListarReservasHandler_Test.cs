@@ -32,7 +32,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.UsesCases.Queries
 		[Fact]
 		public void ListarReservasHandler_HandleCorrectly()
 		{
-			var reserva = new Reserva(new Guid(), "1234", new Guid(),new Guid(),"2022-01-01",new decimal(10),"R");
+			var reserva = new Reserva(new Guid(), "1234", new Guid(), new Guid(), "2022-01-01", new decimal(10), "R");
 			List<Reserva> parts = new List<Reserva>();
 			parts.Add(reserva);
 			_objRepository.Setup(objRepository => objRepository.GetAll()).ReturnsAsync(parts);

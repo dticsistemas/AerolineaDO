@@ -14,7 +14,7 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos
 		[Fact]
 		public void FacturaDto_CheckPropertiesValid()
 		{
-			var idFacturaTest = new Guid();		
+			var idFacturaTest = new Guid();
 			var nitProveedorTest = "123456";
 			var razonSocialProveedorTest = "AEROPRO";
 			var nroAutorizacionTest = "1";
@@ -22,12 +22,12 @@ namespace ControlDocumentoFactura.Test.Aplicacion.Dtos
 
 			var objFactura = new ConfiguracionFacturaDto();
 
-			objFactura.Id = idFacturaTest;			
+			objFactura.Id = idFacturaTest;
 			objFactura.NitProveedor = nitProveedorTest;
 			objFactura.RazonSocialProveedor = razonSocialProveedorTest;
 			objFactura.NroAutorizacion = nroAutorizacionTest;
 			objFactura.Estado = estadoTest;
-			objFactura.Fecha = DateTime.Now;	
+			objFactura.Fecha = DateTime.Now;
 
 			Assert.Equal(idFacturaTest, objFactura.Id);
 			Assert.Equal(nitProveedorTest, objFactura.NitProveedor);

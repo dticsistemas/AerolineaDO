@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ControlDocumentoFactura.Infraestructura.EntityFramework.UseCases.Queries
 {
-	public class ObtenerConfiguracionFacturaHandler:IRequestHandler<ObtenerConfiguracionFacturaQuery, ConfiguracionFacturaDto>
+	public class ObtenerConfiguracionFacturaHandler : IRequestHandler<ObtenerConfiguracionFacturaQuery, ConfiguracionFacturaDto>
 	{
 		private readonly DbSet<ConfiguracionFacturaReadModel> _configFacturas;
 

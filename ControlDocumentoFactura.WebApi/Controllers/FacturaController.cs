@@ -21,25 +21,29 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace ControlDocumentoFactura.WebApi.Controllers {
+namespace ControlDocumentoFactura.WebApi.Controllers
+{
 	[ApiController]
 	[Route("/api/[controller]")]
-	public class FacturaController:ControllerBase {
+	public class FacturaController : ControllerBase
+	{
 		private readonly IMediator _mediator;
 
-		public FacturaController(IMediator mediator) {
+		public FacturaController(IMediator mediator)
+		{
 			_mediator = mediator;
 		}
 		[Route("create")]
 		[HttpPost]
-		public async Task<IActionResult> CreateFactura([FromBody] CrearFacturaCommand command) {
+		public async Task<IActionResult> CreateFactura([FromBody] CrearFacturaCommand command)
+		{
 			Guid id = await _mediator.Send(command);
 
-			if( id == Guid.Empty )
+			if (id == Guid.Empty)
 				return BadRequest();
 
 			return Ok(id);
-		}		
+		}
 		[Route("configuracion")]
 		[HttpPost]
 		public async Task<IActionResult> CreateConfiguracionFactura([FromBody] CrearConfiguracionFacturaCommand command)
@@ -65,10 +69,11 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 
 		[Route("{id:guid}")]
 		[HttpGet]
-		public async Task<IActionResult> ObtenerFacturaPorId([FromRoute] BuscarFacturaPorIdQuery command) {
+		public async Task<IActionResult> ObtenerFacturaPorId([FromRoute] BuscarFacturaPorIdQuery command)
+		{
 			FacturaDto result = await _mediator.Send(command);
 
-			if( result == null )
+			if (result == null)
 				return NotFound();
 
 			return Ok(result);
@@ -154,9 +159,9 @@ namespace ControlDocumentoFactura.WebApi.Controllers {
 		[HttpPost]
 		public async Task<IActionResult> Search([FromBody] SearchFacturasClienteQuery query)
 		{
-			var facturas= await _mediator.Send(query);
+			var facturas = await _mediator.Send(query);
 
-			if (facturas== null)
+			if (facturas == null)
 				return BadRequest();
 
 			return Ok(facturas);

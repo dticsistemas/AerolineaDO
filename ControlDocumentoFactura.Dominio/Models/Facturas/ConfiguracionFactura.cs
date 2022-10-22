@@ -34,7 +34,7 @@ namespace ControlDocumentoFactura.Dominio.Models.Facturas
 			NitProveedor = nitProveedor;
 			RazonSocialProveedor = razonSocialProveedor;
 			Estado = "A";
-			NroAutorizacion = nroAutorizacion;	
+			NroAutorizacion = nroAutorizacion;
 
 
 		}

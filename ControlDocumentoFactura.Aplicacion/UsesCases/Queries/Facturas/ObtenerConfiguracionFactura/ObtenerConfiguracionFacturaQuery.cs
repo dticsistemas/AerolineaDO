@@ -11,7 +11,7 @@ namespace ControlDocumentoFactura.Aplicacion.UsesCases.Queries.Facturas.ObtenerC
 {
 	public class ObtenerConfiguracionFacturaQuery : IRequest<ConfiguracionFacturaDto>
 	{
-		
+
 
 	}
 }
