@@ -37,9 +37,9 @@ namespace ControlDocumentoFactura.Dominio.Models.Reservas
 		}
 		public void ActualizarReservaPagada()
 		{
-			if (ReservationStatus != "pagado")
+			if (ReservationStatus != "completed")
 			{
-				ReservationStatus = "pagado";
+				ReservationStatus = "completed";
 
 			}
 

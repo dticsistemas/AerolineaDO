@@ -112,7 +112,7 @@ namespace ControlDocumentoFactura.WebApi
 								var destino = jDatos.flight_program.destinyAirport;
 								var flight_program_id = jDatos.flight.id;
 								var datos = jDatos.flight.created_at;
-								var status = "null";
+								var status = "open";
 
 								try
 								{
@@ -161,12 +161,12 @@ namespace ControlDocumentoFactura.WebApi
 
 							else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaCreada")
 							{
-								jDatos = jsonData;//.body.booking;
+								jDatos = jsonData.body.booking;
 								var id = jDatos.id;
 								var reservationNumber = jDatos.reservationNumber.data;
 								var passanger = jDatos.passanger;
 								var reservationStatus = jDatos.reservationStatus.data;
-								var fecha = "2022-10-01";// now.ToString();//jDatos.date;
+								var fecha = DateTime.Now.ToString("yyyy-MM-dd");
 								var monto = jDatos.accountReceivable.originalValue.data;
 								var flight = jDatos.flight;
 								try
@@ -188,13 +188,13 @@ namespace ControlDocumentoFactura.WebApi
 
 							else if (eventoTopic == "arn:aws:sns:us-east-1:191300708619:ReservaPagada")
 							{
-								var id = Guid.NewGuid();
+								jDatos = jsonData.body.payment;
 								var transactionNumber = jDatos.transactionNumber;
-								var amount = jDatos.amount;
-								var booking = jDatos.booking;
+								var amount = jDatos.amount.data;
+								var booking = jDatos.booking.id;
 								try
 								{
-									ReservaPagadoCommand objReservaPagadoCommand = new ReservaPagadoCommand(Guid.Parse(id.ToString()), Guid.Parse(booking.ToString()), transactionNumber.ToString(), Convert.ToDecimal(amount.ToString()));
+									ReservaPagadoCommand objReservaPagadoCommand = new ReservaPagadoCommand(Guid.Parse(booking.ToString()), Guid.Parse(booking.ToString()), transactionNumber.ToString(), Convert.ToDecimal(amount.ToString()));
 									using (var scope = Services.CreateScope())
 									{
 										var _mediator =
